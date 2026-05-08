@@ -419,9 +419,104 @@
     .bottom-bar-kakao { background: #FEE500; color: #3A1D1D; }
     .bottom-bar-kakao:hover, .bottom-bar-kakao:active { color: #3A1D1D; background: #fada00; }
 
-    /* 모바일 하단 바 공간 확보 */
+    /* ===== MOBILE RESPONSIVE ===== */
     @media (max-width: 767px) {
-      body { padding-bottom: 68px; }
+      /* 하단 바 공간 + safe area (아이폰 홈바 대응) */
+      body { padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
+      .bottom-bar {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        height: calc(64px + env(safe-area-inset-bottom, 0px));
+      }
+      .bottom-bar-btn { padding: 10px 0 6px; }
+
+      /* 섹션 패딩 축소 */
+      .vehicles-section,
+      .features-section,
+      .reviews-section,
+      .consult-section,
+      .videos-section,
+      .jongr-section,
+      .blog-section { padding: 40px 0; }
+      .filter-section { padding: 0 0 40px; }
+      .cta-banner { padding: 40px 0; }
+
+      /* 섹션 제목 */
+      .section-title { font-size: 1.25rem; }
+      .section-eyebrow { font-size: 0.75rem; }
+
+      /* 프로필 카드 */
+      .profile-card { gap: 12px; padding: 16px; }
+      .profile-name-row { gap: 6px; }
+      .profile-desc { font-size: 0.8rem; }
+
+      /* 차량 그리드: 모바일 2열 */
+      .vehicles-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .vehicle-card-body { padding: 12px; }
+      .vehicle-name { font-size: 0.95rem; }
+      .spec-value { font-size: 0.9rem; }
+      .vehicle-cta { font-size: 0.82rem; }
+
+      /* 필터 바 */
+      .filter-bar { padding: 16px; flex-direction: column; align-items: stretch; gap: 10px; }
+      .filter-icon { display: none; }
+      .filter-selects { flex-direction: column; gap: 8px; }
+      .filter-select { width: 100%; min-width: unset; }
+      .filter-btn { width: 100%; justify-content: center; }
+
+      /* 동영상 탭: 가로 스크롤 */
+      .video-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+        gap: 6px;
+        /* 스크롤바 숨김 */
+        scrollbar-width: none;
+      }
+      .video-tabs::-webkit-scrollbar { display: none; }
+      .video-tab { flex-shrink: 0; padding: 7px 14px; font-size: 0.8rem; }
+
+      /* 동영상 그리드: 2열 유지, 간격 축소 */
+      .video-grid { gap: 10px; }
+      .video-info { padding: 8px 10px 12px; }
+      .video-title { font-size: 0.78rem; }
+
+      /* 후기 */
+      .reviews-header { flex-wrap: wrap; gap: 8px; }
+      .review-body { padding: 18px; }
+      .review-content { font-size: 0.83rem; }
+
+      /* 상담 카드 */
+      .consult-card { padding: 24px 18px; }
+
+      /* CTA */
+      .cta-inner { flex-direction: column; }
+      .cta-title { font-size: 1.3rem; }
+      .cta-phone-btn { font-size: 0.95rem; padding: 14px 20px; width: 100%; justify-content: center; }
+
+      /* 섹션 헤더 (동영상/블로그/유튜브) */
+      .reviews-header { margin-bottom: 16px !important; }
+      .more-link { font-size: 0.82rem; }
+
+      /* 블로그 카드 */
+      .blog-body { padding: 14px; }
+      .blog-title { font-size: 0.88rem; }
+      .blog-desc { font-size: 0.78rem; }
+
+      /* 푸터 */
+      .footer { padding-top: 32px; }
+      .footer-inner { gap: 20px; padding-bottom: 32px; }
+      .footer-info p, .footer-contact p { font-size: 0.82rem; }
+    }
+
+    /* 아주 작은 화면 (400px 이하) */
+    @media (max-width: 400px) {
+      .container { padding: 0 14px; }
+      .vehicles-grid { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; gap: 20px; }
+      .feature-item { flex-direction: row; text-align: left; gap: 16px; }
+      .feature-icon { flex-shrink: 0; }
     }
 
     /* ===== 이종랑 블로그 ===== */
