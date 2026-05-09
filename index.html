@@ -1358,11 +1358,20 @@
       const CHANNEL_HANDLE_ENC = encodeURIComponent(CHANNEL_HANDLE);
       const CHANNEL_URL     = 'https://www.youtube.com/' + CHANNEL_HANDLE_ENC;
       // 채널 ID 확보 후 여기에 직접 입력하면 프록시 없이도 작동합니다
-      const KNOWN_CHANNEL_ID = '';
+      const KNOWN_CHANNEL_ID = 'UCWM6zltcxHZ4b_7LXrygNfw';
+      const FALLBACK_VIDEOS = [
+        { title: "마! 이게 바로 KGM 액티언이다⚡ #kgm", link: "https://www.youtube.com/shorts/N5JBjEHW6Yg", thumbnail: "https://img.youtube.com/vi/N5JBjEHW6Yg/maxresdefault.jpg" },
+        { title: "무쏘 적재량 이 정도였냐… 실제로 보면 충격 #kgm", link: "https://www.youtube.com/shorts/xz9DW3oIeqw", thumbnail: "https://img.youtube.com/vi/xz9DW3oIeqw/maxresdefault.jpg" },
+        { title: "“이 가격에 이 사이즈?” 무쏘 스포츠 실제 보면 놀랍니다🔥 #kgm", link: "https://www.youtube.com/shorts/0kxulwX1is0", thumbnail: "https://img.youtube.com/vi/0kxulwX1is0/maxresdefault.jpg" },
+        { title: "무쏘가 1위 찍은 이유… 직접 보면 안다 #무쏘 #KGM", link: "https://www.youtube.com/shorts/ejDtTNxkJQI", thumbnail: "https://img.youtube.com/vi/ejDtTNxkJQI/maxresdefault.jpg" },
+        { title: "요즘 KGM, 왜 갑자기 잘나가는 걸까? #kgm #일산kgm", link: "https://www.youtube.com/shorts/Yo3AM1QJw74", thumbnail: "https://img.youtube.com/vi/Yo3AM1QJw74/maxresdefault.jpg" },
+        { title: "KGM 판매 순위 공개… 무쏘가 1위라고? #kgm", link: "https://www.youtube.com/shorts/YAnxEoKCzzQ", thumbnail: "https://img.youtube.com/vi/YAnxEoKCzzQ/maxresdefault.jpg" },
+        { title: "2026년 3월 국산차 판매 순위 TOP10 (KAMA 공식) #kgm", link: "https://www.youtube.com/shorts/uub10g_2AtE", thumbnail: "https://img.youtube.com/vi/uub10g_2AtE/maxresdefault.jpg" }
+      ];
 
       function showFallback() {
         loading.style.display = 'none';
-        fallback.style.display = 'flex';
+        renderVideos(FALLBACK_VIDEOS);
       }
 
       function renderVideos(items) {
