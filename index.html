@@ -72,7 +72,6 @@
         "lineup consult"
         "feed consult"
         "gallery consult"
-        "banner consult"
         "catalog catalog"
         "achieve achieve";
       gap: 32px;
@@ -93,12 +92,14 @@
     .banner {
       background: var(--dark-bg);
       border-radius: var(--radius-lg);
-      padding: 48px 40px;
+      padding: 60px 40px;
       color: #fff;
       position: relative;
       overflow: hidden;
-      margin-bottom: 8px;
+      margin: 0 auto 32px auto;
       box-shadow: 0 20px 40px rgba(15,23,42,0.1);
+      text-align: center;
+      max-width: 1360px;
     }
     .banner::before {
       content: '';
@@ -107,11 +108,11 @@
       background: linear-gradient(135deg, rgba(15,23,42,1) 0%, rgba(30,41,59,0.9) 100%);
       z-index: 0;
     }
-    .banner-content { position: relative; z-index: 1; max-width: 500px; }
+    .banner-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
     .banner-tag { color: var(--primary); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; display: block; }
     .banner-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2; word-break: keep-all; }
     .banner-desc { font-size: 1rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 32px; word-break: keep-all; }
-    .banner-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .banner-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
     .banner-btn { background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 10px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.2); color: #fff; transition: background 0.2s; }
     .banner-btn:hover { background: rgba(255,255,255,0.2); }
 
@@ -526,9 +527,8 @@
       .feed-area { order: 4; }
       .gallery-area { order: 5; }
       .consult-area { order: 6; }
-      .banner-area { order: 7; }
-      .catalog-area { order: 8; }
-      .achieve-area { order: 9; }
+      .catalog-area { order: 7; }
+      .achieve-area { order: 8; }
       .consult-sticky-wrap { position: relative; top: 0; }
     }
 
@@ -914,20 +914,6 @@
       </div>
     </div>
     
-    <!-- Banner Area (Moved to bottom) -->
-    <div class="banner-area">
-      <div class="banner">
-        <div class="banner-content">
-          <span class="banner-tag">공식 대리점</span>
-          <h1 class="banner-title">KGM 일산중앙대리점</h1>
-          <p class="banner-desc">전문적인 판매 및 전시 서비스를 통해 모빌리티의 미래를 경험해 보세요. 쾌적한 프리미엄 환경에서 최신 토레스 및 액티언 모델을 직접 만나보실 수 있습니다.</p>
-          <div class="banner-actions">
-            <div class="banner-btn"><i class="fa-solid fa-location-dot"></i> 경기도 고양시</div>
-            <div class="banner-btn"><i class="fa-solid fa-phone"></i> 010-5335-8102</div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Consult Area (Right Sidebar on Desktop) -->
     <div class="consult-area">
@@ -1205,6 +1191,21 @@
       <span>고객 서비스</span>
     </a>
   </nav>
+
+  <!-- Bottom Brand Banner -->
+  <div class="banner-area">
+    <div class="banner">
+      <div class="banner-content">
+        <span class="banner-tag">공식 대리점</span>
+        <h1 class="banner-title">KGM 일산중앙대리점</h1>
+        <p class="banner-desc">전문적인 판매 및 전시 서비스를 통해 모빌리티의 미래를 경험해 보세요. 쾌적한 프리미엄 환경에서 최신 토레스 및 액티언 모델을 직접 만나보실 수 있습니다.</p>
+        <div class="banner-actions">
+          <div class="banner-btn"><i class="fa-solid fa-location-dot"></i> 경기도 고양시</div>
+          <div class="banner-btn"><i class="fa-solid fa-phone"></i> 010-5335-8102</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
