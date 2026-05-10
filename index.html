@@ -68,6 +68,7 @@
       grid-template-columns: 1fr 380px;
       grid-template-areas: 
         "achieve achieve"
+        "catalog catalog"
         "video consult"
         "history consult"
         "lineup consult"
@@ -78,6 +79,7 @@
       align-items: start;
     }
     .achieve-area { grid-area: achieve; }
+    .catalog-area { grid-area: catalog; }
     .video-area { grid-area: video; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 8px; box-shadow: 0 20px 40px rgba(15,23,42,0.1); aspect-ratio: 16/9; }
     .video-area iframe { width: 100%; height: 100%; border: none; }
     .banner-area { grid-area: banner; }
@@ -398,6 +400,63 @@
     }
     .address-text i { color: var(--primary); margin-top: 3px; }
 
+    /* Catalog Section */
+    .catalog-section {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      margin-bottom: 8px;
+    }
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .catalog-item {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .catalog-item:hover {
+      background: #fff;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,229,255,0.1);
+    }
+    .catalog-icon {
+      font-size: 1.5rem;
+      color: var(--dark-bg);
+    }
+    .catalog-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .catalog-btn {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     /* Bottom Nav (Mobile) */
     .bottom-nav { display: none; }
     
@@ -416,6 +475,7 @@
       .video-area { order: 1; }
       .history-area { order: 2; }
       .achieve-area { order: 1; }
+      .catalog-area { order: 2; }
       .lineup-area { order: 3; }
       .feed-area { order: 4; }
       .gallery-area { order: 5; }
@@ -574,6 +634,63 @@
           <div>
             <div class="achieve-title">UCI MTB 월드시리즈</div>
             <div class="achieve-desc">2026 공식 후원사</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Catalog & Price List Section -->
+    <div class="catalog-area">
+      <div class="catalog-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">카탈로그 및 가격표 다운로드</h2>
+            <p class="section-sub">KGM 전 차종의 상세 정보와 가격을 확인해 보세요</p>
+          </div>
+          <a href="https://www.kg-mobility.com/kr/purchase/catalog.do" target="_blank" class="view-all">공식 다운로드 페이지 <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="catalog-grid">
+          <!-- Actyon -->
+          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
+            <i class="fa-solid fa-file-pdf catalog-icon"></i>
+            <span class="catalog-name">액티언 (ACTYON)</span>
+            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
+          </div>
+          <!-- Torres -->
+          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
+            <i class="fa-solid fa-file-pdf catalog-icon"></i>
+            <span class="catalog-name">토레스 (TORRES)</span>
+            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
+          </div>
+          <!-- Torres EVX -->
+          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
+            <i class="fa-solid fa-file-pdf catalog-icon"></i>
+            <span class="catalog-name">토레스 EVX</span>
+            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
+          </div>
+          <!-- Rexton -->
+          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
+            <i class="fa-solid fa-file-pdf catalog-icon"></i>
+            <span class="catalog-name">렉스턴 (REXTON)</span>
+            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
+          </div>
+          <!-- Rexton Sports -->
+          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
+            <i class="fa-solid fa-file-pdf catalog-icon"></i>
+            <span class="catalog-name">렉스턴 스포츠&칸</span>
+            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
+          </div>
+          <!-- Tivoli -->
+          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
+            <i class="fa-solid fa-file-pdf catalog-icon"></i>
+            <span class="catalog-name">티볼리 (TIVOLI)</span>
+            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
+          </div>
+          <!-- Korando -->
+          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
+            <i class="fa-solid fa-file-pdf catalog-icon"></i>
+            <span class="catalog-name">코란도 (KORANDO)</span>
+            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
           </div>
         </div>
       </div>
