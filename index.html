@@ -67,14 +67,14 @@
       display: grid;
       grid-template-columns: 1fr 380px;
       grid-template-areas: 
-        "achieve achieve"
-        "catalog catalog"
         "video consult"
         "history consult"
         "lineup consult"
         "feed consult"
         "gallery consult"
-        "banner consult";
+        "banner consult"
+        "catalog catalog"
+        "achieve achieve";
       gap: 32px;
       align-items: start;
     }
@@ -410,12 +410,20 @@
       margin-bottom: 8px;
     }
     .catalog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      display: flex;
+      overflow-x: auto;
       gap: 16px;
       margin-top: 20px;
+      padding-bottom: 12px;
+      -webkit-overflow-scrolling: touch;
     }
+    .catalog-grid::-webkit-scrollbar { height: 6px; }
+    .catalog-grid::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+    .catalog-grid::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    
     .catalog-item {
+      min-width: 180px;
+      flex: 0 0 auto;
       background: #f8fafc;
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
@@ -474,13 +482,13 @@
       }
       .video-area { order: 1; }
       .history-area { order: 2; }
-      .achieve-area { order: 1; }
-      .catalog-area { order: 2; }
       .lineup-area { order: 3; }
       .feed-area { order: 4; }
       .gallery-area { order: 5; }
       .consult-area { order: 6; }
       .banner-area { order: 7; }
+      .catalog-area { order: 8; }
+      .achieve-area { order: 9; }
       .consult-sticky-wrap { position: relative; top: 0; }
     }
 
@@ -604,97 +612,6 @@
   </header>
 
   <main class="layout">
-    
-    <!-- Headquarters Achievements -->
-    <div class="achieve-area">
-      <div class="achieve-banner">
-        <div class="achieve-item">
-          <i class="fa-solid fa-trophy achieve-icon"></i>
-          <div>
-            <div class="achieve-title">레드닷 디자인 어워드 2026</div>
-            <div class="achieve-desc">디자인 부문 본상 수상</div>
-          </div>
-        </div>
-        <div class="achieve-item">
-          <i class="fa-solid fa-car achieve-icon"></i>
-          <div>
-            <div class="achieve-title">'2026 올해의 차' 선정</div>
-            <div class="achieve-desc">유틸리티 부문 우승</div>
-          </div>
-        </div>
-        <div class="achieve-item">
-          <i class="fa-solid fa-award achieve-icon"></i>
-          <div>
-            <div class="achieve-title">2026 브랜드 고객충성도</div>
-            <div class="achieve-desc">브랜드 대상 선정</div>
-          </div>
-        </div>
-        <div class="achieve-item">
-          <i class="fa-solid fa-bicycle achieve-icon"></i>
-          <div>
-            <div class="achieve-title">UCI MTB 월드시리즈</div>
-            <div class="achieve-desc">2026 공식 후원사</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Catalog & Price List Section -->
-    <div class="catalog-area">
-      <div class="catalog-section">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">카탈로그 및 가격표 다운로드</h2>
-            <p class="section-sub">KGM 전 차종의 상세 정보와 가격을 확인해 보세요</p>
-          </div>
-          <a href="https://www.kg-mobility.com/kr/purchase/catalog.do" target="_blank" class="view-all">공식 다운로드 페이지 <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="catalog-grid">
-          <!-- Actyon -->
-          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
-            <i class="fa-solid fa-file-pdf catalog-icon"></i>
-            <span class="catalog-name">액티언 (ACTYON)</span>
-            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
-          </div>
-          <!-- Torres -->
-          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
-            <i class="fa-solid fa-file-pdf catalog-icon"></i>
-            <span class="catalog-name">토레스 (TORRES)</span>
-            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
-          </div>
-          <!-- Torres EVX -->
-          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
-            <i class="fa-solid fa-file-pdf catalog-icon"></i>
-            <span class="catalog-name">토레스 EVX</span>
-            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
-          </div>
-          <!-- Rexton -->
-          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
-            <i class="fa-solid fa-file-pdf catalog-icon"></i>
-            <span class="catalog-name">렉스턴 (REXTON)</span>
-            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
-          </div>
-          <!-- Rexton Sports -->
-          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
-            <i class="fa-solid fa-file-pdf catalog-icon"></i>
-            <span class="catalog-name">렉스턴 스포츠&칸</span>
-            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
-          </div>
-          <!-- Tivoli -->
-          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
-            <i class="fa-solid fa-file-pdf catalog-icon"></i>
-            <span class="catalog-name">티볼리 (TIVOLI)</span>
-            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
-          </div>
-          <!-- Korando -->
-          <div class="catalog-item" onclick="window.open('https://www.kg-mobility.com/kr/purchase/catalog.do')">
-            <i class="fa-solid fa-file-pdf catalog-icon"></i>
-            <span class="catalog-name">코란도 (KORANDO)</span>
-            <div class="catalog-btn">PDF 다운로드 <i class="fa-solid fa-download"></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
     
     <!-- Video Area (Top) -->
     <div class="video-area">
