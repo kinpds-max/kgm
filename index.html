@@ -139,14 +139,54 @@
     .btn-dark { background: var(--dark-bg); color: #fff; font-size: 0.9rem; font-weight: 600; padding: 10px 20px; border-radius: 24px; transition: opacity 0.2s; }
     .btn-dark:hover { opacity: 0.9; }
 
-    /* Gallery Grid */
-    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 8px; }
-    .video-card { background: var(--card-bg); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid var(--border); display: flex; flex-direction: column; transition: transform 0.2s;}
-    .video-card:hover { transform: translateY(-4px); }
-    .video-frame { aspect-ratio: 16/9; width: 100%; background: #eef2f6; }
-    .video-frame iframe { width: 100%; height: 100%; border: none; }
-    .video-info { padding: 16px; }
-    .video-title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); }
+    /* Gallery Area (Refactored to Video Showcase) */
+    .video-showcase {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      margin-bottom: 8px;
+    }
+    .main-video-wrap {
+      aspect-ratio: 16/9;
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      margin-bottom: 24px;
+    }
+    .main-video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-nav {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .vnav-btn {
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .vnav-btn:hover {
+      background: #e2e8f0;
+      color: var(--text-main);
+    }
+    .vnav-btn.active {
+      background: var(--dark-bg);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.2);
+    }
 
     /* Feed Area (Auto Crawling) */
     .feed-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 8px; }
@@ -849,38 +889,27 @@
       </div>
     </div>
 
-    <!-- Gallery Area (New) -->
+    <!-- Gallery Area (New Video Showcase) -->
     <div class="gallery-area">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">KGM 공식 영상</h2>
-          <p class="section-sub">최신 브랜드 및 차량 리뷰 영상을 확인해 보세요</p>
+      <div class="video-showcase">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">KGM 공식 영상 갤러리</h2>
+            <p class="section-sub">아래 버튼을 눌러 모델별 공식 영상을 시청해 보세요</p>
+          </div>
         </div>
-      </div>
-      <div class="gallery-grid">
-        <div class="video-card">
-          <div class="video-frame"><iframe src="https://www.youtube.com/embed/Oxq7YxtiUwE" loading="lazy" allowfullscreen></iframe></div>
-          <div class="video-info"><h3 class="video-title">KGM 종합</h3></div>
+
+        <div class="main-video-wrap">
+          <iframe id="main-video-player" src="https://www.youtube.com/embed/Oxq7YxtiUwE" allowfullscreen></iframe>
         </div>
-        <div class="video-card">
-          <div class="video-frame"><iframe src="https://www.youtube.com/embed/YVlf1zLs9FE" loading="lazy" allowfullscreen></iframe></div>
-          <div class="video-info"><h3 class="video-title">KGM 하이브리드</h3></div>
-        </div>
-        <div class="video-card">
-          <div class="video-frame"><iframe src="https://www.youtube.com/embed/TMCXOXYQEUo" loading="lazy" allowfullscreen></iframe></div>
-          <div class="video-info"><h3 class="video-title">무쏘</h3></div>
-        </div>
-        <div class="video-card">
-          <div class="video-frame"><iframe src="https://www.youtube.com/embed/nBDCn7RbvYM" loading="lazy" allowfullscreen></iframe></div>
-          <div class="video-info"><h3 class="video-title">액티언</h3></div>
-        </div>
-        <div class="video-card">
-          <div class="video-frame"><iframe src="https://www.youtube.com/embed/lBlux_1u54M" loading="lazy" allowfullscreen></iframe></div>
-          <div class="video-info"><h3 class="video-title">토레스</h3></div>
-        </div>
-        <div class="video-card">
-          <div class="video-frame"><iframe src="https://www.youtube.com/embed/z2dEC99uBUM" loading="lazy" allowfullscreen></iframe></div>
-          <div class="video-info"><h3 class="video-title">렉스턴</h3></div>
+
+        <div class="video-nav">
+          <button class="vnav-btn active" onclick="changeVideo('Oxq7YxtiUwE', this)">KGM 종합</button>
+          <button class="vnav-btn" onclick="changeVideo('nBDCn7RbvYM', this)">액티언</button>
+          <button class="vnav-btn" onclick="changeVideo('lBlux_1u54M', this)">토레스</button>
+          <button class="vnav-btn" onclick="changeVideo('YVlf1zLs9FE', this)">하이브리드</button>
+          <button class="vnav-btn" onclick="changeVideo('z2dEC99uBUM', this)">렉스턴</button>
+          <button class="vnav-btn" onclick="changeVideo('TMCXOXYQEUo', this)">무쏘</button>
         </div>
       </div>
     </div>
@@ -1229,6 +1258,15 @@
       // Fetch YouTube using the extracted Channel ID (UCWM6zltcxHZ4b_7LXrygNfw)
       fetchRSS('https://www.youtube.com/feeds/videos.xml?channel_id=UCWM6zltcxHZ4b_7LXrygNfw', 'youtube-feed');
     });
+
+    // Video Showcase Function
+    function changeVideo(id, btn) {
+      document.getElementById('main-video-player').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+      
+      // Update Active Button
+      document.querySelectorAll('.vnav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
   </script>
 </body>
 </html>
