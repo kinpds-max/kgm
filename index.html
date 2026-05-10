@@ -1,1531 +1,683 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="KGM 일산중앙대리점 이종랑 부장 | 맞춤 상담 · 실매물 안내 · 신뢰 있는 차량 추천" />
-  <title>KGM 일산중앙대리점 | 이종랑</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KGM CONNECT | KGM 일산중앙대리점 이종랑</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* ===== CSS VARIABLES ===== */
     :root {
-      --bg-primary: #eef7f8;
-      --bg-card: #ffffff;
-      --bg-card-hover: #e2f3f5;
-      --accent: #0d8a92;
-      --accent-hover: #0a6e75;
-      --accent-light: rgba(13, 138, 146, 0.12);
-      --text-primary: #0d2426;
-      --text-secondary: #4a6b6e;
-      --text-muted: #8aabae;
-      --border: rgba(13,138,146,0.13);
-      --radius: 12px;
+      --bg: #f3f6f9;
+      --card-bg: #ffffff;
+      --dark-bg: #0f172a;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --primary: #00e5ff; /* Cyan */
+      --primary-hover: #00cce6;
+      --border: #e2e8f0;
+      --radius-lg: 24px;
+      --radius-md: 16px;
       --radius-sm: 8px;
-      --shadow: 0 4px 24px rgba(13,138,146,0.13);
-      --transition: 0.25s ease;
     }
-
-    /* ===== RESET ===== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.6;
-      overflow-x: hidden;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
     }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    button { cursor: pointer; border: none; background: none; font-family: inherit; }
-
-    /* ===== UTILITY ===== */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent); color: #fff;
-      padding: 14px 24px; border-radius: var(--radius-sm);
-      font-size: 1rem; font-weight: 600;
-      transition: background var(--transition);
-    }
-    .btn-primary:hover { background: var(--accent-hover); }
-    .btn-outline {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: transparent; color: #fff;
-      padding: 13px 24px; border-radius: var(--radius-sm);
-      font-size: 1rem; font-weight: 600;
-      border: 1.5px solid rgba(255,255,255,0.55);
-      transition: border-color var(--transition), background var(--transition);
-    }
-    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.12); }
-    .badge {
-      display: inline-block; padding: 3px 10px;
-      border-radius: 20px; font-size: 0.75rem; font-weight: 600;
-    }
-    .badge-green { background: var(--accent); color: #fff; }
-    .badge-gray { background: rgba(0,0,0,0.07); color: var(--text-secondary); }
-
-    /* ===== PLACEHOLDER IMAGE ===== */
-    .img-placeholder {
-      background: linear-gradient(135deg, #cce9ec, #b8dde2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-muted); font-size: 0.85rem; text-align: center;
-    }
-
-    /* ===== RESPONSIVE HELPERS ===== */
-    .desktop-only { display: none !important; }
-    .mobile-only { display: flex !important; }
-    @media (min-width: 768px) {
-      .desktop-only { display: flex !important; }
-      .mobile-only { display: none !important; }
-    }
-
-    /* ===== HEADER ===== */
-    .header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(238,247,248,0.9);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+    a { text-decoration: none; color: inherit; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+    
+    /* Topnav */
+    .topnav {
+      background: var(--card-bg);
+      padding: 0 40px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       border-bottom: 1px solid var(--border);
-      transition: background var(--transition);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .header.scrolled { background: rgba(238,247,248,0.98); }
-    .header-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
-    }
-    .header-logo { display: flex; align-items: center; gap: 10px; }
-    .logo-kgm {
-      font-size: 1.6rem; font-weight: 900; color: var(--accent);
-      letter-spacing: -0.5px;
-    }
-    .logo-sub { font-size: 0.85rem; color: var(--text-secondary); font-weight: 400; }
-    .header-nav { display: flex; gap: 32px; }
-    .header-nav a {
-      font-size: 0.9rem; color: var(--text-secondary);
-      transition: color var(--transition);
-    }
-    .header-nav a:hover { color: var(--text-primary); }
-    .header-actions { display: flex; align-items: center; gap: 12px; }
-    .icon-btn {
-      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-      border-radius: 50%; background: var(--accent-light); color: var(--accent);
-      font-size: 1rem; transition: background var(--transition);
-    }
-    .icon-btn:hover { background: var(--accent); color: #fff; }
-    .hamburger {
-      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-      border-radius: var(--radius-sm); color: var(--text-primary); font-size: 1.2rem;
-    }
-
-    /* ===== MOBILE MENU ===== */
-    .mobile-menu {
-      position: fixed; top: 0; right: -100%; width: 80%; max-width: 320px; height: 100%;
-      background: #ffffff; z-index: 2000; padding: 80px 30px 30px;
-      display: flex; flex-direction: column; gap: 40px;
-      transition: right 0.3s ease; box-shadow: -8px 0 32px rgba(0,0,0,0.15);
-    }
-    .mobile-menu.open { right: 0; }
-    .mobile-menu-close {
-      position: absolute; top: 20px; right: 20px;
-      font-size: 1.5rem; color: var(--text-primary); padding: 8px; cursor: pointer;
-    }
-    .mobile-nav { display: flex; flex-direction: column; gap: 0; }
-    .mobile-nav a {
-      padding: 18px 0; font-size: 1.1rem; font-weight: 500;
-      border-bottom: 1px solid var(--border); color: var(--text-primary);
-      transition: color var(--transition);
-    }
-    .mobile-nav a:hover { color: var(--accent); }
-    .overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.7);
-      z-index: 1500; opacity: 0; pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    .overlay.active { opacity: 1; pointer-events: all; }
-
-    /* ===== HERO ===== */
-    .hero {
-      position: relative; height: 100svh;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: 0; overflow: hidden;
-    }
-    .hero-bg::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(5,35,40,0.6) 0%, rgba(13,100,108,0.4) 100%);
-      z-index: 1;
-    }
-    .hero-video-wrap {
-      position: absolute; inset: 0; overflow: hidden; z-index: 0;
-    }
-    .hero-video-wrap iframe {
+    .topnav-left { display: flex; align-items: center; gap: 40px; }
+    .logo { font-size: 1.25rem; font-weight: 800; color: #000; letter-spacing: -0.5px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { font-size: 0.95rem; font-weight: 600; color: var(--text-muted); transition: color 0.2s; position: relative; }
+    .nav-links a.active, .nav-links a:hover { color: var(--text-main); }
+    .nav-links a.active::after {
+      content: '';
       position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 177.78vh; /* 16/9 * 100vh */
-      height: 56.25vw; /* 9/16 * 100vw */
-      min-width: 100%; min-height: 100%;
-      pointer-events: none; border: none;
+      bottom: -25px; left: 0; right: 0;
+      height: 2px;
+      background-color: var(--text-main);
     }
-    .hero-inner {
-      position: relative; z-index: 2;
-      display: grid; grid-template-columns: 1fr;
-      gap: 40px; padding-top: 40px; padding-bottom: 60px;
-    }
-    .hero-eyebrow { font-size: 0.85rem; color: #7ddde4; font-weight: 500; margin-bottom: 12px; }
-    .hero-title {
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 900; line-height: 1.2;
-      letter-spacing: -1px; margin-bottom: 16px; color: #fff;
-    }
-    .hero-title strong { color: #7ddde4; }
-    .hero-sub { font-size: 1rem; color: rgba(255,255,255,0.8); margin-bottom: 32px; }
-    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
-    .hero-image { display: flex; align-items: center; justify-content: center; }
-    .hero-img-placeholder { width: 100%; aspect-ratio: 4/3; border-radius: var(--radius); }
-    @media (min-width: 768px) {
-      .hero-inner { grid-template-columns: 1fr 1fr; align-items: center; }
-      .hero-img-placeholder { aspect-ratio: 16/10; }
-    }
+    .topnav-right { display: flex; align-items: center; gap: 16px; }
+    .icon-btn { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-main); font-size: 1.1rem; transition: background 0.2s; }
+    .icon-btn:hover { background: #f1f5f9; }
 
-    /* ===== PROFILE CARD ===== */
-    .profile-section { padding: 0 0 40px; }
-    .profile-card {
-      display: flex; align-items: center; gap: 16px;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 20px 24px;
+    /* Layout */
+    .layout {
+      max-width: 1400px;
+      margin: 32px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      grid-template-areas: 
+        "video consult"
+        "history consult"
+        "lineup consult"
+        "feed consult"
+        "gallery consult"
+        "banner consult";
+      gap: 32px;
+      align-items: start;
     }
-    .profile-avatar {
-      width: 60px; height: 60px; border-radius: 50%; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
+    .video-area { grid-area: video; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 8px; box-shadow: 0 20px 40px rgba(15,23,42,0.1); aspect-ratio: 16/9; }
+    .video-area iframe { width: 100%; height: 100%; border: none; }
+    .banner-area { grid-area: banner; }
+    .lineup-area { grid-area: lineup; }
+    .history-area { grid-area: history; }
+    .gallery-area { grid-area: gallery; }
+    .feed-area { grid-area: feed; }
+    .consult-area { grid-area: consult; }
+
+    /* Banner */
+    .banner {
+      background: var(--dark-bg);
+      border-radius: var(--radius-lg);
+      padding: 48px 40px;
+      color: #fff;
+      position: relative;
       overflow: hidden;
+      margin-bottom: 8px;
+      box-shadow: 0 20px 40px rgba(15,23,42,0.1);
     }
-    .profile-name-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap; }
-    .profile-name { font-size: 1.05rem; font-weight: 700; }
-    .profile-divider { color: var(--text-muted); }
-    .profile-dealer { font-size: 0.85rem; color: var(--text-secondary); }
-    .profile-desc { font-size: 0.85rem; color: var(--text-secondary); }
-    .profile-badge {
-      margin-left: auto; flex-shrink: 0;
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--accent-light); color: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(90deg, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 50%, rgba(15,23,42,0.1) 100%), url('https://images.unsplash.com/photo-1562426509-5044a121aa49?auto=format&fit=crop&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
     }
+    .banner-content { position: relative; z-index: 1; max-width: 500px; }
+    .banner-tag { color: var(--primary); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; display: block; }
+    .banner-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2; word-break: keep-all; }
+    .banner-desc { font-size: 1rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 32px; word-break: keep-all; }
+    .banner-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .banner-btn { background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 10px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.2); color: #fff; transition: background 0.2s; }
+    .banner-btn:hover { background: rgba(255,255,255,0.2); }
 
-    /* ===== VEHICLES ===== */
-    .vehicles-section { padding: 60px 0; }
-    .section-header { margin-bottom: 32px; }
-    .section-eyebrow { font-size: 0.8rem; color: var(--accent); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
-    .vehicles-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 768px) { .vehicles-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1024px) { .vehicles-grid { grid-template-columns: repeat(4, 1fr); } }
-    .vehicle-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-      transition: transform var(--transition), box-shadow var(--transition);
+    /* Section Header */
+    .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; }
+    .section-title { font-size: 1.4rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+    .section-sub { font-size: 0.9rem; color: var(--text-muted); }
+    .view-all { font-size: 0.9rem; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 4px; }
+
+    /* Lineup Grid */
+    .lineup-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 8px; }
+    .car-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid var(--border); transition: transform 0.2s; display: flex; flex-direction: column;}
+    .car-card:hover { transform: translateY(-4px); }
+    .car-img-wrap { background: #eef2f6; border-radius: var(--radius-sm); height: 180px; margin-bottom: 20px; position: relative; display: flex; align-items: center; justify-content: center; }
+    .car-img-wrap img { width: 90%; height: auto; object-fit: contain; }
+    .car-tags { position: absolute; top: 12px; left: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag-cyan { background: var(--primary); color: #000; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+    .tag-white { background: #fff; color: var(--text-main); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .car-info { padding: 0 8px; display: flex; flex-direction: column; flex: 1; }
+    .car-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .car-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px; flex: 1; word-break: keep-all; }
+    .car-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 16px; margin-top: auto; }
+    .car-price { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; }
+    .car-price strong { color: var(--text-main); font-size: 1.1rem; }
+    .btn-dark { background: var(--dark-bg); color: #fff; font-size: 0.9rem; font-weight: 600; padding: 10px 20px; border-radius: 24px; transition: opacity 0.2s; }
+    .btn-dark:hover { opacity: 0.9; }
+
+    /* Gallery Grid */
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 8px; }
+    .video-card { background: var(--card-bg); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid var(--border); display: flex; flex-direction: column; transition: transform 0.2s;}
+    .video-card:hover { transform: translateY(-4px); }
+    .video-frame { aspect-ratio: 16/9; width: 100%; background: #eef2f6; }
+    .video-frame iframe { width: 100%; height: 100%; border: none; }
+    .video-info { padding: 16px; }
+    .video-title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); }
+
+    /* Feed Area (Auto Crawling) */
+    .feed-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 8px; }
+    .feed-col { background: var(--card-bg); border-radius: var(--radius-md); padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid var(--border); display: flex; flex-direction: column; }
+    .feed-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+    .feed-title { font-size: 1.1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+    .feed-title .fa-blog { color: #03c75a; }
+    .feed-title .fa-youtube { color: #ff0000; }
+    .feed-list { display: flex; flex-direction: column; gap: 16px; overflow-y: auto; max-height: 400px; padding-right: 8px; }
+    .feed-item { display: flex; gap: 16px; border-bottom: 1px solid #f1f5f9; padding-bottom: 16px; transition: transform 0.2s; cursor: pointer; }
+    .feed-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .feed-item:hover { transform: translateX(4px); }
+    .feed-thumb { width: 100px; height: 60px; border-radius: var(--radius-sm); object-fit: cover; background: #eef2f6; flex-shrink: 0; border: 1px solid var(--border); }
+    .feed-info { display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+    .feed-item-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; line-height: 1.4; color: var(--text-main); }
+    .feed-item-date { font-size: 0.75rem; color: var(--text-muted); }
+
+
+    /* Reviews Area */
+    .reviews-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid var(--border); display: flex; flex-direction: column; }
+    .reviews-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .reviews-title { font-size: 1.2rem; font-weight: 700; }
+    
+    .reviews-wrapper {
+      position: relative;
+      height: 280px; /* Fixed height for scrolling */
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, black 5%, black 95%, transparent);
     }
-    .vehicle-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .vehicle-card.hidden { display: none; }
-    .vehicle-card-img {
-      position: relative; aspect-ratio: 16/10;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.85rem; color: var(--text-muted);
-    }
-    .vehicle-fuel-badge { position: absolute; top: 12px; left: 12px; }
-    .vehicle-card-body { padding: 16px; }
-    .vehicle-title-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-    .vehicle-name { font-size: 1.05rem; font-weight: 700; }
-    .vehicle-specs { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
-    .spec-item { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-secondary); }
-    .spec-item i { color: var(--accent); width: 16px; flex-shrink: 0; }
-    .spec-value { display: block; font-size: 1rem; font-weight: 700; color: var(--text-primary); line-height: 1.2; }
-    .spec-label { font-size: 0.75rem; color: var(--text-muted); }
-    .vehicle-cta {
-      display: flex; align-items: center; justify-content: space-between;
-      width: 100%; padding: 12px 0 0;
-      border-top: 1px solid var(--border);
-      font-size: 0.9rem; font-weight: 600; color: var(--accent);
-      transition: color var(--transition);
-    }
-    .vehicle-cta:hover { color: var(--accent-hover); }
-
-    /* ===== FILTER ===== */
-    .filter-section { padding: 0 0 60px; }
-    .filter-bar {
-      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 20px 24px;
-    }
-    .filter-icon {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--accent-light); color: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; flex-shrink: 0;
-    }
-    .filter-label { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; white-space: nowrap; }
-    .filter-selects { display: flex; gap: 10px; flex: 1; flex-wrap: wrap; }
-    .filter-select {
-      flex: 1; min-width: 120px; background: #eef7f8; color: var(--text-primary);
-      border: 1px solid var(--border); border-radius: var(--radius-sm);
-      padding: 10px 12px; font-size: 0.9rem; font-family: inherit;
-      -webkit-appearance: none; appearance: none; cursor: pointer;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 12px center;
-      padding-right: 32px;
-    }
-    .filter-select:focus { outline: none; border-color: var(--accent); }
-    .filter-btn { white-space: nowrap; }
-
-    /* ===== FEATURES ===== */
-    .features-section { padding: 60px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
-    @media (min-width: 768px) { .features-grid { grid-template-columns: repeat(4, 1fr); } }
-    .feature-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
-    .feature-icon {
-      width: 60px; height: 60px; border-radius: 50%;
-      background: var(--accent-light); color: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-    }
-    .feature-title { font-size: 0.95rem; font-weight: 700; }
-    .feature-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; }
-
-    /* ===== REVIEWS ===== */
-    .reviews-section { padding: 60px 0; }
-    .reviews-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
-    .reviews-header .section-title { margin-bottom: 0; }
-    .more-link { font-size: 0.9rem; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; transition: color var(--transition); }
-    .more-link:hover { color: var(--accent); }
-    .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    @media (min-width: 768px) { .reviews-grid { grid-template-columns: repeat(3, 1fr); } }
-    .review-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-    .review-img { aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: var(--text-muted); }
-    .review-body { padding: 16px; }
-    .review-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
-    .review-content { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px; }
-    .review-rating { display: flex; align-items: center; gap: 8px; }
-    .stars { color: #f5c518; font-size: 0.9rem; }
-    .rating-score { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); }
-
-    /* ===== CONSULT FORM ===== */
-    .consult-section { padding: 60px 0; }
-    .consult-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 40px;
-      max-width: 560px; margin: 0 auto;
-    }
-    .consult-header { margin-bottom: 28px; }
-    .consult-form { display: flex; flex-direction: column; gap: 20px; }
-    .form-group { display: flex; flex-direction: column; gap: 8px; }
-    .form-label { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
-    .form-input {
-      background: #eef7f8; color: var(--text-primary); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 14px 16px;
-      font-size: 1rem; font-family: inherit;
-      transition: border-color var(--transition);
-    }
-    .form-input:focus { outline: none; border-color: var(--accent); }
-    .form-input::placeholder { color: var(--text-muted); }
-    .kakao-btn {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      background: #FEE500; color: #3A1D1D;
-      padding: 16px 24px; border-radius: var(--radius-sm);
-      font-size: 1rem; font-weight: 700; font-family: inherit;
-      transition: background var(--transition); width: 100%; cursor: pointer;
-    }
-    .kakao-btn:hover { background: #fada00; }
-
-    /* ===== CTA BANNER ===== */
-    .cta-banner {
-      background: #ffffff;
-      border-top: 1px solid #e0e0e0;
-      border-bottom: 1px solid #e0e0e0;
-      padding: 60px 0;
-    }
-    .cta-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 40px; flex-wrap: wrap;
-    }
-    .cta-content { flex: 1; min-width: 280px; }
-    .cta-title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; line-height: 1.3; margin-bottom: 12px; color: #111; }
-    .cta-sub { color: #555; margin-bottom: 28px; font-size: 0.95rem; }
-    .cta-phone-btn {
-      display: inline-flex; align-items: center; gap: 12px;
-      background: var(--accent); color: #fff;
-      padding: 16px 28px; border-radius: var(--radius-sm);
-      font-size: 1.05rem; font-weight: 700;
-      transition: background var(--transition);
-    }
-    .cta-phone-btn:hover { background: #0a6e75; }
-    .cta-image {
-      width: 260px; flex-shrink: 0;
-      display: flex; align-items: flex-end; justify-content: center;
-    }
-    .cta-profile-img {
-      width: 100%; max-height: 340px;
-      object-fit: contain; object-position: bottom;
-      mix-blend-mode: multiply;
-    }
-    @media (max-width: 767px) { .cta-image { display: none !important; } }
-
-    /* ===== FOOTER ===== */
-    .footer { background: #d4edef; padding: 48px 0 0; }
-    .footer-inner {
-      display: grid; grid-template-columns: 1fr;
-      gap: 32px; padding-bottom: 48px;
-      border-bottom: 1px solid var(--border);
-    }
-    @media (min-width: 768px) { .footer-inner { grid-template-columns: 1fr 2fr 1fr; } }
-    .footer-logo { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-    .footer-name { font-size: 1rem; font-weight: 700; color: var(--text-secondary); }
-    .footer-info p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; }
-    .footer-contact p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.8; }
-    .footer-contact strong { color: var(--text-primary); }
-    .footer-sns { display: flex; gap: 10px; margin-top: 16px; }
-    .sns-icon {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--bg-card); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem; color: var(--text-secondary);
-      transition: background var(--transition), color var(--transition), border-color var(--transition);
-    }
-    .sns-icon:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .kakao-icon:hover { background: #FEE500; color: #3A1D1D; border-color: #FEE500; }
-    .youtube-icon:hover { background: #FF0000; color: #fff; border-color: #FF0000; }
-    .footer-copy { padding: 20px 0; }
-    .footer-copy p { font-size: 0.8rem; color: var(--text-muted); text-align: center; }
-
-    /* ===== MOBILE BOTTOM BAR ===== */
-    .bottom-bar {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 999;
-      background: #ffffff; border-top: 1px solid var(--border);
-      display: grid; grid-template-columns: repeat(3, 1fr);
-    }
-    .bottom-bar-btn {
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 4px; padding: 12px 0;
-      font-size: 0.7rem; font-weight: 600; color: var(--text-secondary);
-      transition: color var(--transition);
-    }
-    .bottom-bar-btn i { font-size: 1.2rem; }
-    .bottom-bar-btn:hover, .bottom-bar-btn:active { color: var(--accent); }
-    .bottom-bar-kakao { background: #FEE500; color: #3A1D1D; }
-    .bottom-bar-kakao:hover, .bottom-bar-kakao:active { color: #3A1D1D; background: #fada00; }
-
-    /* ===== MOBILE RESPONSIVE ===== */
-    @media (max-width: 767px) {
-      /* 하단 바 공간 + safe area (아이폰 홈바 대응) */
-      body { padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
-      .bottom-bar {
-        padding-bottom: env(safe-area-inset-bottom, 0px);
-        height: calc(64px + env(safe-area-inset-bottom, 0px));
-      }
-      .bottom-bar-btn { padding: 10px 0 6px; }
-
-      /* 섹션 패딩 축소 */
-      .vehicles-section,
-      .features-section,
-      .reviews-section,
-      .consult-section,
-      .videos-section,
-      .jongr-section,
-      .blog-section { padding: 40px 0; }
-      .filter-section { padding: 0 0 40px; }
-      .cta-banner { padding: 40px 0; }
-
-      /* 섹션 제목 */
-      .section-title { font-size: 1.25rem; }
-      .section-eyebrow { font-size: 0.75rem; }
-
-      /* 프로필 카드 */
-      .profile-card { gap: 12px; padding: 16px; }
-      .profile-name-row { gap: 6px; }
-      .profile-desc { font-size: 0.8rem; }
-
-      /* 차량 그리드: 모바일 2열 */
-      .vehicles-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .vehicle-card-body { padding: 12px; }
-      .vehicle-name { font-size: 0.95rem; }
-      .spec-value { font-size: 0.9rem; }
-      .vehicle-cta { font-size: 0.82rem; }
-
-      /* 필터 바 */
-      .filter-bar { padding: 16px; flex-direction: column; align-items: stretch; gap: 10px; }
-      .filter-icon { display: none; }
-      .filter-selects { flex-direction: column; gap: 8px; }
-      .filter-select { width: 100%; min-width: unset; }
-      .filter-btn { width: 100%; justify-content: center; }
-
-      /* 동영상 탭: 가로 스크롤 */
-      .video-tabs {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 4px;
-        gap: 6px;
-        /* 스크롤바 숨김 */
-        scrollbar-width: none;
-      }
-      .video-tabs::-webkit-scrollbar { display: none; }
-      .video-tab { flex-shrink: 0; padding: 7px 14px; font-size: 0.8rem; }
-
-      /* 동영상 그리드: 2열 유지, 간격 축소 */
-      .video-grid { gap: 10px; }
-      .video-info { padding: 8px 10px 12px; }
-      .video-title { font-size: 0.78rem; }
-
-      /* 후기 */
-      .reviews-header { flex-wrap: wrap; gap: 8px; }
-      .review-body { padding: 18px; }
-      .review-content { font-size: 0.83rem; }
-
-      /* 상담 카드 */
-      .consult-card { padding: 24px 18px; }
-
-      /* CTA */
-      .cta-inner { flex-direction: column; }
-      .cta-title { font-size: 1.3rem; }
-      .cta-phone-btn { font-size: 0.95rem; padding: 14px 20px; width: 100%; justify-content: center; }
-
-      /* 섹션 헤더 (동영상/블로그/유튜브) */
-      .reviews-header { margin-bottom: 16px !important; }
-      .more-link { font-size: 0.82rem; }
-
-      /* 블로그 카드 */
-      .blog-body { padding: 14px; }
-      .blog-title { font-size: 0.88rem; }
-      .blog-desc { font-size: 0.78rem; }
-
-      /* 푸터 */
-      .footer { padding-top: 32px; }
-      .footer-inner { gap: 20px; padding-bottom: 32px; }
-      .footer-info p, .footer-contact p { font-size: 0.82rem; }
-    }
-
-    /* 아주 작은 화면 (400px 이하) */
-    @media (max-width: 400px) {
-      .container { padding: 0 14px; }
-      .vehicles-grid { grid-template-columns: 1fr; }
-      .video-grid { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr; gap: 20px; }
-      .feature-item { flex-direction: row; text-align: left; gap: 16px; }
-      .feature-icon { flex-shrink: 0; }
-    }
-
-    /* ===== 이종랑 블로그 ===== */
-    .blog-section { padding: 60px 0; border-top: 1px solid var(--border); }
-    .blog-grid {
-      display: grid;
-      grid-template-columns: 1fr;
+    
+    .reviews-track {
+      display: flex;
+      flex-direction: column;
       gap: 16px;
+      animation: scrollUp 20s linear infinite;
     }
-    @media (min-width: 600px)  { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 1024px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
-    .blog-card {
-      display: flex; flex-direction: column;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-      transition: transform var(--transition), box-shadow var(--transition);
+    
+    .reviews-track:hover {
+      animation-play-state: paused;
     }
-    .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .blog-thumb {
-      aspect-ratio: 16/9; overflow: hidden;
-      background: var(--accent-light);
+    
+    @keyframes scrollUp {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(calc(-50% - 8px)); } /* Scrolls exactly half of the duplicated content */
     }
-    .blog-thumb img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.35s ease;
+    
+    .review-item {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
-    .blog-card:hover .blog-thumb img { transform: scale(1.05); }
-    .blog-thumb-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--accent); font-size: 2rem;
+    .review-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .blog-body { padding: 18px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-    .blog-date { font-size: 0.75rem; color: var(--text-muted); }
-    .blog-title {
-      font-size: 0.95rem; font-weight: 700; color: var(--text-primary);
-      line-height: 1.5;
-      display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2;
-      -webkit-box-orient: vertical; overflow: hidden;
+    .review-author {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-main);
     }
-    .blog-desc {
-      font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6;
-      display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3;
-      -webkit-box-orient: vertical; overflow: hidden;
-      flex: 1;
-    }
-    .blog-more {
-      display: inline-flex; align-items: center; gap: 4px;
-      font-size: 0.8rem; font-weight: 600; color: var(--accent);
-      margin-top: 8px;
-    }
-
-    /* ===== 이종랑 유튜브 SECTION ===== */
-    .jongr-section { padding: 60px 0; border-top: 1px solid var(--border); }
-    .jongr-loading {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 16px; padding: 60px 0; color: var(--text-muted); font-size: 0.9rem;
-    }
-    .jongr-spinner {
-      width: 36px; height: 36px; border-radius: 50%;
-      border: 3px solid var(--border);
-      border-top-color: var(--accent);
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .jongr-fallback {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 16px; padding: 48px 0; text-align: center;
-    }
-    .jongr-fallback .fa-youtube { font-size: 3rem; color: #FF0000; }
-    .jongr-fallback p { color: var(--text-secondary); font-size: 0.95rem; }
-    .video-date { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
-
-    /* ===== VIDEO SECTION ===== */
-    .videos-section { padding: 60px 0; border-top: 1px solid var(--border); }
-    .video-tabs {
-      display: flex; gap: 8px; flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-    .video-tab {
-      padding: 8px 18px; border-radius: 20px;
-      font-size: 0.85rem; font-weight: 600;
-      background: var(--bg-card); color: var(--text-secondary);
-      border: 1.5px solid var(--border);
-      transition: all var(--transition); cursor: pointer;
-      font-family: inherit;
-    }
-    .video-tab:hover { border-color: var(--accent); color: var(--accent); }
-    .video-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .video-panel { display: none; }
-    .video-panel.active { display: block; }
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-    @media (min-width: 768px) { .video-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (min-width: 1024px) { .video-grid { grid-template-columns: repeat(4, 1fr); } }
-    .video-card {
-      display: block;
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .video-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-    .video-thumb {
-      position: relative; aspect-ratio: 16/9; overflow: hidden;
-      background: #c8e6e9;
-    }
-    .video-thumb img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.35s ease;
-    }
-    .video-card:hover .video-thumb img { transform: scale(1.04); }
-    .play-btn {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.3);
-      transition: background var(--transition);
-    }
-    .play-btn i {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(255,255,255,0.9); color: #111;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; padding-left: 3px;
-      transition: transform var(--transition);
-    }
-    .video-card:hover .play-btn { background: rgba(0,0,0,0.45); }
-    .video-card:hover .play-btn i { transform: scale(1.1); }
-    .video-duration {
-      position: absolute; bottom: 8px; right: 8px;
-      background: rgba(0,0,0,0.75); color: #fff;
-      font-size: 0.72rem; font-weight: 600;
-      padding: 2px 7px; border-radius: 4px;
-    }
-    .video-info { padding: 10px 12px 14px; }
-    .video-title {
-      font-size: 0.82rem; font-weight: 600;
-      color: var(--text-primary); line-height: 1.45;
-      display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2;
-      -webkit-box-orient: vertical; overflow: hidden;
-    }
-
-    /* ===== REVIEW CARD (text-only) ===== */
-    .review-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
-      display: flex; flex-direction: column;
-    }
-    .review-body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
-    .review-quote-icon { color: var(--accent); font-size: 1.3rem; opacity: 0.6; }
-    .review-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
-    .review-content {
-      font-size: 0.88rem; color: var(--text-secondary);
-      line-height: 1.75; flex: 1;
-    }
-    .review-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 8px;
-      padding-top: 14px; border-top: 1px solid var(--border);
-    }
-    .review-rating { display: flex; align-items: center; gap: 6px; }
-    .stars { color: #f5a623; font-size: 0.85rem; letter-spacing: 1px; }
-    .rating-score { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); }
-    .review-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
     .review-car {
-      font-size: 0.75rem; font-weight: 700;
-      background: var(--accent-light); color: var(--accent);
-      padding: 2px 8px; border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: #e0fbfd;
+      color: #008fa6;
+      padding: 4px 10px;
+      border-radius: 20px;
     }
-    .review-author { font-size: 0.75rem; color: var(--text-muted); }
+    .review-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .review-stars {
+      color: #fbbf24;
+      font-size: 0.8rem;
+    }
+    .review-icon { color: var(--text-muted); font-size: 1.1rem; cursor: pointer; transition: color 0.2s; }
+    .review-icon:hover { color: var(--primary); }
+
+    /* Right Sidebar (Consultation) */
+    .consult-card {
+      background: var(--dark-bg);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      color: #fff;
+      position: sticky;
+      top: 100px;
+      box-shadow: 0 20px 40px rgba(15,23,42,0.15);
+    }
+    .consult-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 12px; }
+    .consult-desc { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 24px; word-break: keep-all; }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-size: 0.85rem; font-weight: 600; color: #cbd5e1; margin-bottom: 8px; }
+    .form-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm); padding: 14px 16px; color: #fff; font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s; }
+    .form-input:focus { outline: none; border-color: var(--primary); }
+    .form-input::placeholder { color: #64748b; }
+    .btn-submit { width: 100%; background: var(--primary); color: #000; font-size: 1.05rem; font-weight: 700; padding: 16px; border-radius: var(--radius-sm); margin-top: 8px; margin-bottom: 16px; transition: background 0.2s; box-shadow: 0 8px 20px rgba(0,229,255,0.2); }
+    .btn-submit:hover { background: var(--primary-hover); transform: translateY(-1px); }
+    .consult-note { font-size: 0.75rem; color: #64748b; text-align: center; }
+
+    /* Bottom Nav (Mobile) */
+    .bottom-nav { display: none; }
+    
+    /* Mobile Header */
+    .mobile-header { display: none; }
+
+    /* Mobile Title Area */
+    .mobile-location { display: none; }
+
+    @media (max-width: 1024px) {
+      .layout { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 32px;
+      }
+      .video-area { order: 1; }
+      .history-area { order: 2; }
+      .lineup-area { order: 3; }
+      .feed-area { order: 4; }
+      .gallery-area { order: 5; }
+      .consult-area { order: 6; }
+      .banner-area { order: 7; }
+      .consult-card { position: relative; top: 0; }
+    }
+
+    @media (max-width: 768px) {
+      body { padding-bottom: 80px; }
+      .topnav { display: none; }
+      
+      .mobile-header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 16px 20px; background: var(--card-bg); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border);
+      }
+      .mobile-header .logo { font-size: 1.1rem; }
+      
+      .layout { margin: 16px auto; padding: 0 16px; gap: 24px; }
+      
+      .video-area { border-radius: var(--radius-md); margin-bottom: 0px; }
+      
+      .lineup-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 16px; margin-right: -16px; padding-right: 16px; gap: 16px; }
+      .lineup-grid::-webkit-scrollbar { display: none; }
+      .car-card { min-width: 260px; scroll-snap-align: start; }
+      .car-img-wrap { height: 140px; }
+      .car-name { font-size: 1.1rem; }
+
+      .gallery-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 16px; margin-right: -16px; padding-right: 16px; gap: 16px; }
+      .gallery-grid::-webkit-scrollbar { display: none; }
+      .video-card { min-width: 280px; scroll-snap-align: start; }
+      .video-title { font-size: 1rem; }
+      
+      .feed-grid { grid-template-columns: 1fr; }
+      
+      /* Mobile Consult card - Light theme */
+      .consult-card { background: var(--card-bg); color: var(--text-main); border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.03); padding: 24px; }
+      .consult-title { color: var(--text-main); font-size: 1.2rem; }
+      .consult-desc { display: none; }
+      .form-label { color: var(--text-main); font-weight: 600; }
+      .form-input { background: #f8fafc; border: 1px solid var(--border); color: var(--text-main); }
+      .form-input::placeholder { color: #94a3b8; }
+      .btn-submit { background: var(--dark-bg); color: #fff; box-shadow: none; font-size: 1rem; }
+      .btn-submit:hover { background: #1e293b; }
+      .consult-note { display: none; }
+
+      .reviews-card { padding: 20px 16px; border: none; background: transparent; box-shadow: none; }
+      .reviews-title { font-size: 1.2rem; }
+
+      .banner-area { display: block; order: 6; }
+      .banner { padding: 32px 24px; border-radius: var(--radius-md); margin-bottom: 16px; }
+      .banner-title { font-size: 1.6rem; }
+
+      .bottom-nav {
+        display: flex; justify-content: space-around; align-items: center;
+        position: fixed; bottom: 0; left: 0; right: 0;
+        background: var(--card-bg); height: 70px;
+        border-top: 1px solid var(--border); z-index: 100;
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      .bnav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #94a3b8; font-size: 0.7rem; font-weight: 600; }
+      .bnav-item i { font-size: 1.2rem; }
+      .bnav-item.active { color: var(--primary); }
+    }
   </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header" id="header">
-    <div class="container header-inner">
-      <a href="#home" class="header-logo">
-        <span class="logo-kgm">KGM</span>
-        <span class="logo-sub">일산중앙대리점</span>
-      </a>
-      <nav class="header-nav desktop-only">
-        <a href="#vehicles">차량안내</a>
-        <a href="#promotion">프로모션</a>
-        <a href="#videos">동영상</a>
-        <a href="#blog">블로그</a>
-        <a href="#reviews">출고후기</a>
-        <a href="#consult">상담문의</a>
-      </nav>
-      <div class="header-actions">
-        <a href="tel:010-5335-8102" class="btn-primary desktop-only" style="padding:10px 18px;font-size:0.9rem;">
-          <i class="fa-solid fa-phone"></i> 빠른 상담
-        </a>
-        <a href="tel:010-5335-8102" class="mobile-only icon-btn" aria-label="전화">
-          <i class="fa-solid fa-phone"></i>
-        </a>
-        <button class="hamburger mobile-only" id="hamburgerBtn" aria-label="메뉴">
-          <i class="fa-solid fa-bars"></i>
-        </button>
+  <!-- Desktop Topnav -->
+  <nav class="topnav">
+    <div class="topnav-left">
+      <div class="logo">KGM 일산중앙대리점 이종랑</div>
+      <div class="nav-links">
+        <a href="#">대시보드</a>
+        <a href="#" class="active">차량 및 전시장</a>
+        <a href="#">차량 정보</a>
+        <a href="#">고객 서비스</a>
       </div>
     </div>
+    <div class="topnav-right">
+      <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+      <button class="icon-btn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <button class="icon-btn" style="margin-left:-8px"><i class="fa-solid fa-bars"></i></button>
+    <div class="logo">KGM 일산중앙대리점 이종랑</div>
+    <button class="icon-btn" style="margin-right:-8px"><i class="fa-regular fa-bell"></i></button>
   </header>
 
-  <!-- ===== MOBILE MENU OVERLAY ===== -->
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" id="mobileMenuClose"><i class="fa-solid fa-xmark"></i></button>
-    <nav class="mobile-nav">
-      <a href="#home" onclick="closeMobileMenu()">홈</a>
-      <a href="#vehicles" onclick="closeMobileMenu()">차량안내</a>
-      <a href="#promotion" onclick="closeMobileMenu()">프로모션</a>
-      <a href="#videos" onclick="closeMobileMenu()">동영상</a>
-      <a href="#blog" onclick="closeMobileMenu()">블로그</a>
-      <a href="#reviews" onclick="closeMobileMenu()">출고후기</a>
-      <a href="#consult" onclick="closeMobileMenu()">상담문의</a>
-    </nav>
-    <div class="mobile-menu-contact">
-      <a href="tel:010-5335-8102" class="btn-primary" style="width:100%;justify-content:center;">
-        <i class="fa-solid fa-phone"></i> 010-5335-8102
-      </a>
+  <main class="layout">
+    
+    <!-- Video Area (Top) -->
+    <div class="video-area">
+      <iframe src="https://www.youtube.com/embed/y9jElDWrbNg?autoplay=1&mute=1&loop=1&playlist=y9jElDWrbNg&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
-  </div>
-  <div class="overlay" id="overlay" onclick="closeMobileMenu()"></div>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero" id="home">
-    <div class="hero-bg">
-      <div class="hero-video-wrap">
-        <iframe
-          src="https://www.youtube.com/embed/Oxq7YxtiUwE?autoplay=1&mute=1&loop=1&playlist=Oxq7YxtiUwE&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&disablekb=1&playsinline=1&enablejsapi=1"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-          title="background video"
-        ></iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROFILE CARD ===== -->
-  <section class="profile-section">
-    <div class="container">
-      <div class="profile-card">
-        <div class="profile-avatar img-placeholder">
-          <i class="fa-solid fa-user" style="font-size:2rem;color:#888;"></i>
+    <!-- History Area (Changed to Reviews, Moved below video) -->
+    <div class="history-area">
+      <div class="reviews-card">
+        <div class="reviews-header">
+          <h2 class="reviews-title">고객 출고 후기</h2>
+          <i class="fa-solid fa-comment-dots review-icon"></i>
         </div>
-        <div class="profile-info">
-          <div class="profile-name-row">
-            <span class="profile-name">이종랑</span>
-            <span class="profile-divider">|</span>
-            <span class="profile-dealer">KGM 일산중앙대리점</span>
-          </div>
-          <p class="profile-desc">고객님의 조건에 맞는 최적의 차량을 제안해드립니다.</p>
-        </div>
-        <div class="profile-badge">
-          <i class="fa-solid fa-shield-halved"></i>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== VEHICLES ===== -->
-  <section class="vehicles-section" id="vehicles">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow">인기 차종</p>
-        <h2 class="section-title">많은 고객이 선택한<br>KGM 인기 모델</h2>
-      </div>
-      <div class="vehicles-grid" id="vehiclesGrid">
-
-        <!-- 토레스 EVX -->
-        <div class="vehicle-card" data-type="suv" data-fuel="ev" data-price="mid">
-          <div class="vehicle-card-img img-placeholder">
-            <span>토레스 EVX</span>
-            <div class="vehicle-fuel-badge badge badge-green">EV</div>
-          </div>
-          <div class="vehicle-card-body">
-            <div class="vehicle-title-row">
-              <h3 class="vehicle-name">토레스 EVX</h3>
-              <span class="badge badge-gray">전기 SUV</span>
-            </div>
-            <div class="vehicle-specs">
-              <div class="spec-item">
-                <i class="fa-solid fa-bolt"></i>
-                <div><span class="spec-value">433km</span><span class="spec-label">1회 충전 주행거리</span></div>
-              </div>
-              <div class="spec-item">
-                <i class="fa-solid fa-gauge-high"></i>
-                <div><span class="spec-value">204ps</span><span class="spec-label">최고출력</span></div>
-              </div>
-            </div>
-            <a href="tel:010-5335-8102" class="vehicle-cta">상담문의 <i class="fa-solid fa-chevron-right"></i></a>
-          </div>
-        </div>
-
-        <!-- 렉스턴 아레나 -->
-        <div class="vehicle-card" data-type="suv" data-fuel="diesel" data-price="high">
-          <div class="vehicle-card-img img-placeholder">
-            <span>렉스턴 아레나</span>
-          </div>
-          <div class="vehicle-card-body">
-            <div class="vehicle-title-row">
-              <h3 class="vehicle-name">렉스턴 아레나</h3>
-              <span class="badge badge-gray">대형 SUV</span>
-            </div>
-            <div class="vehicle-specs">
-              <div class="spec-item">
-                <i class="fa-solid fa-gears"></i>
-                <div><span class="spec-value">2,157cc</span><span class="spec-label">엔진 배기량</span></div>
-              </div>
-              <div class="spec-item">
-                <i class="fa-solid fa-gauge-high"></i>
-                <div><span class="spec-value">202ps</span><span class="spec-label">최고출력</span></div>
-              </div>
-            </div>
-            <a href="tel:010-5335-8102" class="vehicle-cta">자세히 보기 <i class="fa-solid fa-chevron-right"></i></a>
-          </div>
-        </div>
-
-        <!-- 무쏘 EV -->
-        <div class="vehicle-card" data-type="pickup" data-fuel="ev" data-price="high">
-          <div class="vehicle-card-img img-placeholder">
-            <span>무쏘 EV</span>
-            <div class="vehicle-fuel-badge badge badge-green">EV</div>
-          </div>
-          <div class="vehicle-card-body">
-            <div class="vehicle-title-row">
-              <h3 class="vehicle-name">무쏘 EV</h3>
-              <span class="badge badge-gray">전기 픽업</span>
-            </div>
-            <div class="vehicle-specs">
-              <div class="spec-item">
-                <i class="fa-solid fa-bolt"></i>
-                <div><span class="spec-value">401km</span><span class="spec-label">1회 충전 주행거리</span></div>
-              </div>
-              <div class="spec-item">
-                <i class="fa-solid fa-gauge-high"></i>
-                <div><span class="spec-value">207ps</span><span class="spec-label">최고출력</span></div>
-              </div>
-            </div>
-            <a href="tel:010-5335-8102" class="vehicle-cta">상담문의 <i class="fa-solid fa-chevron-right"></i></a>
-          </div>
-        </div>
-
-        <!-- 티볼리 -->
-        <div class="vehicle-card" data-type="suv" data-fuel="gasoline" data-price="low">
-          <div class="vehicle-card-img img-placeholder">
-            <span>티볼리</span>
-          </div>
-          <div class="vehicle-card-body">
-            <div class="vehicle-title-row">
-              <h3 class="vehicle-name">티볼리</h3>
-              <span class="badge badge-gray">소형 SUV</span>
-            </div>
-            <div class="vehicle-specs">
-              <div class="spec-item">
-                <i class="fa-solid fa-gears"></i>
-                <div><span class="spec-value">1,497cc</span><span class="spec-label">엔진 배기량</span></div>
-              </div>
-              <div class="spec-item">
-                <i class="fa-solid fa-gauge-high"></i>
-                <div><span class="spec-value">163ps</span><span class="spec-label">최고출력</span></div>
-              </div>
-            </div>
-            <a href="tel:010-5335-8102" class="vehicle-cta">상담문의 <i class="fa-solid fa-chevron-right"></i></a>
-          </div>
-        </div>
-
-      </div><!-- /vehicles-grid -->
-    </div>
-  </section>
-
-  <!-- ===== CAR FINDER FILTER ===== -->
-  <section class="filter-section" id="promotion">
-    <div class="container">
-      <div class="filter-bar">
-        <div class="filter-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-        <div class="filter-label desktop-only">원하는 차량을<br>빠르게 찾아보세요</div>
-        <div class="filter-selects">
-          <select class="filter-select" id="filterType">
-            <option value="">차종 전체</option>
-            <option value="suv">SUV</option>
-            <option value="pickup">픽업</option>
-          </select>
-          <select class="filter-select" id="filterFuel">
-            <option value="">연료 전체</option>
-            <option value="ev">전기</option>
-            <option value="gasoline">가솔린</option>
-            <option value="diesel">디젤</option>
-          </select>
-          <select class="filter-select" id="filterPrice">
-            <option value="">가격대 전체</option>
-            <option value="low">3천만원 이하</option>
-            <option value="mid">3~5천만원</option>
-            <option value="high">5천만원 이상</option>
-          </select>
-        </div>
-        <button class="btn-primary filter-btn" id="filterBtn">
-          내 차 찾기 <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FEATURES ===== -->
-  <section class="features-section">
-    <div class="container">
-      <div class="features-grid">
-        <div class="feature-item">
-          <div class="feature-icon"><i class="fa-solid fa-car-side"></i></div>
-          <h3 class="feature-title">실차 중심 안내</h3>
-          <p class="feature-desc">실매물 기반의 정확한 정보 제공</p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon"><i class="fa-solid fa-user-tie"></i></div>
-          <h3 class="feature-title">풍부한 상담 경험</h3>
-          <p class="feature-desc">다양한 출고 사례로 신뢰도 높은 상담</p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon"><i class="fa-solid fa-crosshairs"></i></div>
-          <h3 class="feature-title">맞춤 상담</h3>
-          <p class="feature-desc">고객님의 조건에 맞는 최적의 차량 제안</p>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
-          <h3 class="feature-title">빠른 문의 응대</h3>
-          <p class="feature-desc">전화·톡으로 신속하게 응대</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== REVIEWS ===== -->
-  <section class="reviews-section" id="reviews">
-    <div class="container">
-      <div class="reviews-header">
-        <h2 class="section-title">고객 후기 &amp; 출고 사례</h2>
-        <a href="https://blog.naver.com/kcmo07" target="_blank" rel="noopener" class="more-link">
-          더보기 <i class="fa-solid fa-chevron-right"></i>
-        </a>
-      </div>
-      <div class="reviews-grid">
-
-        <div class="review-card">
-          <div class="review-body">
-            <div class="review-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-            <p class="review-content">이종랑 부장님 덕분에 토레스 EVX 잘 받았습니다. 처음에는 전기차가 막연하게 걱정됐는데 충전 방법부터 주행 노하우까지 꼼꼼하게 설명해 주셔서 걱정이 싹 사라졌어요. 출고 당일도 차량 상태 하나하나 확인해 주시고, 이후에도 연락 주셔서 감동받았습니다.</p>
-            <div class="review-footer">
-              <div class="review-rating">
-                <span class="stars">★★★★★</span>
-                <span class="rating-score">5.0</span>
-              </div>
-              <div class="review-meta">
+        
+        <div class="reviews-wrapper">
+          <div class="reviews-track">
+            <!-- Review Items Set 1 -->
+            <div class="review-item">
+              <div class="review-item-header">
+                <span class="review-author">김*민 고객님</span>
                 <span class="review-car">토레스 EVX</span>
-                <span class="review-author">김○○ 고객님</span>
               </div>
+              <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <p class="review-text">상담부터 출고까지 너무 친절하게 도와주셔서 감사합니다. 첫 차라 막막했는데 이종랑 부장님 덕분에 안심하고 구매했습니다!</p>
+            </div>
+            
+            <div class="review-item">
+              <div class="review-item-header">
+                <span class="review-author">이*훈 고객님</span>
+                <span class="review-car">액티언</span>
+              </div>
+              <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <p class="review-text">빠른 출고 도와주셔서 정말 감사합니다. 차량 설명도 꼼꼼하게 해주시고 썬팅 등 서비스도 넉넉하게 챙겨주셔서 대만족입니다.</p>
+            </div>
+            
+            <div class="review-item">
+              <div class="review-item-header">
+                <span class="review-author">박*수 고객님</span>
+                <span class="review-car">렉스턴 스포츠</span>
+              </div>
+              <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+              <p class="review-text">사후 관리까지 철저하게 신경 써주시는 모습에 감동받았습니다. 주변 지인들에게도 꼭 추천하고 싶어요.</p>
+            </div>
+
+            <div class="review-item">
+              <div class="review-item-header">
+                <span class="review-author">최*영 고객님</span>
+                <span class="review-car">토레스</span>
+              </div>
+              <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <p class="review-text">멀리서 방문했는데 헛걸음하지 않게 조건 잘 맞춰주셔서 기분 좋게 계약하고 갑니다. 다음 차도 꼭 여기서 할게요!</p>
+            </div>
+
+            <!-- Review Items Set 2 (Duplicated for seamless scrolling) -->
+            <div class="review-item">
+              <div class="review-item-header">
+                <span class="review-author">김*민 고객님</span>
+                <span class="review-car">토레스 EVX</span>
+              </div>
+              <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <p class="review-text">상담부터 출고까지 너무 친절하게 도와주셔서 감사합니다. 첫 차라 막막했는데 이종랑 부장님 덕분에 안심하고 구매했습니다!</p>
+            </div>
+            
+            <div class="review-item">
+              <div class="review-item-header">
+                <span class="review-author">이*훈 고객님</span>
+                <span class="review-car">액티언</span>
+              </div>
+              <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <p class="review-text">빠른 출고 도와주셔서 정말 감사합니다. 차량 설명도 꼼꼼하게 해주시고 썬팅 등 서비스도 넉넉하게 챙겨주셔서 대만족입니다.</p>
+            </div>
+            
+            <div class="review-item">
+              <div class="review-item-header">
+                <span class="review-author">박*수 고객님</span>
+                <span class="review-car">렉스턴 스포츠</span>
+              </div>
+              <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+              <p class="review-text">사후 관리까지 철저하게 신경 써주시는 모습에 감동받았습니다. 주변 지인들에게도 꼭 추천하고 싶어요.</p>
+            </div>
+
+            <div class="review-item">
+              <div class="review-item-header">
+                <span class="review-author">최*영 고객님</span>
+                <span class="review-car">토레스</span>
+              </div>
+              <div class="review-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <p class="review-text">멀리서 방문했는데 헛걸음하지 않게 조건 잘 맞춰주셔서 기분 좋게 계약하고 갑니다. 다음 차도 꼭 여기서 할게요!</p>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="review-card">
-          <div class="review-body">
-            <div class="review-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-            <p class="review-content">렉스턴 아레나 구매를 고민하면서 여러 딜러를 만났는데 이종랑 부장님이 제일 솔직하셨어요. 장점만 이야기하는 게 아니라 제 상황에 맞는지 직접 따져주시고, 할인 혜택도 최대한 찾아주셨습니다. 믿고 맡길 수 있는 분이에요.</p>
-            <div class="review-footer">
-              <div class="review-rating">
-                <span class="stars">★★★★★</span>
-                <span class="rating-score">5.0</span>
-              </div>
-              <div class="review-meta">
-                <span class="review-car">렉스턴 아레나</span>
-                <span class="review-author">박○○ 고객님</span>
-              </div>
+    <!-- Lineup Area -->
+    <div class="lineup-area">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">전시장 라인업</h2>
+          <p class="section-sub">일산중앙대리점 실시간 전시 차량</p>
+        </div>
+        <a href="#" class="view-all">전체 모델 보기 <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="lineup-grid">
+        <!-- Card 1 -->
+        <div class="car-card">
+          <div class="car-img-wrap">
+            <div class="car-tags">
+              <span class="tag-cyan">전시 중</span>
+              <span class="tag-white">시승 가능</span>
+            </div>
+            <img src="https://www.kg-mobility.com/ko/models/torres_evx/_res/images/models/color_b/01_b.png" alt="Torres EVX" onerror="this.src='https://via.placeholder.com/400x200/eef2f6/94a3b8?text=Torres+EVX'">
+          </div>
+          <div class="car-info">
+            <h3 class="car-name">토레스 EVX</h3>
+            <p class="car-desc">최대 주행거리 433km | 스마트 V2L 지원</p>
+            <div class="car-footer">
+              <div class="car-price">판매가 <strong>4,550만 원~</strong></div>
+              <button class="btn-dark">상세 보기</button>
             </div>
           </div>
         </div>
-
-        <div class="review-card">
-          <div class="review-body">
-            <div class="review-quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-            <p class="review-content">무쏘 EV 출고 후기 남깁니다. 전기 픽업 특성상 모르는 게 너무 많았는데 부장님이 직접 앱 설정부터 예약 충전 설정까지 같이 해주셨어요. 인도 후에도 궁금한 거 바로 답장 주셔서 진짜 든든합니다. 주변에 차 살 분들께 무조건 추천드립니다.</p>
-            <div class="review-footer">
-              <div class="review-rating">
-                <span class="stars">★★★★★</span>
-                <span class="rating-score">5.0</span>
-              </div>
-              <div class="review-meta">
-                <span class="review-car">무쏘 EV</span>
-                <span class="review-author">이○○ 고객님</span>
-              </div>
+        
+        <!-- Card 2 -->
+        <div class="car-card">
+          <div class="car-img-wrap">
+            <div class="car-tags">
+              <span class="tag-cyan">전시 중</span>
+            </div>
+            <img src="https://www.kg-mobility.com/ko/models/actyon/_res/images/color_b/01_b.png" alt="The New Actyon" onerror="this.src='https://via.placeholder.com/400x200/eef2f6/94a3b8?text=The+New+Actyon'">
+          </div>
+          <div class="car-info">
+            <h3 class="car-name">액티언</h3>
+            <p class="car-desc">프리미엄 도심형 SUV | 1.5 가솔린 터보 엔진</p>
+            <div class="car-footer">
+              <div class="car-price">판매가 <strong>3,395만 원~</strong></div>
+              <button class="btn-dark">상세 보기</button>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  </section>
 
-  <!-- ===== KGM 공식영상 ===== -->
-  <section class="videos-section" id="videos">
-    <div class="container">
-      <div class="reviews-header" style="margin-bottom:24px;">
+    <!-- Social Feeds Area (Auto Crawling) -->
+    <div class="feed-area">
+      <div class="section-header">
         <div>
-          <p class="section-eyebrow">KGM 공식영상</p>
-          <h2 class="section-title" style="margin-bottom:0;">차량 가이드 &amp; 공식 광고</h2>
-        </div>
-        <a href="https://www.youtube.com/@KGM.kr.official" target="_blank" rel="noopener" class="more-link">
-          공식채널 <i class="fa-solid fa-chevron-right"></i>
-        </a>
-      </div>
-
-      <!-- 탭 -->
-      <div class="video-tabs" id="videoTabs">
-        <button class="video-tab active" data-tab="ad">KGM 광고</button>
-        <button class="video-tab" data-tab="torres">토레스 EVX</button>
-        <button class="video-tab" data-tab="mussoe">무쏘 EV</button>
-        <button class="video-tab" data-tab="knowhow">KGM 노하우</button>
-        <button class="video-tab" data-tab="youtuber">유튜버 리뷰</button>
-      </div>
-
-      <!-- 광고 영상 -->
-      <div class="video-panel active" id="tab-ad">
-        <div class="video-grid">
-          <a class="video-card" href="https://www.youtube.com/watch?v=Oxq7YxtiUwE" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/Oxq7YxtiUwE/maxresdefault.jpg" alt="Korea Genuinely Made" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div></div>
-            <div class="video-info"><p class="video-title">Korea Genuinely Made, KGM</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=D_gfXFPRw9c" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/D_gfXFPRw9c/maxresdefault.jpg" alt="MUSSO EV 광고" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div></div>
-            <div class="video-info"><p class="video-title">MUSSO EV | 일상을 더 편리하게</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=sBO-nKSKgC4" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/sBO-nKSKgC4/maxresdefault.jpg" alt="KGM HYBRID 광고" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div></div>
-            <div class="video-info"><p class="video-title">KGM HYBRID | 충전 없는 전기차처럼</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=nBDCn7RbvYM" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/nBDCn7RbvYM/maxresdefault.jpg" alt="ACTYON 광고" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div></div>
-            <div class="video-info"><p class="video-title">ACTYON | 아름다운 실용주의</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=z2dEC99uBUM" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/z2dEC99uBUM/maxresdefault.jpg" alt="렉스턴 써밋 광고" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div></div>
-            <div class="video-info"><p class="video-title">당신이 원하는 특별한 공간으로, 렉스턴 써밋</p></div>
-          </a>
+          <h2 class="section-title">최신 소식 및 리뷰</h2>
+          <p class="section-sub">이종랑 부장의 블로그 및 유튜브 채널 최신 업데이트</p>
         </div>
       </div>
-
-      <!-- 무쏘 리뷰 -->
-      <!-- 토레스 EVX -->
-      <div class="video-panel" id="tab-torres">
-        <div class="video-grid">
-          <a class="video-card" href="https://www.youtube.com/watch?v=V71jE1a2z_M" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/V71jE1a2z_M/maxresdefault.jpg" alt="토레스 EVX 종합본" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">1:08:36</span></div>
-            <div class="video-info"><p class="video-title">토레스 EVX 영상가이드 종합본</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=G1NJ4nLA7so" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/G1NJ4nLA7so/maxresdefault.jpg" alt="토레스 EVX AVNT" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">3:31</span></div>
-            <div class="video-info"><p class="video-title">토레스 EVX AVNT 모니터 사용설명</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=lDjYq7vtGzI" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/lDjYq7vtGzI/maxresdefault.jpg" alt="토레스 EVX 어라운드뷰" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">2:49</span></div>
-            <div class="video-info"><p class="video-title">토레스 EVX 어라운드 뷰 시스템</p></div>
-          </a>
+      <div class="feed-grid">
+        <!-- Naver Blog -->
+        <div class="feed-col">
+          <div class="feed-header">
+            <div class="feed-title"><i class="fa-solid fa-blog"></i> 네이버 블로그</div>
+            <a href="https://blog.naver.com/kcmo07" target="_blank" style="font-size:0.8rem; color:var(--text-muted);">블로그 가기 <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+          <div class="feed-list" id="blog-feed">
+            <div style="text-align:center; padding:20px; color:#64748b;">피드를 불러오는 중...</div>
+          </div>
+        </div>
+        
+        <!-- YouTube -->
+        <div class="feed-col">
+          <div class="feed-header">
+            <div class="feed-title"><i class="fa-brands fa-youtube"></i> 공식 유튜브</div>
+            <a href="https://www.youtube.com/@KGM이종랑" target="_blank" style="font-size:0.8rem; color:var(--text-muted);">채널 가기 <i class="fa-solid fa-chevron-right"></i></a>
+          </div>
+          <div class="feed-list" id="youtube-feed">
+            <div style="text-align:center; padding:20px; color:#64748b;">피드를 불러오는 중...</div>
+          </div>
         </div>
       </div>
-
-      <!-- 무쏘 EV 사용법 -->
-      <div class="video-panel" id="tab-mussoe">
-        <div class="video-grid">
-          <a class="video-card" href="https://www.youtube.com/watch?v=8YZ00BEvGDE" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/8YZ00BEvGDE/maxresdefault.jpg" alt="무쏘EV 드라이빙 노하우" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">21:24</span></div>
-            <div class="video-info"><p class="video-title">무쏘EV 드라이빙 노하우 FULL</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=tpen4QAzvTM" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/tpen4QAzvTM/maxresdefault.jpg" alt="무쏘EV 충전방법" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">1:38</span></div>
-            <div class="video-info"><p class="video-title">무쏘EV 충전방법</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=uOOBrcfPm-M" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/uOOBrcfPm-M/maxresdefault.jpg" alt="무쏘EV 예약충전" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">2:03</span></div>
-            <div class="video-info"><p class="video-title">무쏘EV 예약충전</p></div>
-          </a>
-        </div>
-      </div>
-
-      <!-- KGM 노하우 -->
-      <div class="video-panel" id="tab-knowhow">
-        <div class="video-grid">
-          <a class="video-card" href="https://www.youtube.com/watch?v=_FGKQ4knbmc" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/_FGKQ4knbmc/maxresdefault.jpg" alt="액티언 하이브리드 노하우" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">11:52</span></div>
-            <div class="video-info"><p class="video-title">액티언 하이브리드, 이건 고장이 아니에요!</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=7yXSNEFDy9s" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/7yXSNEFDy9s/maxresdefault.jpg" alt="액티언 하이브리드 시스템" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">14:28</span></div>
-            <div class="video-info"><p class="video-title">액티언 하이브리드 시스템은 왜 뛰어날까?</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=_jsLMQIJFkI" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/_jsLMQIJFkI/maxresdefault.jpg" alt="무쏘EV 뮤직비디오" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">4:04</span></div>
-            <div class="video-info"><p class="video-title">무쏘EV와 함께하는 뮤지션 김다영 M/V '파도'</p></div>
-          </a>
-        </div>
-      </div>
-
-      <!-- 유튜버 리뷰 -->
-      <div class="video-panel" id="tab-youtuber">
-        <div class="video-grid">
-          <a class="video-card" href="https://www.youtube.com/watch?v=LO_fa8oQE0Y" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/LO_fa8oQE0Y/maxresdefault.jpg" alt="무쏘 vs 타스만" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">18:13</span></div>
-            <div class="video-info"><p class="video-title">KGM 무쏘 vs 타스만, 비교하고 충격먹은 이유!!</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=MlzrN0O3uGw" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/MlzrN0O3uGw/maxresdefault.jpg" alt="무쏘 풀체인지" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">21:16</span></div>
-            <div class="video-info"><p class="video-title">무쏘 풀체인지 2천만원대 시작이라고? 타스만은 끝났다</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=Nd59zmeqKts" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/Nd59zmeqKts/maxresdefault.jpg" alt="무쏘 시승기" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">16:50</span></div>
-            <div class="video-info"><p class="video-title">국내 최초 무쏘 풀체인지 시승기! 구형 vs 신형 비교</p></div>
-          </a>
-          <a class="video-card" href="https://www.youtube.com/watch?v=u707UA49LqM" target="_blank" rel="noopener">
-            <div class="video-thumb"><img src="https://img.youtube.com/vi/u707UA49LqM/maxresdefault.jpg" alt="무쏘 실차 리뷰" loading="lazy" /><div class="play-btn"><i class="fa-solid fa-play"></i></div><span class="video-duration">14:52</span></div>
-            <div class="video-info"><p class="video-title">신형 무쏘 실차 리뷰.. 가격까지 잡은 굿디자인</p></div>
-          </a>
-        </div>
-      </div>
-
     </div>
-  </section>
 
-  <!-- ===== 이종랑 유튜브 ===== -->
-  <section class="jongr-section" id="jongr-youtube">
-    <div class="container">
-      <div class="reviews-header" style="margin-bottom:24px;">
+    <!-- Gallery Area (New) -->
+    <div class="gallery-area">
+      <div class="section-header">
         <div>
-          <p class="section-eyebrow">이종랑 유튜브</p>
-          <h2 class="section-title" style="margin-bottom:0;">이종랑 채널 최신 영상</h2>
+          <h2 class="section-title">KGM 공식 영상</h2>
+          <p class="section-sub">최신 브랜드 및 차량 리뷰 영상을 확인해 보세요</p>
         </div>
-        <a href="https://www.youtube.com/@KGM%EC%9D%B4%EC%A2%85%EB%9E%91" target="_blank" rel="noopener" class="more-link">
-          채널 구독 <i class="fa-brands fa-youtube" style="color:#FF0000;"></i>
-        </a>
       </div>
-
-      <!-- 로딩 상태 -->
-      <div id="jongryang-loading" class="jongr-loading">
-        <div class="jongr-spinner"></div>
-        <p>영상을 불러오는 중입니다…</p>
-      </div>
-
-      <!-- 영상 그리드 (JS로 채워짐) -->
-      <div class="video-grid" id="jongryang-grid" style="display:none;"></div>
-
-      <!-- 블로그 바로가기 버튼 추가 -->
-      <div id="jongryang-blog-link" style="text-align:center; margin-top:32px; display:none;">
-        <a href="https://blog.naver.com/kcmo07" target="_blank" rel="noopener" class="btn-outline" style="color:var(--accent); border-color:var(--accent);">
-          <i class="fa-solid fa-pen-nib"></i> 이종랑 블로그에서 더 많은 출고후기 보기
-        </a>
-      </div>
-
-      <!-- 실패 시 fallback (JS로 표시) -->
-      <div id="jongryang-fallback" style="display:none;" class="jongr-fallback">
-        <i class="fa-brands fa-youtube"></i>
-        <p>채널에서 최신 영상을 직접 확인하세요</p>
-        <a href="https://www.youtube.com/@KGM%EC%9D%B4%EC%A2%85%EB%9E%91" target="_blank" rel="noopener" class="btn-primary">
-          <i class="fa-brands fa-youtube"></i> 이종랑 유튜브 채널 바로가기
-        </a>
+      <div class="gallery-grid">
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/TMCXOXYQEUo" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video-info"><h3 class="video-title">공식 영상 무쏘</h3></div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/YVlf1zLs9FE" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video-info"><h3 class="video-title">KGM 하이브리드</h3></div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/nBDCn7RbvYM" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video-info"><h3 class="video-title">액티언</h3></div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/lBlux_1u54M" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video-info"><h3 class="video-title">토레스</h3></div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/z2dEC99uBUM" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video-info"><h3 class="video-title">렉스턴</h3></div>
+        </div>
+        <div class="video-card">
+          <div class="video-frame"><iframe src="https://www.youtube.com/embed/Oxq7YxtiUwE" loading="lazy" allowfullscreen></iframe></div>
+          <div class="video-info"><h3 class="video-title">KGM 종합</h3></div>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- ===== 이종랑 블로그 ===== -->
-  <section class="blog-section" id="blog">
-    <div class="container">
-      <div class="reviews-header" style="margin-bottom:28px;">
-        <div>
-          <p class="section-eyebrow">이종랑 블로그</p>
-          <h2 class="section-title" style="margin-bottom:0;">최신 블로그 포스트</h2>
+    
+    <!-- Banner Area (Moved to bottom) -->
+    <div class="banner-area">
+      <div class="banner">
+        <div class="banner-content">
+          <span class="banner-tag">공식 대리점</span>
+          <h1 class="banner-title">KGM 일산중앙대리점</h1>
+          <p class="banner-desc">전문적인 판매 및 전시 서비스를 통해 모빌리티의 미래를 경험해 보세요. 쾌적한 프리미엄 환경에서 최신 토레스 및 액티언 모델을 직접 만나보실 수 있습니다.</p>
+          <div class="banner-actions">
+            <div class="banner-btn"><i class="fa-solid fa-location-dot"></i> 경기도 고양시</div>
+            <div class="banner-btn"><i class="fa-solid fa-phone"></i> 010-5335-8102</div>
+          </div>
         </div>
-        <a href="https://blog.naver.com/kcmo07" target="_blank" rel="noopener" class="more-link">
-          블로그 방문 <i class="fa-solid fa-chevron-right"></i>
-        </a>
-      </div>
-
-      <div id="blog-loading" class="jongr-loading">
-        <div class="jongr-spinner"></div>
-        <p>포스트를 불러오는 중입니다…</p>
-      </div>
-
-      <div class="blog-grid" id="blog-grid" style="display:none;"></div>
-
-      <div id="blog-fallback" style="display:none;" class="jongr-fallback">
-        <i class="fa-solid fa-blog"></i>
-        <p>블로그에서 최신 글을 확인하세요</p>
-        <a href="https://blog.naver.com/kcmo07" target="_blank" rel="noopener" class="btn-primary">
-          <i class="fa-solid fa-pen-to-square"></i> 이종랑 블로그 바로가기
-        </a>
       </div>
     </div>
-  </section>
 
-  <!-- ===== CONSULT FORM ===== -->
-  <section class="consult-section" id="consult">
-    <div class="container">
+    <!-- Consult Area (Right Sidebar on Desktop) -->
+    <div class="consult-area">
       <div class="consult-card">
-        <div class="consult-header">
-          <h2 class="section-title" style="margin-bottom:8px;">상담 신청</h2>
-          <p style="color:var(--text-secondary);font-size:0.9rem;">이름과 연락처를 남겨주시면 빠르게 연락드리겠습니다.</p>
-        </div>
-        <form class="consult-form" id="consultForm">
+        <h2 class="consult-title">빠른 상담 신청</h2>
+        <p class="consult-desc">연락처를 남겨주시면 KGM 일산중앙대리점 전문 상담사가 신속하고 친절하게 안내해 드리겠습니다.</p>
+        
+        <form onsubmit="event.preventDefault();">
           <div class="form-group">
-            <label class="form-label" for="consultName">이름</label>
-            <input class="form-input" type="text" id="consultName" placeholder="성함을 입력해주세요" required />
+            <label class="form-label">이름</label>
+            <input type="text" class="form-input" placeholder="이름을 입력해 주세요">
           </div>
           <div class="form-group">
-            <label class="form-label" for="consultPhone">연락처</label>
-            <input class="form-input" type="tel" id="consultPhone" placeholder="010-0000-0000" required />
+            <label class="form-label">연락처</label>
+            <input type="tel" class="form-input" placeholder="010-0000-0000">
           </div>
-          <button type="submit" class="kakao-btn">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 2C5.582 2 2 4.91 2 8.5c0 2.28 1.408 4.284 3.536 5.484L4.5 17l3.794-2.09A9.3 9.3 0 0010 15c4.418 0 8-2.91 8-6.5S14.418 2 10 2z" fill="#3A1D1D"/>
-            </svg>
-            카카오톡으로 상담하기
-          </button>
+          <button type="submit" class="btn-submit">상담 신청하기</button>
+          <p class="consult-note">상담 접수 후 평균 15분 이내에 연락드립니다.</p>
         </form>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- ===== CTA BANNER ===== -->
-  <section class="cta-banner">
-    <div class="container cta-inner">
-      <div class="cta-content">
-        <h2 class="cta-title">지금 상담하고 가장 잘 맞는<br>차량을 만나보세요</h2>
-        <p class="cta-sub">상담부터 출고까지, 이종랑이 책임지고 함께하겠습니다.</p>
-        <a href="tel:010-5335-8102" class="cta-phone-btn">
-          <i class="fa-solid fa-phone"></i>
-          이종랑 상담 &nbsp; 010-5335-8102
-        </a>
-      </div>
-      <div class="cta-image">
-        <img src="profile.png" alt="이종랑 부장" class="cta-profile-img">
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <span class="logo-kgm">KGM</span>
-          <span class="logo-sub">일산중앙대리점</span>
-        </div>
-        <p class="footer-name">이종랑</p>
-      </div>
-      <div class="footer-info">
-        <p>경기도 고양시 일산서구 경의로 790</p>
-        <p>(푸르지오 아파트 상가 1층) KGM 일산중앙대리점</p>
-      </div>
-      <div class="footer-contact">
-        <p>문의 <strong>010-5335-8102</strong></p>
-        <p>상담시간 09:00 ~ 20:00 (연중무휴)</p>
-        <div class="footer-sns">
-          <a href="tel:010-5335-8102" class="sns-icon" aria-label="전화"><i class="fa-solid fa-phone"></i></a>
-          <a href="#" class="sns-icon kakao-icon" aria-label="카카오톡"><i class="fa-brands fa-square-kakao"></i></a>
-          <a href="https://blog.naver.com/kcmo07" target="_blank" rel="noopener" class="sns-icon naver-icon" aria-label="네이버 블로그"><i class="fa-solid fa-n"></i></a>
-          <a href="https://www.youtube.com/@KGM%EC%9D%B4%EC%A2%85%EB%9E%91" target="_blank" rel="noopener" class="sns-icon youtube-icon" aria-label="유튜브"><i class="fa-brands fa-youtube"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copy">
-      <div class="container">
-        <p>© 2026 KGM 일산중앙대리점 이종랑. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== MOBILE BOTTOM BAR ===== -->
-  <div class="bottom-bar mobile-only">
-    <a href="tel:010-5335-8102" class="bottom-bar-btn">
-      <i class="fa-solid fa-phone"></i>
-      <span>전화상담</span>
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="#" class="bnav-item">
+      <i class="fa-solid fa-border-all"></i>
+      <span>대시보드</span>
     </a>
-    <a href="#" class="bottom-bar-btn bottom-bar-kakao">
-      <i class="fa-brands fa-square-kakao"></i>
-      <span>카카오톡</span>
+    <a href="#" class="bnav-item">
+      <i class="fa-solid fa-mobile-screen"></i>
+      <span>온라인 견적</span>
     </a>
-    <a href="#vehicles" class="bottom-bar-btn">
-      <i class="fa-solid fa-car"></i>
-      <span>차량보기</span>
+    <a href="#" class="bnav-item">
+      <i class="fa-solid fa-chart-line"></i>
+      <span>차량 정보</span>
     </a>
-  </div>
+    <a href="#" class="bnav-item active">
+      <i class="fa-solid fa-wrench"></i>
+      <span>고객 서비스</span>
+    </a>
+  </nav>
 
+  <!-- Auto Crawling Script -->
   <script>
-    // ===== HEADER SCROLL =====
-    window.addEventListener('scroll', () => {
-      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
-    });
+    async function fetchRSS(url, containerId) {
+      try {
+        const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`);
+        const data = await response.json();
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        
+        if (data.status === 'ok' && data.items && data.items.length > 0) {
+          const items = data.items.slice(0, 5); // Show latest 5
+          items.forEach(item => {
+            const dateStr = item.pubDate ? item.pubDate.split(' ')[0] : '';
+            let thumbUrl = item.thumbnail;
+            
+            // Extract image from description if thumbnail is empty (common in Naver Blog RSS)
+            if (!thumbUrl && item.description) {
+              const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
+              if (imgMatch) thumbUrl = imgMatch[1];
+            }
+            if (!thumbUrl) thumbUrl = 'https://via.placeholder.com/100x60/eef2f6/94a3b8?text=KGM';
 
-    // ===== MOBILE MENU =====
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const overlay = document.getElementById('overlay');
-    const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-    hamburgerBtn.addEventListener('click', () => {
-      mobileMenu.classList.add('open');
-      overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-
-    mobileMenuClose.addEventListener('click', closeMobileMenu);
-
-    function closeMobileMenu() {
-      mobileMenu.classList.remove('open');
-      overlay.classList.remove('active');
-      document.body.style.overflow = '';
+            container.innerHTML += `
+              <a href="${item.link}" target="_blank" class="feed-item">
+                <img src="${thumbUrl}" class="feed-thumb" alt="Thumbnail" onerror="this.src='https://via.placeholder.com/100x60/eef2f6/94a3b8?text=KGM'">
+                <div class="feed-info">
+                  <div class="feed-item-title">${item.title}</div>
+                  <div class="feed-item-date">${dateStr}</div>
+                </div>
+              </a>
+            `;
+          });
+        } else {
+          container.innerHTML = '<div style="padding:20px; text-align:center; color:#64748b;">게시물이 없습니다.</div>';
+        }
+      } catch (e) {
+        console.error(e);
+        document.getElementById(containerId).innerHTML = '<div style="padding:20px; text-align:center; color:#64748b;">오류가 발생했습니다.</div>';
+      }
     }
 
-    // ===== CAR FINDER FILTER =====
-    document.getElementById('filterBtn').addEventListener('click', () => {
-      const type = document.getElementById('filterType').value;
-      const fuel = document.getElementById('filterFuel').value;
-      const price = document.getElementById('filterPrice').value;
-      const cards = document.querySelectorAll('#vehiclesGrid .vehicle-card');
-
-      cards.forEach(card => {
-        const matchType = !type || card.dataset.type === type;
-        const matchFuel = !fuel || card.dataset.fuel === fuel;
-        const matchPrice = !price || card.dataset.price === price;
-        card.classList.toggle('hidden', !(matchType && matchFuel && matchPrice));
-      });
-
-      document.getElementById('vehicles').scrollIntoView({ behavior: 'smooth' });
-    });
-
-    // ===== 이종랑 유튜브 동적 로더 =====
-    (async function loadJongryang() {
-      const grid    = document.getElementById('jongryang-grid');
-      const loading = document.getElementById('jongryang-loading');
-      const fallback= document.getElementById('jongryang-fallback');
-
-      const CHANNEL_HANDLE  = '@KGM이종랑';
-      const CHANNEL_HANDLE_ENC = encodeURIComponent(CHANNEL_HANDLE);
-      const CHANNEL_URL     = 'https://www.youtube.com/' + CHANNEL_HANDLE_ENC;
-      // 채널 ID 확보 후 여기에 직접 입력하면 프록시 없이도 작동합니다
-      const KNOWN_CHANNEL_ID = 'UCWM6zltcxHZ4b_7LXrygNfw';
-      const FALLBACK_VIDEOS = [
-        { title: "마! 이게 바로 KGM 액티언이다⚡ #kgm", link: "https://www.youtube.com/shorts/N5JBjEHW6Yg", thumbnail: "https://img.youtube.com/vi/N5JBjEHW6Yg/maxresdefault.jpg" },
-        { title: "무쏘 적재량 이 정도였냐… 실제로 보면 충격 #kgm", link: "https://www.youtube.com/shorts/xz9DW3oIeqw", thumbnail: "https://img.youtube.com/vi/xz9DW3oIeqw/maxresdefault.jpg" },
-        { title: "“이 가격에 이 사이즈?” 무쏘 스포츠 실제 보면 놀랍니다🔥 #kgm", link: "https://www.youtube.com/shorts/0kxulwX1is0", thumbnail: "https://img.youtube.com/vi/0kxulwX1is0/maxresdefault.jpg" },
-        { title: "무쏘가 1위 찍은 이유… 직접 보면 안다 #무쏘 #KGM", link: "https://www.youtube.com/shorts/ejDtTNxkJQI", thumbnail: "https://img.youtube.com/vi/ejDtTNxkJQI/maxresdefault.jpg" },
-        { title: "요즘 KGM, 왜 갑자기 잘나가는 걸까? #kgm #일산kgm", link: "https://www.youtube.com/shorts/Yo3AM1QJw74", thumbnail: "https://img.youtube.com/vi/Yo3AM1QJw74/maxresdefault.jpg" },
-        { title: "KGM 판매 순위 공개… 무쏘가 1위라고? #kgm", link: "https://www.youtube.com/shorts/YAnxEoKCzzQ", thumbnail: "https://img.youtube.com/vi/YAnxEoKCzzQ/maxresdefault.jpg" },
-        { title: "2026년 3월 국산차 판매 순위 TOP10 (KAMA 공식) #kgm", link: "https://www.youtube.com/shorts/uub10g_2AtE", thumbnail: "https://img.youtube.com/vi/uub10g_2AtE/maxresdefault.jpg" }
-      ];
-
-      function showFallback() {
-        loading.style.display = 'none';
-        renderVideos(FALLBACK_VIDEOS);
-      }
-
-      function renderVideos(items) {
-        if (!items?.length) { showFallback(); return; }
-        loading.style.display = 'none';
-        grid.style.display = 'grid';
-        const blogLink = document.getElementById('jongryang-blog-link');
-        if (blogLink) blogLink.style.display = 'block';
-        grid.innerHTML = items.slice(0, 8).map(item => {
-          const vMatch  = (item.link || '').match(/[?&]v=([^&]+)/) ||
-                          (item.guid || '').match(/video:([^:]+)$/);
-          const videoId = vMatch ? vMatch[1] : '';
-          const thumb   = item.thumbnail ||
-                          (videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : '');
-          const date    = item.pubDate
-            ? new Date(item.pubDate).toLocaleDateString('ko-KR', {year:'numeric',month:'short',day:'numeric'})
-            : '';
-          return `
-            <a class="video-card" href="${item.link}" target="_blank" rel="noopener">
-              <div class="video-thumb">
-                <img src="${thumb}" alt="${item.title}" loading="lazy"
-                     onerror="if(this.dataset.retry!=='1'){this.dataset.retry='1';this.src='https://img.youtube.com/vi/${videoId}/hqdefault.jpg';}" />
-                <div class="play-btn"><i class="fa-solid fa-play"></i></div>
-              </div>
-              <div class="video-info">
-                <p class="video-title">${item.title}</p>
-                <p class="video-date">${date}</p>
-              </div>
-            </a>`;
-        }).join('');
-      }
-
-      async function rss2json(rssUrl) {
-        const url  = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}&count=8`;
-        const res  = await fetch(url, { signal: AbortSignal.timeout(8000) });
-        const data = await res.json();
-        if (data.status !== 'ok' || !data.items?.length) throw new Error('empty');
-        return data.items;
-      }
-
-      async function getChannelIdViaProxy(proxyFn) {
-        const html  = await proxyFn(CHANNEL_URL);
-        const match = html.match(/"channelId"\s*:\s*"(UC[\w-]{20,})"/);
-        if (!match) throw new Error('no id');
-        return match[1];
-      }
-
-      const PROXIES = [
-        url => fetch(`https://corsproxy.io/?${encodeURIComponent(url)}`, { signal: AbortSignal.timeout(8000) }).then(r => r.text()),
-        url => fetch(`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`, { signal: AbortSignal.timeout(8000) }).then(r => r.text()),
-        url => fetch(`https://corsproxy.org/?url=${encodeURIComponent(url)}`, { signal: AbortSignal.timeout(8000) }).then(r => r.text()),
-      ];
-
-      // 전략 1: 알려진 채널 ID로 직접 RSS
-      if (KNOWN_CHANNEL_ID) {
-        try { return renderVideos(await rss2json(`https://www.youtube.com/feeds/videos.xml?channel_id=${KNOWN_CHANNEL_ID}`)); } catch {}
-      }
-
-      // 전략 2: forHandle RSS (브라우저에서 직접 시도)
-      try {
-        return renderVideos(await rss2json(`https://www.youtube.com/feeds/videos.xml?forHandle=${CHANNEL_HANDLE_ENC}`));
-      } catch {}
-
-      // 전략 3: CORS 프록시로 채널 페이지 → 채널 ID 추출 → RSS
-      for (const proxy of PROXIES) {
-        try {
-          const cid   = await getChannelIdViaProxy(proxy);
-          const items = await rss2json(`https://www.youtube.com/feeds/videos.xml?channel_id=${cid}`);
-          return renderVideos(items);
-        } catch {}
-      }
-
-      // 모든 전략 실패
-      showFallback();
-    })();
-
-    // ===== 이종랑 블로그 RSS 로더 =====
-    (async function loadBlog() {
-      const grid    = document.getElementById('blog-grid');
-      const loading = document.getElementById('blog-loading');
-      const fallback= document.getElementById('blog-fallback');
-
-      function showFallback() {
-        loading.style.display = 'none';
-        fallback.style.display = 'flex';
-      }
-
-      function stripHtml(html) {
-        return html ? html.replace(/<[^>]*>/g, '').replace(/&[a-z]+;/gi, ' ').trim() : '';
-      }
-
-      function extractThumb(item) {
-        if (item.thumbnail && item.thumbnail !== 'self') return item.thumbnail;
-        const m = (item.description || '').match(/<img[^>]+src=["']([^"']+)["']/i);
-        return m ? m[1] : '';
-      }
-
-      try {
-        const RSS_URL = 'https://rss.blog.naver.com/kcmo07.xml';
-        const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=6`;
-        const res  = await fetch(API_URL, { signal: AbortSignal.timeout(8000) });
-        const data = await res.json();
-
-        if (data.status !== 'ok' || !data.items?.length) throw new Error('empty');
-
-        loading.style.display = 'none';
-        grid.style.display = 'grid';
-
-        grid.innerHTML = data.items.map(item => {
-          const thumb   = extractThumb(item);
-          const date    = item.pubDate
-            ? new Date(item.pubDate).toLocaleDateString('ko-KR', { year:'numeric', month:'short', day:'numeric' })
-            : '';
-          const desc    = stripHtml(item.description || item.content || '');
-          const thumbHtml = thumb
-            ? `<img src="${thumb}" alt="${item.title}" loading="lazy"
-                    onerror="this.parentElement.innerHTML='<div class=\\'blog-thumb-placeholder\\'><i class=\\'fa-solid fa-pen-to-square\\'></i></div>'" />`
-            : `<div class="blog-thumb-placeholder"><i class="fa-solid fa-pen-to-square"></i></div>`;
-
-          return `
-            <a class="blog-card" href="${item.link}" target="_blank" rel="noopener">
-              <div class="blog-thumb">${thumbHtml}</div>
-              <div class="blog-body">
-                <p class="blog-date">${date}</p>
-                <p class="blog-title">${item.title}</p>
-                <p class="blog-desc">${desc}</p>
-                <span class="blog-more">자세히 보기 <i class="fa-solid fa-chevron-right"></i></span>
-              </div>
-            </a>`;
-        }).join('');
-
-      } catch(e) {
-        showFallback();
-      }
-    })();
-
-    // ===== VIDEO TABS =====
-    document.querySelectorAll('.video-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.video-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.video-panel').forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-      });
-    });
-
-    // ===== CONSULT FORM =====
-    document.getElementById('consultForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('consultName').value.trim();
-      const phone = document.getElementById('consultPhone').value.trim();
-      if (!name || !phone) return;
-      // 카카오톡 오픈채팅 링크로 이동 (추후 실제 URL로 교체)
-      window.open('#', '_blank');
+    document.addEventListener("DOMContentLoaded", () => {
+      // Fetch Naver Blog
+      fetchRSS('https://rss.blog.naver.com/kcmo07.xml', 'blog-feed');
+      // Fetch YouTube using the extracted Channel ID (UCWM6zltcxHZ4b_7LXrygNfw)
+      fetchRSS('https://www.youtube.com/feeds/videos.xml?channel_id=UCWM6zltcxHZ4b_7LXrygNfw', 'youtube-feed');
     });
   </script>
 </body>
