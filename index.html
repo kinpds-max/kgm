@@ -223,43 +223,83 @@
     .spec-group { display: flex; flex-direction: column; gap: 8px; }
     .spec-group-title { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
     .spec-row { display: flex; justify-content: space-between; font-size: 0.85rem; border-bottom: 1px solid #f1f5f9; padding: 6px 0; }
-    .spec-row span:first-child { color: var(--text-muted); }
     .spec-row span:last-child { font-weight: 600; color: var(--text-main); }
 
-    .lineup-sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    .lineup-real-photos {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
     }
-    .sidebar-btn {
-      display: flex;
-      align-items: center;
+    .real-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      padding: 16px;
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      text-align: left;
-      transition: all 0.2s;
+      margin-top: 16px;
     }
-    .sidebar-btn img { width: 60px; height: auto; }
-    .sidebar-btn-info { display: flex; flex-direction: column; }
-    .sidebar-btn-name { font-size: 0.95rem; font-weight: 700; }
-    .sidebar-btn-price { font-size: 0.8rem; color: var(--primary); font-weight: 600; }
-    .sidebar-btn:hover { background: #fff; border-color: var(--primary); transform: translateX(4px); }
+    .real-photo-item {
+      aspect-ratio: 4/3;
+      background: #f8fafc;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .real-photo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .real-photo-item img:hover { transform: scale(1.05); }
+
+    @media (max-width: 768px) {
+      .real-photo-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     .sidebar-btn.active { background: var(--dark-bg); color: #fff; border-color: var(--dark-bg); box-shadow: 0 10px 20px rgba(15,23,42,0.1); }
     .sidebar-btn.active .sidebar-btn-price { color: var(--primary); }
 
+    /* Mobile Responsive Polish */
     @media (max-width: 1024px) {
-      .lineup-container { grid-template-columns: 1fr; padding: 24px; }
-      .lineup-gallery { grid-template-columns: 1fr; }
-      .gallery-big { height: 300px; }
-      .gallery-subs { grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr; height: 100px; }
-      .gallery-sub { height: 100px; }
-      .lineup-specs-grid { grid-template-columns: 1fr 1fr; }
+      .lineup-container { grid-template-columns: 1fr; padding: 20px; gap: 24px; }
+      .lineup-header-row { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .lineup-detail-btns { width: 100%; justify-content: flex-start; }
+      .lineup-action-btn { flex: 1; justify-content: center; padding: 12px; font-size: 0.8rem; }
+      
+      .lineup-gallery { grid-template-columns: 1fr; gap: 8px; }
+      .gallery-big { height: 280px; }
+      .gallery-big img { padding: 20px; }
+      .gallery-subs { grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr; height: 80px; gap: 8px; }
+      .gallery-sub { height: 80px; }
+      .gallery-sub img { padding: 8px; }
+
+      .lineup-sidebar { 
+        order: -1; /* Move car selection to top on mobile */
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .sidebar-list-wrap {
+        display: flex;
+        overflow-x: auto;
+        gap: 12px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .sidebar-list-wrap::-webkit-scrollbar { display: none; }
+      .sidebar-btn { 
+        min-width: 240px; 
+        flex-shrink: 0; 
+        padding: 12px; 
+      }
+
+      .lineup-specs-grid { grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 24px; }
     }
+
     @media (max-width: 768px) {
-      .lineup-specs-grid { grid-template-columns: 1fr; }
+      .lineup-detail-title { font-size: 1.5rem; }
+      .lineup-specs-grid { grid-template-columns: 1fr; gap: 12px; }
+      .sidebar-btn { min-width: 200px; }
     }
 
     /* Gallery Area (Refactored to Video Showcase) */
@@ -916,83 +956,93 @@
               <div class="spec-row"><span>보증</span><span>5년/10만km</span></div>
             </div>
           </div>
+
+          <!-- Real Photos Section -->
+          <div class="lineup-real-photos">
+            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 8px;">실제 차량 사진</div>
+            <p class="section-sub" style="margin-bottom: 20px;">대리점에서 직접 촬영한 생생한 실물 사진입니다.</p>
+            <div class="real-photo-grid" id="real-photo-container">
+              <!-- Dynamically Populated -->
+            </div>
+          </div>
         </div>
 
         <!-- Sidebar Navigation (Right) -->
         <div class="lineup-sidebar">
-          <div class="section-title" style="margin-bottom: 20px;">차종 선택</div>
-          
-          <button class="sidebar-btn active" onclick="updateLineup('musso')">
-            <img src="images/musso_2026.png" alt="Musso">
-            <div class="sidebar-btn-info">
-              <span class="sidebar-btn-name">2026 무쏘</span>
-              <span class="sidebar-btn-price">2,990만원~</span>
-            </div>
-          </button>
+          <div class="section-title" style="margin-bottom: 12px; font-size: 1rem;">차종 선택</div>
+          <div class="sidebar-list-wrap">
+            <button class="sidebar-btn active" onclick="updateLineup('musso')">
+              <img src="images/musso_2026.png" alt="Musso">
+              <div class="sidebar-btn-info">
+                <span class="sidebar-btn-name">2026 무쏘</span>
+                <span class="sidebar-btn-price">2,990만원~</span>
+              </div>
+            </button>
 
-          <button class="sidebar-btn" onclick="updateLineup('actyon')">
-            <img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Actyon">
-            <div class="sidebar-btn-info">
-              <span class="sidebar-btn-name">액티언</span>
-              <span class="sidebar-btn-price">3,395만원~</span>
-            </div>
-          </button>
+            <button class="sidebar-btn" onclick="updateLineup('actyon_hybrid')">
+              <img src="images/20250617110206889_NchBIo_MODEL_MD5.png" alt="Actyon Hybrid">
+              <div class="sidebar-btn-info">
+                <span class="sidebar-btn-name">액티언 하이브리드</span>
+                <span class="sidebar-btn-price">3,745만원~</span>
+              </div>
+            </button>
 
-          <button class="sidebar-btn" onclick="updateLineup('actyon_hybrid')">
-            <img src="images/20250617110206889_NchBIo_MODEL_MD5.png" alt="Actyon Hybrid">
-            <div class="sidebar-btn-info">
-              <span class="sidebar-btn-name">액티언 하이브리드</span>
-              <span class="sidebar-btn-price">3,745만원~</span>
-            </div>
-          </button>
+            <button class="sidebar-btn" onclick="updateLineup('torres_hybrid')">
+              <img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Torres Hybrid">
+              <div class="sidebar-btn-info">
+                <span class="sidebar-btn-name">토레스 하이브리드</span>
+                <span class="sidebar-btn-price">2,838만원~</span>
+              </div>
+            </button>
 
-          <button class="sidebar-btn" onclick="updateLineup('torres')">
-            <img src="images/20241216061441516_rIP2Es_MODEL_MW5.png" alt="Torres">
-            <div class="sidebar-btn-info">
-              <span class="sidebar-btn-name">토레스</span>
-              <span class="sidebar-btn-price">2,666만원~</span>
-            </div>
-          </button>
+            <button class="sidebar-btn" onclick="updateLineup('musso_ev')">
+              <img src="images/20250304181727107_WwqH5r_MODEL_OP5.png" alt="Musso EV">
+              <div class="sidebar-btn-info">
+                <span class="sidebar-btn-name">무쏘 EV</span>
+                <span class="sidebar-btn-price">4,450만원~</span>
+              </div>
+            </button>
 
-          <button class="sidebar-btn" onclick="updateLineup('torres_evx')">
-            <img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Torres EVX">
-            <div class="sidebar-btn-info">
-              <span class="sidebar-btn-name">토레스 EVX</span>
-              <span class="sidebar-btn-price">4,550만원~</span>
-            </div>
-          </button>
+            <button class="sidebar-btn" onclick="updateLineup('torres')">
+              <img src="images/20241216061441516_rIP2Es_MODEL_MW5.png" alt="Torres">
+              <div class="sidebar-btn-info">
+                <span class="sidebar-btn-name">토레스</span>
+                <span class="sidebar-btn-price">2,666만원~</span>
+              </div>
+            </button>
 
-          <button class="sidebar-btn" onclick="updateLineup('torres_hybrid')">
-            <img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Torres Hybrid">
-            <div class="sidebar-btn-info">
-              <span class="sidebar-btn-name">토레스 하이브리드</span>
-              <span class="sidebar-btn-price">2,838만원~</span>
-            </div>
-          </button>
+            <button class="sidebar-btn" onclick="updateLineup('torres_evx')">
+              <img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Torres EVX">
+              <div class="sidebar-btn-info">
+                <span class="sidebar-btn-name">토레스 EVX</span>
+                <span class="sidebar-btn-price">4,550만원~</span>
+              </div>
+            </button>
 
-          <button class="sidebar-btn" onclick="updateLineup('musso_ev')">
-            <img src="images/20250304181727107_WwqH5r_MODEL_OP5.png" alt="Musso EV">
-            <div class="sidebar-btn-info">
-              <span class="sidebar-btn-name">무쏘 EV</span>
-              <span class="sidebar-btn-price">4,450만원~</span>
-            </div>
-          </button>
+            <button class="sidebar-btn" onclick="updateLineup('actyon')">
+              <img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Actyon">
+              <div class="sidebar-btn-info">
+                <span class="sidebar-btn-name">액티언</span>
+                <span class="sidebar-btn-price">3,395만원~</span>
+              </div>
+            </button>
 
-          <button class="sidebar-btn" onclick="updateLineup('rexton')">
-            <img src="images/20241216060809713_01mAqh_MODEL_GL5.png" alt="Rexton">
-            <div class="sidebar-btn-info">
-              <span class="sidebar-btn-name">렉스턴 아레나</span>
-              <span class="sidebar-btn-price">4,010만원~</span>
-            </div>
-          </button>
+            <button class="sidebar-btn" onclick="updateLineup('rexton')">
+              <img src="images/20241216060809713_01mAqh_MODEL_GL5.png" alt="Rexton">
+              <div class="sidebar-btn-info">
+                <span class="sidebar-btn-name">렉스턴 아레나</span>
+                <span class="sidebar-btn-price">4,010만원~</span>
+              </div>
+            </button>
 
-          <button class="sidebar-btn" onclick="updateLineup('tivoli')">
-            <img src="images/20260401091702753_qtOODw_MODEL_XW5.png" alt="Tivoli">
-            <div class="sidebar-btn-info">
-              <span class="sidebar-btn-name">더 뉴 티볼리</span>
-              <span class="sidebar-btn-price">1,898만원~</span>
-            </div>
-          </button>
+            <button class="sidebar-btn" onclick="updateLineup('tivoli')">
+              <img src="images/20260401091702753_qtOODw_MODEL_XW5.png" alt="Tivoli">
+              <div class="sidebar-btn-info">
+                <span class="sidebar-btn-name">더 뉴 티볼리</span>
+                <span class="sidebar-btn-price">1,898만원~</span>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1014,7 +1064,8 @@
           warranty: "5년/10만km",
           catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf",
           price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf",
-          news: "https://blog.naver.com/kcmo07"
+          news: "https://blog.naver.com/kcmo07",
+          real_photos: ["images/KakaoTalk_20260422_123051962.png", "images/profile_no_bg.png", "images/map_preview.png"]
         },
         actyon: {
           title: "KGM 액티언 (ACTYON)",
@@ -1188,6 +1239,28 @@
             btn.classList.add('active');
           }
         });
+
+        // Update Real Photos
+        const photoContainer = document.getElementById('real-photo-container');
+        photoContainer.innerHTML = '';
+        if (car.real_photos && car.real_photos.length > 0) {
+          car.real_photos.forEach(src => {
+            photoContainer.innerHTML += `
+              <div class="real-photo-item">
+                <img src="${src}" alt="실제 차량 사진" onclick="window.open(this.src)">
+              </div>
+            `;
+          });
+        } else {
+          // Placeholder if no photos
+          for(let i=0; i<3; i++) {
+            photoContainer.innerHTML += `
+              <div class="real-photo-item" style="display:flex; align-items:center; justify-content:center; color:#94a3b8; font-size:0.8rem; background:#f1f5f9;">
+                사진 준비 중
+              </div>
+            `;
+          }
+        }
       }
     </script>
 
