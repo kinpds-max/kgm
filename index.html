@@ -492,7 +492,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 20% 25%; /* Crop face from business card image */
+      object-position: 18% 25%; /* Adjusted for 21:9 wide card */
     }
     .profile-info {
       display: flex;
@@ -1257,7 +1257,7 @@
         <!-- Profile Card -->
         <div class="profile-card">
           <div class="profile-img-wrap">
-            <img src="images/dealer_card.png" alt="이종랑 부장">
+            <img src="images/명함 21대9.png" alt="이종랑 부장">
           </div>
           <div class="profile-info">
             <div class="profile-name">이종랑 부장 <span style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-left:8px;">010-5335-8102</span></div>
@@ -1292,8 +1292,8 @@
         <!-- Business Card -->
         <div class="map-card" style="display: flex; flex-direction: column; gap: 16px;">
           <div class="section-title" style="font-size: 1.1rem; font-weight: 700; margin: 0;">디지털 명함</div>
-          <div style="height: 220px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); background: #0f172a; display: flex; align-items: center; justify-content: center;">
-            <img src="images/dealer_card.png" alt="이종랑 부장 명함" style="width: 100%; height: 100%; object-fit: contain;">
+          <div style="height: 220px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); background: #ffffff; display: flex; align-items: center; justify-content: center;">
+            <img src="images/명함 21대9.png" alt="이종랑 부장 명함" style="width: 100%; height: 100%; object-fit: contain;">
           </div>
           <div class="address-text">
             <i class="fa-solid fa-address-card" style="color: var(--primary);"></i>
@@ -1619,7 +1619,7 @@
   </script>
 
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzw5hyNZgTA5nxYHRj2WPUqxBLB-BQ1xjWYEEPOD_MdCwEVasKN0dQovDlkCG0doxkZew/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdkbYq0APCZhdOpESBJSQQ1zTqU2wgYAVNq7mYnGPyHhNmgDnQK94yjNWqRiaEycf5lw/exec';
 
     async function submitConsult(e) {
       e.preventDefault();
