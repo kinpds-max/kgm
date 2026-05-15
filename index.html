@@ -225,9 +225,44 @@
     .spec-row { display: flex; justify-content: space-between; font-size: 0.85rem; border-bottom: 1px solid #f1f5f9; padding: 6px 0; }
     .spec-row span:last-child { font-weight: 600; color: var(--text-main); }
 
+    .lineup-colors {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .color-swatch-list {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+    .color-swatch-list::-webkit-scrollbar { height: 4px; }
+    .color-swatch-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+    .color-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      min-width: 66px;
+    }
+    .color-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 1px #e2e8f0;
+      transition: transform 0.2s;
+    }
+    .color-item:hover .color-circle { transform: scale(1.1); }
+    .color-item.active .color-circle { box-shadow: 0 0 0 2px var(--primary); }
+    .color-name { font-size: 0.7rem; font-weight: 600; color: var(--text-muted); text-align: center; white-space: nowrap; }
+
     .lineup-real-photos {
-      margin-top: 40px;
-      padding-top: 32px;
+      margin-top: 32px;
+      padding-top: 24px;
       border-top: 1px solid var(--border);
     }
     .real-photo-grid {
@@ -984,6 +1019,14 @@
             </div>
           </div>
 
+          <!-- Color Selection Section -->
+          <div class="lineup-colors" id="color-section" style="display: none;">
+            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 4px;">외장 컬러</div>
+            <div class="color-swatch-list" id="color-container">
+              <!-- Dynamically Populated -->
+            </div>
+          </div>
+
           <!-- Real Photos Section -->
           <div class="lineup-real-photos">
             <div class="section-title" style="font-size: 1.1rem; margin-bottom: 8px;">실제 차량 사진</div>
@@ -1092,7 +1135,16 @@
           catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf",
           price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf",
           news: "https://blog.naver.com/kcmo07",
-          real_photos: ["images/KakaoTalk_20260422_123051962.png", "images/profile_no_bg.png", "images/map_preview.png"]
+          real_photos: ["images/KakaoTalk_20260422_123051962.png", "images/profile_no_bg.png", "images/map_preview.png"],
+          colors: [
+            { name: "울트라 마린", hex: "#1e40af", img: "images/musso_2026.png" },
+            { name: "스페이스 블랙", hex: "#000000", img: "images/musso_2026.png" },
+            { name: "스모크 토프", hex: "#78716c", img: "images/musso_2026.png" },
+            { name: "샌드스톤 베이지", hex: "#d6d3d1", img: "images/musso_2026.png" },
+            { name: "마블 그레이", hex: "#4b5563", img: "images/musso_2026.png" },
+            { name: "그랜드 화이트", hex: "#ffffff", img: "images/musso_2026.png" },
+            { name: "아마조니아 그린", hex: "#3f6212", img: "images/musso_2026.png" }
+          ]
         },
         actyon: {
           title: "KGM 액티언 (ACTYON)",
@@ -1288,6 +1340,30 @@
             `;
           }
         }
+
+        // Update Colors
+        const colorSection = document.getElementById('color-section');
+        const colorContainer = document.getElementById('color-container');
+        colorContainer.innerHTML = '';
+        if (car.colors && car.colors.length > 0) {
+          colorSection.style.display = 'block';
+          car.colors.forEach((color, idx) => {
+            colorContainer.innerHTML += `
+              <div class="color-item ${idx===0?'active':''}" onclick="changeCarColor(this, '${color.img}')">
+                <div class="color-circle" style="background-color: ${color.hex}"></div>
+                <div class="color-name">${color.name}</div>
+              </div>
+            `;
+          });
+        } else {
+          colorSection.style.display = 'none';
+        }
+      }
+
+      function changeCarColor(el, img) {
+        document.querySelectorAll('.color-item').forEach(item => item.classList.remove('active'));
+        el.classList.add('active');
+        document.getElementById('main-view-img').src = img;
       }
     </script>
 
