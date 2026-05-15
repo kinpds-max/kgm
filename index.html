@@ -68,14 +68,20 @@
       grid-template-columns: 1fr 380px;
       grid-template-areas: 
         "video consult"
-        "history consult"
-        "lineup consult"
-        "feed consult"
-        "gallery consult"
+        "history history"
+        "lineup lineup"
+        "feed feed"
+        "gallery gallery"
         "catalog catalog"
-        "achieve achieve";
+        "achieve achieve"
+        "info info";
       gap: 32px;
       align-items: start;
+    }
+    .info-area { grid-area: info; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media (max-width: 768px) {
+      .info-grid { grid-template-columns: 1fr; gap: 20px; }
     }
     .achieve-area { grid-area: achieve; }
     .catalog-area { grid-area: catalog; }
@@ -98,8 +104,11 @@
       overflow: hidden;
       margin: 0 auto 32px auto;
       box-shadow: 0 20px 40px rgba(15,23,42,0.1);
-      text-align: center;
       max-width: 1360px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
     .banner::before {
       content: '';
@@ -108,12 +117,12 @@
       background: linear-gradient(135deg, rgba(15,23,42,1) 0%, rgba(30,41,59,0.9) 100%);
       z-index: 0;
     }
-    .banner-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .banner-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
     .banner-tag { color: var(--primary); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; display: block; }
-    .banner-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2; word-break: keep-all; }
-    .banner-desc { font-size: 1rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 32px; word-break: keep-all; }
-    .banner-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-    .banner-btn { background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 10px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; display: flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.2); color: #fff; transition: background 0.2s; }
+    .banner-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; word-break: keep-all; }
+    .banner-desc { font-size: 1.1rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 32px; word-break: keep-all; }
+    .banner-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .banner-btn { background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); padding: 12px 24px; border-radius: 30px; font-size: 0.95rem; font-weight: 500; display: flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.2); color: #fff; transition: background 0.2s; }
     .banner-btn:hover { background: rgba(255,255,255,0.2); }
 
     /* Section Header */
@@ -123,7 +132,7 @@
     .view-all { font-size: 0.9rem; font-weight: 600; color: var(--text-main); display: flex; align-items: center; gap: 4px; }
 
     /* Lineup Grid */
-    .lineup-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 8px; }
+    .lineup-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 8px; }
     .car-card { background: var(--card-bg); border-radius: var(--radius-md); padding: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid var(--border); transition: transform 0.2s; display: flex; flex-direction: column;}
     .car-card:hover { transform: translateY(-4px); }
     .car-img-wrap { background: #eef2f6; border-radius: var(--radius-sm); height: 180px; margin-bottom: 20px; position: relative; display: flex; align-items: center; justify-content: center; }
@@ -139,6 +148,100 @@
     .car-price strong { color: var(--text-main); font-size: 1.1rem; }
     .btn-dark { background: var(--dark-bg); color: #fff; font-size: 0.9rem; font-weight: 600; padding: 10px 20px; border-radius: 24px; transition: opacity 0.2s; }
     .btn-dark:hover { opacity: 0.9; }
+    
+    /* New Lineup Detail Viewer */
+    .lineup-container {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 32px;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
+    .lineup-main { display: flex; flex-direction: column; }
+    .lineup-detail-title { font-size: 2rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
+    .lineup-detail-sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 24px; }
+    
+    .lineup-gallery {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .gallery-big {
+      width: 100%;
+      height: 440px;
+      background: #f8fafc;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .gallery-big img { width: 100%; height: 100%; object-fit: contain; padding: 40px; }
+    .gallery-subs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+    }
+    .gallery-sub {
+      width: 100%;
+      height: 214px;
+      background: #f8fafc;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .gallery-sub img { width: 100%; height: 100%; object-fit: contain; padding: 15px; opacity: 0.8; transition: opacity 0.2s; }
+    .gallery-sub:hover img { opacity: 1; }
+
+    .lineup-specs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      border-top: 1px solid var(--border);
+      padding-top: 32px;
+    }
+    .spec-group { display: flex; flex-direction: column; gap: 8px; }
+    .spec-group-title { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+    .spec-row { display: flex; justify-content: space-between; font-size: 0.85rem; border-bottom: 1px solid #f1f5f9; padding: 6px 0; }
+    .spec-row span:first-child { color: var(--text-muted); }
+    .spec-row span:last-child { font-weight: 600; color: var(--text-main); }
+
+    .lineup-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sidebar-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      text-align: left;
+      transition: all 0.2s;
+    }
+    .sidebar-btn img { width: 60px; height: auto; }
+    .sidebar-btn-info { display: flex; flex-direction: column; }
+    .sidebar-btn-name { font-size: 0.95rem; font-weight: 700; }
+    .sidebar-btn-price { font-size: 0.8rem; color: var(--primary); font-weight: 600; }
+    .sidebar-btn:hover { background: #fff; border-color: var(--primary); transform: translateX(4px); }
+    .sidebar-btn.active { background: var(--dark-bg); color: #fff; border-color: var(--dark-bg); box-shadow: 0 10px 20px rgba(15,23,42,0.1); }
+    .sidebar-btn.active .sidebar-btn-price { color: var(--primary); }
+
+    @media (max-width: 1024px) {
+      .lineup-container { grid-template-columns: 1fr; padding: 24px; }
+      .lineup-gallery { grid-template-columns: 1fr; }
+      .gallery-big { height: 300px; }
+      .gallery-subs { grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr; height: 100px; }
+      .gallery-sub { height: 100px; }
+      .lineup-specs-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .lineup-specs-grid { grid-template-columns: 1fr; }
+    }
 
     /* Gallery Area (Refactored to Video Showcase) */
     .video-showcase {
@@ -165,7 +268,7 @@
     }
     .video-nav {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 12px;
       flex-wrap: wrap;
     }
@@ -300,12 +403,12 @@
     .achieve-banner {
       background: #0f172a;
       border-radius: var(--radius-lg);
-      padding: 24px 40px;
+      padding: 32px 48px;
       color: #fff;
       display: flex;
       justify-content: space-around;
       align-items: center;
-      gap: 24px;
+      gap: 40px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       margin-bottom: 8px;
     }
@@ -370,7 +473,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top;
+      object-position: 20% 25%; /* Crop face from business card image */
     }
     .profile-info {
       display: flex;
@@ -471,7 +574,7 @@
       padding: 16px;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       gap: 12px;
       transition: all 0.2s;
       cursor: pointer;
@@ -613,7 +716,7 @@
 
     /* Footer */
     .footer {
-      padding: 40px 20px;
+      padding: 60px 20px;
       background: #f8fafc;
       text-align: center;
       border-top: 1px solid var(--border);
@@ -748,113 +851,221 @@
 
     <!-- Lineup Area -->
     <div class="lineup-area">
-      <div class="section-header">
-        <div>
-          <h2 class="section-title">전시장 라인업</h2>
-          <p class="section-sub">일산중앙대리점 실시간 전시 차량</p>
-        </div>
-        <a href="#" class="view-all">전체 모델 보기 <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
+      <div class="lineup-container">
+        <!-- Main Content (Left) -->
+        <div class="lineup-main" id="lineup-display">
+          <div class="lineup-detail-title">2026 KGM 무쏘</div>
+          <div class="lineup-detail-sub">준대형 트럭 · 2026</div>
 
-      <div class="lineup-grid">
-        <!-- Card 1: Actyon -->
-        <div class="car-card">
-          <div class="car-img-wrap">
-            <div class="car-tags">
-              <span class="tag-cyan">전시 중</span>
+          <div class="lineup-gallery">
+            <div class="gallery-big">
+              <img src="images/musso_2026.png" alt="Main View" id="main-view-img">
             </div>
+            <div class="gallery-subs">
+              <div class="gallery-sub"><img src="images/musso_2026.png" alt="Sub 1"></div>
+              <div class="gallery-sub"><img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Sub 2"></div>
+              <div class="gallery-sub"><img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Sub 3"></div>
+              <div class="gallery-sub"><img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Sub 4"></div>
+            </div>
+          </div>
+
+          <div class="lineup-specs-grid">
+            <div class="spec-group">
+              <div class="spec-group-title">기본 정보</div>
+              <div class="spec-row"><span>가격</span><span>2,990~4,600만원</span></div>
+              <div class="spec-row"><span>출시</span><span>2026년 1월</span></div>
+              <div class="spec-row"><span>연료</span><span>가솔린, 디젤</span></div>
+            </div>
+            <div class="spec-group">
+              <div class="spec-group-title">성능 및 엔진</div>
+              <div class="spec-row"><span>출력</span><span>202~217hp</span></div>
+              <div class="spec-row"><span>토크</span><span>38.7~45kg.m</span></div>
+              <div class="spec-row"><span>배기량</span><span>1,998~2,157cc</span></div>
+            </div>
+            <div class="spec-group">
+              <div class="spec-group-title">기타 제원</div>
+              <div class="spec-row"><span>연비</span><span>복합 7.7~10.1km/ℓ</span></div>
+              <div class="spec-row"><span>정원</span><span>5인승</span></div>
+              <div class="spec-row"><span>보증</span><span>5년/10만km</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Navigation (Right) -->
+        <div class="lineup-sidebar">
+          <div class="section-title" style="margin-bottom: 20px;">차종 선택</div>
+          
+          <button class="sidebar-btn active" onclick="updateLineup('musso')">
+            <img src="images/musso_2026.png" alt="Musso">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">2026 무쏘</span>
+              <span class="sidebar-btn-price">2,990만원~</span>
+            </div>
+          </button>
+
+          <button class="sidebar-btn" onclick="updateLineup('actyon')">
             <img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Actyon">
-          </div>
-          <div class="car-info">
-            <h3 class="car-name">액티언 (ACTYON)</h3>
-            <p class="car-desc">스타일리시한 쿠페형 SUV | 최첨단 안전 사양 탑재</p>
-            <div class="car-footer">
-              <div class="car-price">판매가 <strong>3,395만 원~</strong></div>
-              <button class="btn-dark" onclick="window.open('https://www.kg-mobility.com/ko/models/actyon/index.html')">상세 보기</button>
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">액티언</span>
+              <span class="sidebar-btn-price">3,395만원~</span>
             </div>
-          </div>
-        </div>
+          </button>
 
-        <!-- Card 2: Torres EVX -->
-        <div class="car-card">
-          <div class="car-img-wrap">
-            <div class="car-tags">
-              <span class="tag-cyan">전시 중</span>
-              <span class="tag-white">시승 가능</span>
-            </div>
+          <button class="sidebar-btn" onclick="updateLineup('torres_evx')">
             <img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Torres EVX">
-          </div>
-          <div class="car-info">
-            <h3 class="car-name">토레스 EVX</h3>
-            <p class="car-desc">미래지향적 전기 SUV | 동급 최대 주행 거리 433km</p>
-            <div class="car-footer">
-              <div class="car-price">판매가 <strong>4,550만 원~</strong></div>
-              <button class="btn-dark" onclick="window.open('https://www.kg-mobility.com/ko/models/torres_evx/index.html')">상세 보기</button>
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">토레스 EVX</span>
+              <span class="sidebar-btn-price">4,550만원~</span>
             </div>
-          </div>
-        </div>
+          </button>
 
-        <!-- Card 3: Torres Hybrid -->
-        <div class="car-card">
-          <div class="car-img-wrap">
+          <button class="sidebar-btn" onclick="updateLineup('torres_hybrid')">
             <img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Torres Hybrid">
-          </div>
-          <div class="car-info">
-            <h3 class="car-name">토레스 하이브리드</h3>
-            <p class="car-desc">효율성과 파워의 완벽한 조화 | 바이퓨얼 시스템</p>
-            <div class="car-footer">
-              <div class="car-price">판매가 <strong>2,838만 원~</strong></div>
-              <button class="btn-dark" onclick="window.open('https://www.kg-mobility.com/ko/models/torres/index.html')">상세 보기</button>
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">토레스 하이브리드</span>
+              <span class="sidebar-btn-price">2,838만원~</span>
             </div>
-          </div>
-        </div>
+          </button>
 
-        <!-- Card 4: Rexton New Arena -->
-        <div class="car-card">
-          <div class="car-img-wrap">
+          <button class="sidebar-btn" onclick="updateLineup('rexton')">
             <img src="images/20241216060809713_01mAqh_MODEL_GL5.png" alt="Rexton">
-          </div>
-          <div class="car-info">
-            <h3 class="car-name">렉스턴 뉴 아레나</h3>
-            <p class="car-desc">정통 프리미엄 SUV | 압도적인 품격과 공간</p>
-            <div class="car-footer">
-              <div class="car-price">판매가 <strong>4,010만 원~</strong></div>
-              <button class="btn-dark" onclick="window.open('https://www.kg-mobility.com/ko/models/rexton/index.html')">상세 보기</button>
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">렉스턴 아레나</span>
+              <span class="sidebar-btn-price">4,010만원~</span>
             </div>
-          </div>
-        </div>
+          </button>
 
-        <!-- Card 5: Tivoli -->
-        <div class="car-card">
-          <div class="car-img-wrap">
+          <button class="sidebar-btn" onclick="updateLineup('tivoli')">
             <img src="images/20260401091702753_qtOODw_MODEL_XW5.png" alt="Tivoli">
-          </div>
-          <div class="car-info">
-            <h3 class="car-name">더 뉴 티볼리</h3>
-            <p class="car-desc">스타일 아이콘 | 컴팩트 SUV의 기준</p>
-            <div class="car-footer">
-              <div class="car-price">판매가 <strong>1,898만 원~</strong></div>
-              <button class="btn-dark" onclick="window.open('https://www.kg-mobility.com/ko/models/tivoli/index.html')">상세 보기</button>
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">더 뉴 티볼리</span>
+              <span class="sidebar-btn-price">1,898만원~</span>
             </div>
-          </div>
-        </div>
-
-        <!-- Card 6: Musso (Rexton Sports) -->
-        <div class="car-card">
-          <div class="car-img-wrap">
-            <img src="images/musso_2026.png" alt="Rexton Sports">
-          </div>
-          <div class="car-info">
-            <h3 class="car-name">렉스턴 스포츠&칸 (무쏘)</h3>
-            <p class="car-desc">압도적 적재 역량 | K-픽업의 자존심</p>
-            <div class="car-footer">
-              <div class="car-price">판매가 <strong>2,895만 원~</strong></div>
-              <button class="btn-dark" onclick="window.open('https://www.kg-mobility.com/ko/models/rexton_sports/index.html')">상세 보기</button>
-            </div>
-          </div>
+          </button>
         </div>
       </div>
     </div>
+
+    <script>
+      const carData = {
+        musso: {
+          title: "2026 KGM 무쏘",
+          sub: "준대형 트럭 · 2026",
+          img: "images/musso_2026.png",
+          price: "2,990~4,600만원",
+          launch: "2026년 1월",
+          fuel: "가솔린, 디젤",
+          power: "202~217hp",
+          torque: "38.7~45kg.m",
+          disp: "1,998~2,157cc",
+          efficiency: "복합 7.7~10.1km/ℓ",
+          capacity: "5인승",
+          warranty: "5년/10만km"
+        },
+        actyon: {
+          title: "KGM 액티언 (ACTYON)",
+          sub: "스타일리시 쿠페 SUV · 2025",
+          img: "images/20260205084448718_0LKMrM_MODEL_MC5.png",
+          price: "3,395~3,649만원",
+          launch: "2024년 8월",
+          fuel: "가솔린 1.5 터보",
+          power: "170hp",
+          torque: "28.6kg.m",
+          disp: "1,497cc",
+          efficiency: "복합 11.0km/ℓ",
+          capacity: "5인승",
+          warranty: "5년/10만km"
+        },
+        torres_evx: {
+          title: "토레스 EVX",
+          sub: "전기 SUV · 2025",
+          img: "images/20250401090321131_cuhGgT_MODEL_FL5.png",
+          price: "4,550~4,760만원",
+          launch: "2023년 9월",
+          fuel: "전기 (EV)",
+          power: "204hp (150kW)",
+          torque: "34.6kg.m",
+          disp: "-",
+          efficiency: "복합 4.7km/kWh (433km)",
+          capacity: "5인승",
+          warranty: "10년/100만km (배터리)"
+        },
+        torres_hybrid: {
+          title: "토레스 하이브리드",
+          sub: "LPG 바이퓨얼 SUV · 2025",
+          img: "images/20260220105222163_SW0fIL_MODEL_MY5.png",
+          price: "2,838~3,410만원",
+          launch: "2024년 5월",
+          fuel: "가솔린+LPG",
+          power: "170hp (가솔린 대비 95%)",
+          torque: "28.6kg.m",
+          disp: "1,497cc",
+          efficiency: "복합 8.9~11.2km/ℓ",
+          capacity: "5인승",
+          warranty: "5년/10만km"
+        },
+        rexton: {
+          title: "렉스턴 뉴 아레나",
+          sub: "프리미엄 대형 SUV · 2025",
+          img: "images/20241216060809713_01mAqh_MODEL_GL5.png",
+          price: "4,010~5,213만원",
+          launch: "2023년 5월",
+          fuel: "디젤 2.2",
+          power: "202hp",
+          torque: "45.0kg.m",
+          disp: "2,157cc",
+          efficiency: "복합 11.6km/ℓ",
+          capacity: "5/7인승",
+          warranty: "5년/10만km"
+        },
+        tivoli: {
+          title: "더 뉴 티볼리",
+          sub: "컴팩트 SUV · 2025",
+          img: "images/20260401091702753_qtOODw_MODEL_XW5.png",
+          price: "1,898~2,623만원",
+          launch: "2023년 6월",
+          fuel: "가솔린 1.5 터보",
+          power: "163hp",
+          torque: "26.5kg.m",
+          disp: "1,497cc",
+          efficiency: "복합 11.6km/ℓ",
+          capacity: "5인승",
+          warranty: "5년/10만km"
+        }
+      };
+
+      function updateLineup(id) {
+        const car = carData[id];
+        const display = document.getElementById('lineup-display');
+        
+        // Update Title & Sub
+        display.querySelector('.lineup-detail-title').innerText = car.title;
+        display.querySelector('.lineup-detail-sub').innerText = car.sub;
+        
+        // Update Gallery
+        document.getElementById('main-view-img').src = car.img;
+        
+        // Update Specs
+        const specRows = display.querySelectorAll('.spec-row span:last-child');
+        specRows[0].innerText = car.price;
+        specRows[1].innerText = car.launch;
+        specRows[2].innerText = car.fuel;
+        specRows[3].innerText = car.power;
+        specRows[4].innerText = car.torque;
+        specRows[5].innerText = car.disp;
+        specRows[6].innerText = car.efficiency;
+        specRows[7].innerText = car.capacity;
+        specRows[8].innerText = car.warranty;
+
+        // Update Sidebar Active State
+        document.querySelectorAll('.sidebar-btn').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.querySelector('.sidebar-btn-name').innerText.includes(car.title.replace('2026 KGM ', '').replace('KGM ', ''))) {
+            btn.classList.add('active');
+          }
+        });
+      }
+    </script>
 
     <!-- Social Feeds Area (Auto Crawling) -->
     <div class="feed-area">
@@ -905,9 +1116,9 @@
 
         <div class="video-nav">
           <button class="vnav-btn active" onclick="changeVideo('Oxq7YxtiUwE', this)">KGM 종합</button>
+          <button class="vnav-btn" onclick="changeVideo('YVlf1zLs9FE', this)">하이브리드</button>
           <button class="vnav-btn" onclick="changeVideo('nBDCn7RbvYM', this)">액티언</button>
           <button class="vnav-btn" onclick="changeVideo('lBlux_1u54M', this)">토레스</button>
-          <button class="vnav-btn" onclick="changeVideo('YVlf1zLs9FE', this)">하이브리드</button>
           <button class="vnav-btn" onclick="changeVideo('z2dEC99uBUM', this)">렉스턴</button>
           <button class="vnav-btn" onclick="changeVideo('TMCXOXYQEUo', this)">무쏘</button>
         </div>
@@ -922,39 +1133,54 @@
         <!-- Profile Card -->
         <div class="profile-card">
           <div class="profile-img-wrap">
-            <img src="images/profile_no_bg.png" alt="이종랑 부장">
+            <img src="images/ChatGPT Image 2026년 5월 15일 오전 11_36_09.png" alt="이종랑 부장">
           </div>
           <div class="profile-info">
-            <div class="profile-name">이종랑 부장</div>
+            <div class="profile-name">이종랑 부장 <span style="font-size:0.85rem; font-weight:600; color:var(--primary); margin-left:8px;">010-5335-8102</span></div>
             <div class="profile-title">KGM 일산중앙대리점</div>
           </div>
         </div>
 
         <div class="consult-card">
           <h2 class="consult-title">빠른 상담 신청</h2>
-          <form onsubmit="event.preventDefault();">
+          <form id="consultForm" onsubmit="submitConsult(event);">
             <div class="form-group">
               <label class="form-label">이름</label>
-              <input type="text" class="form-input" placeholder="이름을 입력해 주세요">
+              <input type="text" id="cf-name" class="form-input" placeholder="이름을 입력해 주세요" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">원하시는 차종</label>
+              <input type="text" id="cf-car" class="form-input" placeholder="예: 토레스 EVX, 무쏘 EV 등" required>
             </div>
             <div class="form-group">
               <label class="form-label">연락처</label>
-              <input type="tel" class="form-input" placeholder="010-0000-0000">
+              <input type="tel" id="cf-phone" class="form-input" placeholder="010-0000-0000" required>
             </div>
-            <button type="submit" class="btn-submit">상담 신청하기</button>
-            <p class="consult-note">상담 접수 후 평균 15분 이내에 연락드립니다.</p>
+            <button type="submit" id="cf-btn" class="btn-submit">상담 신청하기</button>
           </form>
         </div>
-        
-        <!-- Business Card Image -->
-        <div class="business-card-wrap" style="margin-bottom: 20px;">
-          <img src="images/business_card.png" alt="이종랑 부장 명함" class="business-card-img">
+      </div>
+    </div>
+
+    <!-- Info Area (Business Card & Map) -->
+    <div class="info-area">
+      <div class="info-grid">
+        <!-- Business Card -->
+        <div class="map-card" style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="section-title" style="font-size: 1.1rem; font-weight: 700; margin: 0;">디지털 명함</div>
+          <div style="height: 220px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); background: #0f172a; display: flex; align-items: center; justify-content: center;">
+            <img src="images/ChatGPT Image 2026년 5월 15일 오전 11_36_09.png" alt="이종랑 부장 명함" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="address-text">
+            <i class="fa-solid fa-address-card" style="color: var(--primary);"></i>
+            <span>KGM 일산중앙대리점 부장 이종랑 (010-5335-8102)</span>
+          </div>
         </div>
 
         <!-- Naver Map Card -->
-        <div class="map-card">
-          <div class="section-title" style="font-size: 1.1rem; margin-bottom: 12px; font-weight: 700;">찾아오시는 길</div>
-          <div class="map-box" onclick="window.open('https://map.naver.com/p/search/KGM%20%EC%9D%BC%EC%82%B0%EC%A4%91%EC%95%99%EB%8C%80%EB%A6%AC%EC%A0%90')">
+        <div class="map-card" style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="section-title" style="font-size: 1.1rem; font-weight: 700; margin: 0;">찾아오시는 길</div>
+          <div class="map-box" style="height: 220px; margin: 0;" onclick="window.open('https://map.naver.com/p/search/KGM%20%EC%9D%BC%EC%82%B0%EC%A4%91%EC%95%99%EB%8C%80%EB%A6%AC%EC%A0%90')">
             <img src="images/map_preview.png" alt="지도 미리보기">
             <div class="map-overlay">
               <i class="fa-solid fa-location-dot"></i>
@@ -962,8 +1188,8 @@
             </div>
           </div>
           <div class="address-text">
-            <i class="fa-solid fa-map-pin"></i>
-            <span>경기도 고양시 일산서구 경의로 790<br>(푸르지오 아파트 상가 1층)</span>
+            <i class="fa-solid fa-map-pin" style="color: var(--primary);"></i>
+            <span>경기도 고양시 일산서구 경의로 790 (푸르지오 상가 1층)</span>
           </div>
         </div>
       </div>
@@ -981,7 +1207,7 @@
         <style>
           .catalog-table-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 20px;
           }
@@ -1016,17 +1242,18 @@
           }
           .catalog-row-btn {
             flex: 1;
-            padding: 8px 0;
+            padding: 8px 4px;
             border: 1px solid #cbd5e1;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 3px;
             color: var(--text-main);
+            white-space: nowrap;
           }
           .catalog-row-btn:hover {
             background: #f1f5f9;
@@ -1045,8 +1272,9 @@
             <div class="catalog-car-info">
               <div class="catalog-car-name">무쏘 (렉스턴 스포츠)</div>
               <div class="catalog-row-btns">
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-book"></i> 카탈로그</button>
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1057,8 +1285,9 @@
             <div class="catalog-car-info">
               <div class="catalog-car-name">액티언 하이브리드</div>
               <div class="catalog-row-btns">
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-book"></i> 카탈로그</button>
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010014/20260430235454947_7cFEIa.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010014/20260430235455228_WmHkNV.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1069,8 +1298,9 @@
             <div class="catalog-car-info">
               <div class="catalog-car-name">토레스 하이브리드</div>
               <div class="catalog-row-btns">
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-book"></i> 카탈로그</button>
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010013/20260430235625667_FiXa8F.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010013/20260430235625923_AQULe4.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1081,8 +1311,9 @@
             <div class="catalog-car-info">
               <div class="catalog-car-name">무쏘 EV</div>
               <div class="catalog-row-btns">
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-book"></i> 카탈로그</button>
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010012/20260430235655055_wO1gBx.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010012/20260430235655306_e6Cmak.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1093,8 +1324,9 @@
             <div class="catalog-car-info">
               <div class="catalog-car-name">토레스</div>
               <div class="catalog-row-btns">
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-book"></i> 카탈로그</button>
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010008/20260430235745311_7PX9kN.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010008/20260430235745581_CaNZEt.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1105,8 +1337,9 @@
             <div class="catalog-car-info">
               <div class="catalog-car-name">토레스 EVX</div>
               <div class="catalog-row-btns">
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-book"></i> 카탈로그</button>
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010001/20260430235844001_7AvCB5.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010001/20260430235844226_I6eUJu.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1117,8 +1350,9 @@
             <div class="catalog-car-info">
               <div class="catalog-car-name">액티언 (ACTYON)</div>
               <div class="catalog-row-btns">
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-book"></i> 카탈로그</button>
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010003/20260430235958590_1nVjob.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010003/20260430235958919_M9yz3f.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1129,8 +1363,9 @@
             <div class="catalog-car-info">
               <div class="catalog-car-name">렉스턴 뉴 아레나</div>
               <div class="catalog-row-btns">
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-book"></i> 카탈로그</button>
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010005/20260501000050324_Jbm0zm.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010005/20260501000050683_nYTbqb.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1141,8 +1376,9 @@
             <div class="catalog-car-info">
               <div class="catalog-car-name">티볼리 (TIVOLI)</div>
               <div class="catalog-row-btns">
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-book"></i> 카탈로그</button>
-                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/od/promotion/catalog-download')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010006/20260501000147499_jOCGZg.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+                <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010006/20260501000147719_ysAgtj.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1263,10 +1499,54 @@
     // Video Showcase Function
     function changeVideo(id, btn) {
       document.getElementById('main-video-player').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-      
-      // Update Active Button
       document.querySelectorAll('.vnav-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+    }
+  </script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // ===== EmailJS 설정 =====
+    // 아래 3가지 값을 emailjs.com 가입 후 발급받은 값으로 교체하세요
+    const EJS_PUBLIC_KEY   = 'YOUR_PUBLIC_KEY';   // Account > API Keys
+    const EJS_SERVICE_ID   = 'YOUR_SERVICE_ID';   // Email Services > Service ID
+    const EJS_TEMPLATE_ID  = 'YOUR_TEMPLATE_ID';  // Email Templates > Template ID
+
+    emailjs.init({ publicKey: EJS_PUBLIC_KEY });
+
+    async function submitConsult(e) {
+      e.preventDefault();
+      const name  = document.getElementById('cf-name').value.trim();
+      const car   = document.getElementById('cf-car').value.trim();
+      const phone = document.getElementById('cf-phone').value.trim();
+      const btn   = document.getElementById('cf-btn');
+
+      if (!name || !car || !phone) return;
+
+      btn.disabled = true;
+      btn.textContent = '전송 중…';
+
+      try {
+        await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
+          from_name: name,
+          car_model: car,
+          phone:     phone,
+          time:      new Date().toLocaleString('ko-KR'),
+        });
+        btn.textContent = '✅ 접수 완료!';
+        btn.style.background = '#22c55e';
+        document.getElementById('consultForm').reset();
+        setTimeout(() => {
+          btn.textContent = '상담 신청하기';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      } catch (err) {
+        btn.textContent = '전송 실패 — 전화로 문의해 주세요';
+        btn.style.background = '#ef4444';
+        btn.disabled = false;
+      }
     }
   </script>
 </body>
