@@ -1504,16 +1504,8 @@
     }
   </script>
 
-  <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-    // ===== EmailJS 설정 =====
-    // 아래 3가지 값을 emailjs.com 가입 후 발급받은 값으로 교체하세요
-    const EJS_PUBLIC_KEY   = 'YOUR_PUBLIC_KEY';   // Account > API Keys
-    const EJS_SERVICE_ID   = 'YOUR_SERVICE_ID';   // Email Services > Service ID
-    const EJS_TEMPLATE_ID  = 'YOUR_TEMPLATE_ID';  // Email Templates > Template ID
-
-    emailjs.init({ publicKey: EJS_PUBLIC_KEY });
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxDses74s-yfwwJ2fl9pqswGy1tvIup26od6jmnoMtCFRmynGtqDXcOFDzz2mecdH_nBA/exec';
 
     async function submitConsult(e) {
       e.preventDefault();
@@ -1528,11 +1520,9 @@
       btn.textContent = '전송 중…';
 
       try {
-        await emailjs.send(EJS_SERVICE_ID, EJS_TEMPLATE_ID, {
-          from_name: name,
-          car_model: car,
-          phone:     phone,
-          time:      new Date().toLocaleString('ko-KR'),
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: JSON.stringify({ name, car, phone }),
         });
         btn.textContent = '✅ 접수 완료!';
         btn.style.background = '#22c55e';
