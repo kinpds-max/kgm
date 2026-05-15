@@ -1019,6 +1019,14 @@
             </div>
           </div>
 
+          <!-- Video Review Section -->
+          <div id="lineup-video-section" style="margin-top: 30px; display: none;">
+            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 12px;">현장 리뷰 영상</div>
+            <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
+              <iframe id="lineup-video-iframe" src="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+
           <!-- Color Selection Section -->
           <div class="lineup-colors" id="color-section" style="display: none;">
             <div class="section-title" style="font-size: 1.1rem; margin-bottom: 4px;">외장 컬러</div>
@@ -1136,7 +1144,14 @@
           catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf",
           price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf",
           news: "https://blog.naver.com/kcmo07",
-          real_photos: ["images/KakaoTalk_20260422_123051962.png", "images/profile_no_bg.png", "images/map_preview.png"],
+          video: "https://www.youtube.com/embed/ZFkuyD1N000",
+          real_photos: [
+            "images/무쏘스포츠/KakaoTalk_20260422_101045305_01.jpg",
+            "images/무쏘스포츠/KakaoTalk_20260422_101045305_02.jpg",
+            "images/무쏘스포츠/KakaoTalk_20260422_101045305_03.jpg",
+            "images/무쏘스포츠/KakaoTalk_20260422_101045305_04.jpg",
+            "images/무쏘스포츠/KakaoTalk_20260422_101045305_05.jpg"
+          ],
           subs: [
             "images/20260105095457_TxfO6hmj.jpg",
             "images/20260105095459_hPdXwE86.jpg",
@@ -1403,6 +1418,17 @@
         specRows[6].innerText = car.efficiency;
         specRows[7].innerText = car.capacity;
         specRows[8].innerText = car.warranty;
+
+        // Update Video
+        const videoSection = document.getElementById('lineup-video-section');
+        const videoIframe = document.getElementById('lineup-video-iframe');
+        if (car.video) {
+          videoSection.style.display = 'block';
+          videoIframe.src = car.video;
+        } else {
+          videoSection.style.display = 'none';
+          videoIframe.src = '';
+        }
 
         // Update Sidebar Active State
         document.querySelectorAll('.sidebar-btn').forEach(btn => {
