@@ -1136,6 +1136,12 @@
           price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf",
           news: "https://blog.naver.com/kcmo07",
           real_photos: ["images/KakaoTalk_20260422_123051962.png", "images/profile_no_bg.png", "images/map_preview.png"],
+          subs: [
+            "images/20260105095457_TxfO6hmj.jpg",
+            "images/20260105095459_hPdXwE86.jpg",
+            "images/20260105095537_lnFZvzCt.jpg",
+            "images/20260105095538_oF7XDypp.jpg"
+          ],
           colors: [
             { name: "울트라 마린", hex: "#1e40af", img: "images/musso_marine.png.png" },
             { name: "스페이스 블랙", hex: "#000000", img: "images/musso_black.png" },
@@ -1298,6 +1304,17 @@
 
         // Update Gallery
         document.getElementById('main-view-img').src = car.img;
+        const subsContainer = display.querySelector('.gallery-subs');
+        subsContainer.innerHTML = '';
+        if (car.subs && car.subs.length > 0) {
+          car.subs.forEach(src => {
+            subsContainer.innerHTML += `
+              <div class="gallery-sub" onclick="document.getElementById('main-view-img').src='${src}'">
+                <img src="${src}" alt="Sub View">
+              </div>
+            `;
+          });
+        }
         
         // Update Specs
         const specRows = display.querySelectorAll('.spec-row span:last-child');
