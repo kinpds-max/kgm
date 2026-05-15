@@ -1041,7 +1041,7 @@
         <div class="lineup-sidebar">
           <div class="section-title" style="margin-bottom: 12px; font-size: 1rem;">차종 선택</div>
           <div class="sidebar-list-wrap">
-            <button class="sidebar-btn active" onclick="updateLineup('musso')">
+            <button class="sidebar-btn active" data-car-id="musso" onclick="updateLineup('musso')">
               <img src="images/musso_2026.png" alt="Musso">
               <div class="sidebar-btn-info">
                 <span class="sidebar-btn-name">2026 무쏘</span>
@@ -1049,7 +1049,7 @@
               </div>
             </button>
 
-            <button class="sidebar-btn" onclick="updateLineup('actyon_hybrid')">
+            <button class="sidebar-btn" data-car-id="actyon_hybrid" onclick="updateLineup('actyon_hybrid')">
               <img src="images/20250617110206889_NchBIo_MODEL_MD5.png" alt="Actyon Hybrid">
               <div class="sidebar-btn-info">
                 <span class="sidebar-btn-name">액티언 하이브리드</span>
@@ -1057,7 +1057,7 @@
               </div>
             </button>
 
-            <button class="sidebar-btn" onclick="updateLineup('torres_hybrid')">
+            <button class="sidebar-btn" data-car-id="torres_hybrid" onclick="updateLineup('torres_hybrid')">
               <img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Torres Hybrid">
               <div class="sidebar-btn-info">
                 <span class="sidebar-btn-name">토레스 하이브리드</span>
@@ -1065,7 +1065,7 @@
               </div>
             </button>
 
-            <button class="sidebar-btn" onclick="updateLineup('musso_ev')">
+            <button class="sidebar-btn" data-car-id="musso_ev" onclick="updateLineup('musso_ev')">
               <img src="images/20250304181727107_WwqH5r_MODEL_OP5.png" alt="Musso EV">
               <div class="sidebar-btn-info">
                 <span class="sidebar-btn-name">무쏘 EV</span>
@@ -1073,7 +1073,7 @@
               </div>
             </button>
 
-            <button class="sidebar-btn" onclick="updateLineup('torres')">
+            <button class="sidebar-btn" data-car-id="torres" onclick="updateLineup('torres')">
               <img src="images/20241216061441516_rIP2Es_MODEL_MW5.png" alt="Torres">
               <div class="sidebar-btn-info">
                 <span class="sidebar-btn-name">토레스</span>
@@ -1081,7 +1081,7 @@
               </div>
             </button>
 
-            <button class="sidebar-btn" onclick="updateLineup('torres_evx')">
+            <button class="sidebar-btn" data-car-id="torres_evx" onclick="updateLineup('torres_evx')">
               <img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Torres EVX">
               <div class="sidebar-btn-info">
                 <span class="sidebar-btn-name">토레스 EVX</span>
@@ -1089,7 +1089,7 @@
               </div>
             </button>
 
-            <button class="sidebar-btn" onclick="updateLineup('actyon')">
+            <button class="sidebar-btn" data-car-id="actyon" onclick="updateLineup('actyon')">
               <img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Actyon">
               <div class="sidebar-btn-info">
                 <span class="sidebar-btn-name">액티언</span>
@@ -1097,7 +1097,7 @@
               </div>
             </button>
 
-            <button class="sidebar-btn" onclick="updateLineup('rexton')">
+            <button class="sidebar-btn" data-car-id="rexton" onclick="updateLineup('rexton')">
               <img src="images/20241216060809713_01mAqh_MODEL_GL5.png" alt="Rexton">
               <div class="sidebar-btn-info">
                 <span class="sidebar-btn-name">렉스턴 아레나</span>
@@ -1105,13 +1105,14 @@
               </div>
             </button>
 
-            <button class="sidebar-btn" onclick="updateLineup('tivoli')">
+            <button class="sidebar-btn" data-car-id="tivoli" onclick="updateLineup('tivoli')">
               <img src="images/20260401091702753_qtOODw_MODEL_XW5.png" alt="Tivoli">
               <div class="sidebar-btn-info">
                 <span class="sidebar-btn-name">더 뉴 티볼리</span>
                 <span class="sidebar-btn-price">1,898만원~</span>
               </div>
             </button>
+          </div>
           </div>
         </div>
       </div>
@@ -1374,7 +1375,7 @@
         // Update Sidebar Active State
         document.querySelectorAll('.sidebar-btn').forEach(btn => {
           btn.classList.remove('active');
-          if (btn.querySelector('.sidebar-btn-name').innerText.includes(car.title.replace('2026 KGM ', '').replace('KGM ', ''))) {
+          if (btn.getAttribute('data-car-id') === id) {
             btn.classList.add('active');
           }
         });
