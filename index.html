@@ -161,9 +161,28 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.02);
     }
     .lineup-main { display: flex; flex-direction: column; }
+    .lineup-header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+    .lineup-title-wrap { display: flex; flex-direction: column; }
     .lineup-detail-title { font-size: 2rem; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
-    .lineup-detail-sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 24px; }
+    .lineup-detail-sub { font-size: 1rem; color: var(--text-muted); }
     
+    .lineup-detail-btns { display: flex; gap: 10px; }
+    .lineup-action-btn {
+      padding: 10px 18px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: #fff;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .lineup-action-btn:hover { background: #f8fafc; border-color: var(--primary); color: var(--primary); }
+    .lineup-action-btn i { font-size: 0.9rem; }
+
     .lineup-gallery {
       display: grid;
       grid-template-columns: 1.8fr 1fr;
@@ -854,8 +873,17 @@
       <div class="lineup-container">
         <!-- Main Content (Left) -->
         <div class="lineup-main" id="lineup-display">
-          <div class="lineup-detail-title">2026 KGM 무쏘</div>
-          <div class="lineup-detail-sub">준대형 트럭 · 2026</div>
+          <div class="lineup-header-row">
+            <div class="lineup-title-wrap">
+              <div class="lineup-detail-title">2026 KGM 무쏘</div>
+              <div class="lineup-detail-sub">준대형 트럭 · 2026</div>
+            </div>
+            <div class="lineup-detail-btns">
+              <button class="lineup-action-btn" id="btn-catalog" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+              <button class="lineup-action-btn" id="btn-price" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+              <button class="lineup-action-btn" id="btn-news" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
+            </div>
+          </div>
 
           <div class="lineup-gallery">
             <div class="gallery-big">
@@ -960,7 +988,10 @@
           disp: "1,998~2,157cc",
           efficiency: "복합 7.7~10.1km/ℓ",
           capacity: "5인승",
-          warranty: "5년/10만km"
+          warranty: "5년/10만km",
+          catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf",
+          price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf",
+          news: "https://blog.naver.com/kcmo07"
         },
         actyon: {
           title: "KGM 액티언 (ACTYON)",
@@ -974,7 +1005,10 @@
           disp: "1,497cc",
           efficiency: "복합 11.0km/ℓ",
           capacity: "5인승",
-          warranty: "5년/10만km"
+          warranty: "5년/10만km",
+          catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010003/20260430235958590_1nVjob.pdf",
+          price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010003/20260430235958919_M9yz3f.pdf",
+          news: "https://blog.naver.com/kcmo07"
         },
         torres_evx: {
           title: "토레스 EVX",
@@ -988,7 +1022,10 @@
           disp: "-",
           efficiency: "복합 4.7km/kWh (433km)",
           capacity: "5인승",
-          warranty: "10년/100만km (배터리)"
+          warranty: "10년/100만km (배터리)",
+          catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010001/20260430235844001_7AvCB5.pdf",
+          price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010001/20260430235844226_I6eUJu.pdf",
+          news: "https://blog.naver.com/kcmo07"
         },
         torres_hybrid: {
           title: "토레스 하이브리드",
@@ -1002,7 +1039,10 @@
           disp: "1,497cc",
           efficiency: "복합 8.9~11.2km/ℓ",
           capacity: "5인승",
-          warranty: "5년/10만km"
+          warranty: "5년/10만km",
+          catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010013/20260430235625667_FiXa8F.pdf",
+          price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010013/20260430235625923_AQULe4.pdf",
+          news: "https://blog.naver.com/kcmo07"
         },
         rexton: {
           title: "렉스턴 뉴 아레나",
@@ -1016,7 +1056,10 @@
           disp: "2,157cc",
           efficiency: "복합 11.6km/ℓ",
           capacity: "5/7인승",
-          warranty: "5년/10만km"
+          warranty: "5년/10만km",
+          catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010005/20260501000050324_Jbm0zm.pdf",
+          price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010005/20260501000050683_nYTbqb.pdf",
+          news: "https://blog.naver.com/kcmo07"
         },
         tivoli: {
           title: "더 뉴 티볼리",
@@ -1030,7 +1073,10 @@
           disp: "1,497cc",
           efficiency: "복합 11.6km/ℓ",
           capacity: "5인승",
-          warranty: "5년/10만km"
+          warranty: "5년/10만km",
+          catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010006/20260501000147499_jOCGZg.pdf",
+          price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010006/20260501000147719_ysAgtj.pdf",
+          news: "https://blog.naver.com/kcmo07"
         }
       };
 
@@ -1042,6 +1088,11 @@
         display.querySelector('.lineup-detail-title').innerText = car.title;
         display.querySelector('.lineup-detail-sub').innerText = car.sub;
         
+        // Update Buttons
+        document.getElementById('btn-catalog').onclick = () => window.open(car.catalog);
+        document.getElementById('btn-price').onclick = () => window.open(car.price_list);
+        document.getElementById('btn-news').onclick = () => window.open(car.news);
+
         // Update Gallery
         document.getElementById('main-view-img').src = car.img;
         
@@ -1505,7 +1556,7 @@
   </script>
 
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxDses74s-yfwwJ2fl9pqswGy1tvIup26od6jmnoMtCFRmynGtqDXcOFDzz2mecdH_nBA/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzVDwj9FjeLWIh-EEYApcISf7O4QIzOMyN5ZaW9JQM55Z3HDudrTblX8YbUxLLek4iuXw/exec';
 
     async function submitConsult(e) {
       e.preventDefault();
