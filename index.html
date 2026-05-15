@@ -259,6 +259,34 @@
     .sidebar-btn.active { background: var(--dark-bg); color: #fff; border-color: var(--dark-bg); box-shadow: 0 10px 20px rgba(15,23,42,0.1); }
     .sidebar-btn.active .sidebar-btn-price { color: var(--primary); }
 
+    .lineup-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sidebar-list-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sidebar-btn {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      text-align: left;
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .sidebar-btn img { width: 60px; height: auto; flex-shrink: 0; }
+    .sidebar-btn-info { display: flex; flex-direction: column; }
+    .sidebar-btn-name { font-size: 0.95rem; font-weight: 700; }
+    .sidebar-btn-price { font-size: 0.8rem; color: var(--primary); font-weight: 600; }
+    .sidebar-btn:hover { background: #fff; border-color: var(--primary); transform: translateX(4px); }
+
     /* Mobile Responsive Polish */
     @media (max-width: 1024px) {
       .lineup-container { grid-template-columns: 1fr; padding: 20px; gap: 24px; }
@@ -274,13 +302,10 @@
       .gallery-sub img { padding: 8px; }
 
       .lineup-sidebar { 
-        order: -1; /* Move car selection to top on mobile */
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
+        order: -1; 
       }
       .sidebar-list-wrap {
-        display: flex;
+        flex-direction: row;
         overflow-x: auto;
         gap: 12px;
         padding-bottom: 8px;
@@ -291,6 +316,7 @@
         min-width: 240px; 
         flex-shrink: 0; 
         padding: 12px; 
+        width: auto;
       }
 
       .lineup-specs-grid { grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 24px; }
@@ -458,17 +484,18 @@
     .btn-submit:hover { background: var(--primary-hover); transform: translateY(-1px); }
     .consult-note { font-size: 0.75rem; color: #64748b; text-align: center; }
 
-    /* Achievement Banner */
+    /* Achievement Banner (Light Version) */
     .achieve-banner {
-      background: #0f172a;
+      background: #f8fafc;
       border-radius: var(--radius-lg);
       padding: 32px 48px;
-      color: #fff;
+      color: var(--text-main);
       display: flex;
       justify-content: space-around;
       align-items: center;
       gap: 40px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      border: 1px solid var(--border);
       margin-bottom: 8px;
     }
     .achieve-item {
@@ -480,16 +507,16 @@
     }
     .achieve-icon {
       font-size: 1.8rem;
-      color: #fbbf24; /* Gold */
+      color: #f59e0b; /* Warmer Gold */
     }
     .achieve-title {
       font-size: 0.85rem;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-main);
     }
     .achieve-desc {
       font-size: 0.75rem;
-      color: #94a3b8;
+      color: var(--text-muted);
       line-height: 1.4;
     }
 
