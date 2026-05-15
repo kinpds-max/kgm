@@ -881,7 +881,6 @@
             <div class="lineup-detail-btns">
               <button class="lineup-action-btn" id="btn-catalog" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
               <button class="lineup-action-btn" id="btn-price" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
-              <button class="lineup-action-btn" id="btn-news" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
             </div>
           </div>
 
@@ -939,6 +938,22 @@
             </div>
           </button>
 
+          <button class="sidebar-btn" onclick="updateLineup('actyon_hybrid')">
+            <img src="images/20250617110206889_NchBIo_MODEL_MD5.png" alt="Actyon Hybrid">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">액티언 하이브리드</span>
+              <span class="sidebar-btn-price">3,745만원~</span>
+            </div>
+          </button>
+
+          <button class="sidebar-btn" onclick="updateLineup('torres')">
+            <img src="images/20241216061441516_rIP2Es_MODEL_MW5.png" alt="Torres">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">토레스</span>
+              <span class="sidebar-btn-price">2,666만원~</span>
+            </div>
+          </button>
+
           <button class="sidebar-btn" onclick="updateLineup('torres_evx')">
             <img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Torres EVX">
             <div class="sidebar-btn-info">
@@ -952,6 +967,14 @@
             <div class="sidebar-btn-info">
               <span class="sidebar-btn-name">토레스 하이브리드</span>
               <span class="sidebar-btn-price">2,838만원~</span>
+            </div>
+          </button>
+
+          <button class="sidebar-btn" onclick="updateLineup('musso_ev')">
+            <img src="images/20250304181727107_WwqH5r_MODEL_OP5.png" alt="Musso EV">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">무쏘 EV</span>
+              <span class="sidebar-btn-price">4,450만원~</span>
             </div>
           </button>
 
@@ -1010,6 +1033,40 @@
           price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010003/20260430235958919_M9yz3f.pdf",
           news: "https://blog.naver.com/kcmo07"
         },
+        actyon_hybrid: {
+          title: "액티언 하이브리드",
+          sub: "쿠페형 하이브리드 SUV · 2025",
+          img: "images/20250617110206889_NchBIo_MODEL_MD5.png",
+          price: "3,745~3,991만원",
+          launch: "2024년 10월",
+          fuel: "가솔린 하이브리드",
+          power: "합산 170hp 이상",
+          torque: "28.6kg.m (엔진)",
+          disp: "1,497cc",
+          efficiency: "복합 15.0km/ℓ (예정)",
+          capacity: "5인승",
+          warranty: "5년/10만km",
+          catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010014/20260430235454947_7cFEIa.pdf",
+          price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010014/20260430235455228_WmHkNV.pdf",
+          news: "https://blog.naver.com/kcmo07"
+        },
+        torres: {
+          title: "토레스 (TORRES)",
+          sub: "정통 SUV의 귀환 · 2025",
+          img: "images/20241216061441516_rIP2Es_MODEL_MW5.png",
+          price: "2,666~3,551만원",
+          launch: "2022년 7월",
+          fuel: "가솔린 1.5 터보",
+          power: "170hp",
+          torque: "28.6kg.m",
+          disp: "1,497cc",
+          efficiency: "복합 11.2km/ℓ",
+          capacity: "5인승",
+          warranty: "5년/10만km",
+          catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010008/20260430235745311_7PX9kN.pdf",
+          price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010008/20260430235745581_CaNZEt.pdf",
+          news: "https://blog.naver.com/kcmo07"
+        },
         torres_evx: {
           title: "토레스 EVX",
           sub: "전기 SUV · 2025",
@@ -1042,6 +1099,23 @@
           warranty: "5년/10만km",
           catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010013/20260430235625667_FiXa8F.pdf",
           price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010013/20260430235625923_AQULe4.pdf",
+          news: "https://blog.naver.com/kcmo07"
+        },
+        musso_ev: {
+          title: "무쏘 EV (전기 트럭)",
+          sub: "미래형 전기 픽업 · 2025",
+          img: "images/20250304181727107_WwqH5r_MODEL_OP5.png",
+          price: "4,450만원~ (보조금 미적용)",
+          launch: "2024년 12월",
+          fuel: "전기 (EV)",
+          power: "204hp (150kW)",
+          torque: "34.6kg.m",
+          disp: "-",
+          efficiency: "복합 4.5km/kWh (400km 이상)",
+          capacity: "5인승",
+          warranty: "10년/100만km (배터리)",
+          catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010012/20260430235655055_wO1gBx.pdf",
+          price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010012/20260430235655306_e6Cmak.pdf",
           news: "https://blog.naver.com/kcmo07"
         },
         rexton: {
@@ -1091,7 +1165,6 @@
         // Update Buttons
         document.getElementById('btn-catalog').onclick = () => window.open(car.catalog);
         document.getElementById('btn-price').onclick = () => window.open(car.price_list);
-        document.getElementById('btn-news').onclick = () => window.open(car.news);
 
         // Update Gallery
         document.getElementById('main-view-img').src = car.img;
@@ -1293,18 +1366,17 @@
           }
           .catalog-row-btn {
             flex: 1;
-            padding: 8px 4px;
+            padding: 8px 0;
             border: 1px solid #cbd5e1;
             border-radius: 4px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
             background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 3px;
+            gap: 4px;
             color: var(--text-main);
-            white-space: nowrap;
           }
           .catalog-row-btn:hover {
             background: #f1f5f9;
@@ -1325,7 +1397,6 @@
               <div class="catalog-row-btns">
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
-                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1338,7 +1409,6 @@
               <div class="catalog-row-btns">
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010014/20260430235454947_7cFEIa.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010014/20260430235455228_WmHkNV.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
-                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1351,7 +1421,6 @@
               <div class="catalog-row-btns">
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010013/20260430235625667_FiXa8F.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010013/20260430235625923_AQULe4.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
-                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1364,7 +1433,6 @@
               <div class="catalog-row-btns">
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010012/20260430235655055_wO1gBx.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010012/20260430235655306_e6Cmak.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
-                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1377,7 +1445,6 @@
               <div class="catalog-row-btns">
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010008/20260430235745311_7PX9kN.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010008/20260430235745581_CaNZEt.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
-                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1390,7 +1457,6 @@
               <div class="catalog-row-btns">
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010001/20260430235844001_7AvCB5.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010001/20260430235844226_I6eUJu.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
-                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1403,7 +1469,6 @@
               <div class="catalog-row-btns">
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010003/20260430235958590_1nVjob.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010003/20260430235958919_M9yz3f.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
-                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1416,7 +1481,6 @@
               <div class="catalog-row-btns">
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010005/20260501000050324_Jbm0zm.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010005/20260501000050683_nYTbqb.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
-                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1429,7 +1493,6 @@
               <div class="catalog-row-btns">
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010006/20260501000147499_jOCGZg.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
                 <button class="catalog-row-btn" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010006/20260501000147719_ysAgtj.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
-                <button class="catalog-row-btn" onclick="window.open('https://blog.naver.com/kcmo07')"><i class="fa-solid fa-image"></i> 카드뉴스</button>
               </div>
             </div>
           </div>
@@ -1574,7 +1637,8 @@
         await fetch(SCRIPT_URL, {
           method: 'POST',
           mode: 'no-cors',
-          body: JSON.stringify({ name, car, phone }),
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ name, car, phone }),
         });
         btn.textContent = '✅ 접수 완료!';
         btn.style.background = '#22c55e';
