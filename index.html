@@ -1859,19 +1859,19 @@
 
   <!-- Mobile Bottom Nav -->
   <nav class="bottom-nav">
-    <a href="javascript:void(0)" class="bnav-item active" data-tab="dashboard" onclick="switchTab('dashboard')">
+    <a href="javascript:void(0)" class="bnav-item active" data-tab="dashboard" onclick="switchTab('dashboard', true)">
       <i class="fa-solid fa-border-all"></i>
       <span>대시보드</span>
     </a>
-    <a href="javascript:void(0)" class="bnav-item" data-tab="estimate" onclick="switchTab('estimate')">
+    <a href="javascript:void(0)" class="bnav-item" data-tab="estimate" onclick="switchTab('estimate', true)">
       <i class="fa-solid fa-mobile-screen"></i>
       <span>온라인 견적</span>
     </a>
-    <a href="javascript:void(0)" class="bnav-item" data-tab="vehicles" onclick="switchTab('vehicles')">
+    <a href="javascript:void(0)" class="bnav-item" data-tab="vehicles" onclick="switchTab('vehicles', true)">
       <i class="fa-solid fa-chart-line"></i>
       <span>차량 정보</span>
     </a>
-    <a href="javascript:void(0)" class="bnav-item" data-tab="service" onclick="switchTab('service')">
+    <a href="javascript:void(0)" class="bnav-item" data-tab="service" onclick="switchTab('service', true)">
       <i class="fa-solid fa-wrench"></i>
       <span>고객 서비스</span>
     </a>
@@ -1994,13 +1994,13 @@
   <!-- Mobile Tab Navigation Control Script -->
   <script>
     const sections = {
-      dashboard: ['.video-area', '.info-area', '.banner-area'],
+      dashboard: ['.video-area', '.consult-area', '.info-area', '.banner-area'],
       estimate: ['.consult-area'],
       vehicles: ['.lineup-area', '.catalog-area'],
       service: ['.feed-area', '.history-area', '.gallery-area']
     };
 
-    function switchTab(tabId) {
+    function switchTab(tabId, isClick = false) {
       // Update active nav items
       document.querySelectorAll('.bnav-item').forEach(item => {
         item.classList.remove('active');
@@ -2017,13 +2017,16 @@
             if (el) {
               if (key === tabId) {
                 el.style.display = 'block';
-              } else {
+              } else if (!sections[tabId] || !sections[tabId].includes(selector)) {
+                // Only hide if the element is NOT part of the currently active tab's selectors
                 el.style.display = 'none';
               }
             }
           });
         });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (isClick) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
       } else {
         // Reset styles for desktop (make everything visible)
         Object.keys(sections).forEach(key => {
@@ -2036,6 +2039,7 @@
     }
 
     // Run initially and handle resize events
+    let lastWidth = window.innerWidth;
     document.addEventListener("DOMContentLoaded", () => {
       const activeNav = document.querySelector('.bnav-item.active');
       if (activeNav) {
@@ -2045,6 +2049,9 @@
     });
 
     window.addEventListener('resize', () => {
+      if (window.innerWidth === lastWidth) return; // Skip height-only changes (like mobile address bar toggles)
+      lastWidth = window.innerWidth;
+
       if (window.innerWidth > 768) {
         Object.keys(sections).forEach(key => {
           sections[key].forEach(selector => {
