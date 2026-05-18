@@ -1980,7 +1980,7 @@
       });
 
       // Show/hide sections on mobile
-      if (window.innerWidth <= 1024) {
+      if (window.innerWidth <= 768) {
         Object.keys(sections).forEach(key => {
           sections[key].forEach(selector => {
             const el = document.querySelector(selector);
@@ -2015,7 +2015,7 @@
     });
 
     window.addEventListener('resize', () => {
-      if (window.innerWidth > 1024) {
+      if (window.innerWidth > 768) {
         Object.keys(sections).forEach(key => {
           sections[key].forEach(selector => {
             const el = document.querySelector(selector);
