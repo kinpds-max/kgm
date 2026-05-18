@@ -26,6 +26,7 @@
       background-color: var(--bg);
       color: var(--text-main);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     a { text-decoration: none; color: inherit; }
     button { border: none; background: none; cursor: pointer; font-family: inherit; }
@@ -319,31 +320,57 @@
     .sidebar-btn img { width: 60px; height: auto; flex-shrink: 0; }
     .sidebar-btn-info { display: flex; flex-direction: column; }
     .sidebar-btn-name { font-size: 0.95rem; font-weight: 700; }
-    .sidebar-btn-price { font-size: 0.8rem; color: var(--primary); font-weight: 600; }
     .sidebar-btn:hover { background: #fff; border-color: var(--primary); transform: translateX(4px); }
 
     /* Mobile Responsive Polish */
     @media (max-width: 1024px) {
-      .lineup-container { grid-template-columns: 1fr; padding: 20px; gap: 24px; }
+      .lineup-container { 
+        grid-template-columns: 1fr; 
+        padding: 20px; 
+        gap: 24px; 
+        min-width: 0;
+        overflow: hidden;
+      }
+      .lineup-main { 
+        min-width: 0; 
+        overflow: hidden;
+      }
       .lineup-header-row { flex-direction: column; gap: 16px; align-items: flex-start; }
       .lineup-detail-btns { width: 100%; justify-content: flex-start; }
       .lineup-action-btn { flex: 1; justify-content: center; padding: 12px; font-size: 0.8rem; }
       
-      .lineup-gallery { grid-template-columns: 1fr; gap: 8px; }
+      .lineup-gallery { grid-template-columns: 1fr; gap: 8px; min-width: 0; overflow: hidden; }
       .gallery-big { height: 280px; }
       .gallery-big img { padding: 20px; }
-      .gallery-subs { grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr; height: 80px; gap: 8px; }
-      .gallery-sub { height: 80px; }
+      
+      .gallery-subs { 
+        display: flex;
+        overflow-x: auto;
+        gap: 8px;
+        height: 80px;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+      }
+      .gallery-subs::-webkit-scrollbar { display: none; }
+      .gallery-sub { 
+        width: 80px;
+        height: 80px; 
+        flex-shrink: 0;
+      }
       .gallery-sub img { padding: 8px; }
 
       .lineup-sidebar { 
         order: -1; 
+        min-width: 0;
+        overflow: hidden;
       }
       .sidebar-list-wrap {
+        display: flex;
         flex-direction: row;
         overflow-x: auto;
         gap: 12px;
         padding-bottom: 8px;
+        width: 100%;
         -webkit-overflow-scrolling: touch;
       }
       .sidebar-list-wrap::-webkit-scrollbar { display: none; }
@@ -1802,19 +1829,19 @@
 
   <!-- Mobile Bottom Nav -->
   <nav class="bottom-nav">
-    <a href="#" class="bnav-item">
+    <a href="javascript:void(0)" class="bnav-item active" data-tab="dashboard" onclick="switchTab('dashboard')">
       <i class="fa-solid fa-border-all"></i>
       <span>대시보드</span>
     </a>
-    <a href="#" class="bnav-item">
+    <a href="javascript:void(0)" class="bnav-item" data-tab="estimate" onclick="switchTab('estimate')">
       <i class="fa-solid fa-mobile-screen"></i>
       <span>온라인 견적</span>
     </a>
-    <a href="#" class="bnav-item">
+    <a href="javascript:void(0)" class="bnav-item" data-tab="vehicles" onclick="switchTab('vehicles')">
       <i class="fa-solid fa-chart-line"></i>
       <span>차량 정보</span>
     </a>
-    <a href="#" class="bnav-item active">
+    <a href="javascript:void(0)" class="bnav-item" data-tab="service" onclick="switchTab('service')">
       <i class="fa-solid fa-wrench"></i>
       <span>고객 서비스</span>
     </a>
@@ -1932,6 +1959,77 @@
         btn.disabled = false;
       }
     }
+  </script>
+
+  <!-- Mobile Tab Navigation Control Script -->
+  <script>
+    const sections = {
+      dashboard: ['.video-area', '.info-area', '.banner-area'],
+      estimate: ['.consult-area'],
+      vehicles: ['.lineup-area', '.catalog-area'],
+      service: ['.feed-area', '.history-area', '.gallery-area']
+    };
+
+    function switchTab(tabId) {
+      // Update active nav items
+      document.querySelectorAll('.bnav-item').forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-tab') === tabId) {
+          item.classList.add('active');
+        }
+      });
+
+      // Show/hide sections on mobile
+      if (window.innerWidth <= 1024) {
+        Object.keys(sections).forEach(key => {
+          sections[key].forEach(selector => {
+            const el = document.querySelector(selector);
+            if (el) {
+              if (key === tabId) {
+                el.style.display = 'block';
+              } else {
+                el.style.display = 'none';
+              }
+            }
+          });
+        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        // Reset styles for desktop (make everything visible)
+        Object.keys(sections).forEach(key => {
+          sections[key].forEach(selector => {
+            const el = document.querySelector(selector);
+            if (el) el.style.display = '';
+          });
+        });
+      }
+    }
+
+    // Run initially and handle resize events
+    document.addEventListener("DOMContentLoaded", () => {
+      const activeNav = document.querySelector('.bnav-item.active');
+      if (activeNav) {
+        const tabId = activeNav.getAttribute('data-tab');
+        switchTab(tabId);
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1024) {
+        Object.keys(sections).forEach(key => {
+          sections[key].forEach(selector => {
+            const el = document.querySelector(selector);
+            if (el) el.style.display = '';
+          });
+        });
+      } else {
+        const activeNav = document.querySelector('.bnav-item.active');
+        if (activeNav) {
+          const tabId = activeNav.getAttribute('data-tab');
+          switchTab(tabId);
+        }
+      }
+    });
   </script>
 </body>
 </html>
