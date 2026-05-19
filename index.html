@@ -2044,11 +2044,15 @@
           items.forEach(item => {
             const dateStr = item.pubDate ? item.pubDate.split(' ')[0] : '';
             let thumbUrl = item.thumbnail;
-            
+
             // Extract image from description if thumbnail is empty (common in Naver Blog RSS)
             if (!thumbUrl && item.description) {
-              const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
+              const imgMatch = item.description.match(/<img[^>]+src=["']([^"'>]+)["']/);
               if (imgMatch) thumbUrl = imgMatch[1];
+            }
+            // Naver blocks hotlinking — proxy through weserv.nl to bypass
+            if (thumbUrl && (thumbUrl.includes('pstatic.net') || thumbUrl.includes('naver.net') || thumbUrl.includes('naver.com'))) {
+              thumbUrl = `https://images.weserv.nl/?url=${encodeURIComponent(thumbUrl)}&w=200&h=120&fit=cover`;
             }
             if (!thumbUrl) thumbUrl = 'https://via.placeholder.com/100x60/eef2f6/94a3b8?text=KGM';
 
