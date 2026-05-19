@@ -465,8 +465,9 @@
       .lineup-action-btn { flex: 1; justify-content: center; padding: 12px; font-size: 0.8rem; }
       
       .lineup-gallery { grid-template-columns: 1fr; gap: 8px; min-width: 0; overflow: hidden; }
-      .gallery-big { height: 280px; }
-      .gallery-big img { padding: 8px; }
+      .gallery-big { height: auto; display: block; overflow: visible; }
+      .gallery-big img { height: 220px; width: 100%; object-fit: contain; padding: 8px; display: block; }
+      #color-section { position: static !important; box-shadow: none !important; border-radius: 0 !important; backdrop-filter: none !important; background: #f8fafc !important; }
       .gallery-right { gap: 8px; }
 
       .gallery-subs {
@@ -981,6 +982,7 @@
       .consult-card { background: var(--card-bg); color: var(--text-main); border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.03); padding: 24px; }
       .consult-title { color: var(--text-main); font-size: 1.2rem; }
       .profile-name-text { color: var(--text-main) !important; }
+      .profile-phone-text { color: #1e3a8e !important; }
       .profile-header-row { border-bottom-color: var(--border) !important; }
       .consult-desc { display: none; }
       .form-label { color: var(--text-main); font-weight: 600; }
@@ -1771,7 +1773,7 @@
             </div>
             <div>
               <div class="profile-name-text" style="font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: 3px;">이종랑 부장</div>
-              <div style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 2px;">010-5335-8102</div>
+              <div class="profile-phone-text" style="font-size: 0.95rem; font-weight: 700; color: #1e3a8e; margin-bottom: 2px;">010-5335-8102</div>
               <div style="font-size: 0.8rem; color: #94a3b8;">KGM 일산중앙대리점</div>
             </div>
           </div>
@@ -2027,7 +2029,7 @@
   <nav class="bottom-nav">
     <a href="javascript:void(0)" class="bnav-item active" data-tab="dashboard" onclick="switchTab('dashboard', true)">
       <i class="fa-solid fa-border-all"></i>
-      <span>대시보드</span>
+      <span>첫화면</span>
     </a>
     <a href="javascript:void(0)" class="bnav-item" data-tab="vehicles" onclick="switchTab('vehicles', true)">
       <i class="fa-solid fa-car"></i>
