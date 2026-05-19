@@ -1222,16 +1222,16 @@
                 <div class="gallery-sub" onclick="document.getElementById('main-view-img').src='images/20260105095538_oF7XDypp.jpg'"><img src="images/20260105095538_oF7XDypp.jpg" alt="Sub 3"></div>
                 <div class="gallery-sub" onclick="document.getElementById('main-view-img').src='images/무쏘스포츠/KakaoTalk_20260422_101045305_10.jpg'"><img src="images/무쏘스포츠/KakaoTalk_20260422_101045305_10.jpg" alt="Sub 4"></div>
               </div>
-              <!-- 제목 + 카탈로그/가격표 (사진 하단, 두 줄) -->
-              <div class="lineup-title-wrap" style="padding: 10px 12px 8px; border-top: 1px solid var(--border); background: #ffffff; border-radius: 0 0 var(--radius-md) 0; display: flex; flex-direction: column; flex: 1; overflow: hidden;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <div class="lineup-detail-title" style="font-size: 1rem; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 1;">2026 KGM 무쏘</div>
-                  <div style="display: flex; gap: 6px; flex-shrink: 0; margin-left: auto;">
-                    <button class="lineup-action-btn" id="btn-catalog" style="padding: 5px 9px; font-size: 0.75rem;" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
-                    <button class="lineup-action-btn" id="btn-price" style="padding: 5px 9px; font-size: 0.75rem;" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
-                  </div>
+              <!-- 제목 + 카탈로그/가격표 -->
+              <div class="lineup-title-wrap" style="padding: 10px 12px 8px; border-top: 1px solid var(--border); background: #ffffff; border-radius: 0 0 var(--radius-md) 0; display: flex; flex-direction: row; align-items: center; flex: 1; overflow: hidden; gap: 8px;">
+                <div style="flex: 1; min-width: 0;">
+                  <div class="lineup-detail-title" style="font-size: 1rem; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">2026 KGM 무쏘</div>
+                  <div class="lineup-detail-sub" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; white-space: nowrap;">준대형 트럭 · 2026</div>
                 </div>
-                <div class="lineup-detail-sub" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 3px;">준대형 트럭 · 2026</div>
+                <div style="display: flex; gap: 6px; flex-shrink: 0;">
+                  <button class="lineup-action-btn" id="btn-catalog" style="padding: 5px 9px; font-size: 0.75rem;" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+                  <button class="lineup-action-btn" id="btn-price" style="padding: 5px 9px; font-size: 0.75rem;" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                </div>
               </div>
             </div>
           </div>
@@ -1368,6 +1368,7 @@
           catalog: "https://www.kg-mobility.com/attached/contents/display/file/200000200010014/20260430235454947_7cFEIa.pdf",
           price_list: "https://www.kg-mobility.com/attached/contents/display/file/200000200010014/20260430235455228_WmHkNV.pdf",
           news: "https://blog.naver.com/kcmo07",
+          video: "https://www.youtube.com/embed/IdltTDnxY7s",
           subs: [
             "images/20250619095002_Z7Mfs9ub.jpg",
             "images/20250619095009_qMn5mpCT.jpg",
@@ -2106,7 +2107,7 @@
   </script>
 
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5bMppsx_8H_HBeznKa2SPWpuFpLRFA1vQS8aMKZdGkTFCplShHh2YjTfOHO6yhMN5rQ/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyYUoDILCUCyaIUg28nIHIFMnI3GPkiHwOJFgZvn3NyI2bIhsb_PTRX-d6XnMu8fFRi6A/exec';
 
     async function submitConsult(e) {
       e.preventDefault();
