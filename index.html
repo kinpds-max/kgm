@@ -51,6 +51,41 @@
     a { text-decoration: none; color: inherit; }
     button { border: none; background: none; cursor: pointer; font-family: inherit; }
     
+    /* Info Bar */
+    .info-bar {
+      background: var(--dark-bg);
+      color: #fff;
+      padding: 10px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 101;
+      border-bottom: 1px solid rgba(0,229,255,0.15);
+    }
+    .info-bar-inner {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      max-width: 1400px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0 20px 0 0;
+    }
+    .info-item:not(:last-child) {
+      padding-right: 20px;
+      margin-right: 20px;
+      border-right: 1px solid rgba(255,255,255,0.2);
+    }
+    .info-item i { color: var(--primary); font-size: 0.85rem; }
+    .info-item a { color: #fff; }
+    .info-item a:hover { color: var(--primary); }
+
     /* Topnav */
     .topnav {
       background: var(--card-bg);
@@ -800,9 +835,12 @@
     /* Bottom Nav (Mobile) */
     .bottom-nav { display: none; }
 
-    /* 카카오 플로팅 버튼 모바일 위치 */
+    /* 플로팅 버튼 모바일 위치 */
     @media (max-width: 768px) {
       #kakao-float { bottom: calc(70px + 12px + env(safe-area-inset-bottom, 0px)); right: 16px; }
+      #phone-float { bottom: calc(70px + 12px + 56px + 12px + env(safe-area-inset-bottom, 0px)); right: 16px; }
+      .info-bar { padding: 8px 16px; }
+      .info-item { font-size: 0.78rem; }
     }
     
     /* Mobile Header */
@@ -922,6 +960,24 @@
   </style>
 </head>
 <body>
+
+  <!-- 상단 정보 바 -->
+  <div class="info-bar">
+    <div class="info-bar-inner">
+      <div class="info-item">
+        <i class="fa-solid fa-user"></i>
+        <span>이종랑 부장</span>
+      </div>
+      <div class="info-item">
+        <i class="fa-solid fa-phone"></i>
+        <a href="tel:010-5335-8102">010-5335-8102</a>
+      </div>
+      <div class="info-item">
+        <i class="fa-solid fa-building"></i>
+        <span>KGM 일산중앙대리점</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Desktop Topnav (Hidden) -->
   <nav class="topnav" style="display: none;">
@@ -2172,6 +2228,24 @@
       </div>
     </div>
   </div>
+
+  <!-- 전화 플로팅 버튼 -->
+  <a href="tel:010-5335-8102" id="phone-float"
+     style="
+       position: fixed; bottom: 96px; right: 24px; z-index: 9999;
+       width: 56px; height: 56px; border-radius: 50%;
+       background: #16a34a;
+       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;
+       box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+       transition: transform 0.2s, box-shadow 0.2s;
+       color: #fff;
+     "
+     onmouseover="this.style.transform='scale(1.08)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.22)'"
+     onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.18)'"
+     aria-label="전화 상담">
+    <i class="fa-solid fa-phone" style="font-size: 1.2rem;"></i>
+    <span style="font-size: 0.55rem; font-weight: 700; letter-spacing: -0.3px;">통화</span>
+  </a>
 
   <!-- 카카오 채널 플로팅 버튼 -->
   <a href="https://pf.kakao.com/_ButxbX" target="_blank" rel="noopener" id="kakao-float"
