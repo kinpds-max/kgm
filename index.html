@@ -799,6 +799,11 @@
 
     /* Bottom Nav (Mobile) */
     .bottom-nav { display: none; }
+
+    /* 카카오 플로팅 버튼 모바일 위치 */
+    @media (max-width: 768px) {
+      #kakao-float { bottom: calc(70px + 12px + env(safe-area-inset-bottom, 0px)); right: 16px; }
+    }
     
     /* Mobile Header */
     .mobile-header { display: none; }
@@ -2132,5 +2137,24 @@
       </div>
     </div>
   </div>
+
+  <!-- 카카오 채널 플로팅 버튼 -->
+  <a href="https://pf.kakao.com/_ButxbX" target="_blank" rel="noopener" id="kakao-float"
+     style="
+       position: fixed; bottom: 28px; right: 24px; z-index: 9999;
+       width: 56px; height: 56px; border-radius: 50%;
+       background: #FEE500;
+       display: flex; align-items: center; justify-content: center;
+       box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+       transition: transform 0.2s, box-shadow 0.2s;
+     "
+     onmouseover="this.style.transform='scale(1.08)';this.style.boxShadow='0 8px 24px rgba(0,0,0,0.22)'"
+     onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.18)'"
+     aria-label="카카오톡 채널 상담">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="#3A1D1D">
+      <path d="M12 2C6.477 2 2 5.813 2 10.5c0 2.91 1.713 5.48 4.337 7.02L5.25 21.5l4.607-2.398C10.453 19.36 11.218 19.5 12 19.5c5.523 0 10-3.813 10-8.5S17.523 2 12 2z"/>
+    </svg>
+  </a>
+
 </body>
 </html>
