@@ -1642,6 +1642,15 @@
               <label class="form-label">연락처</label>
               <input type="tel" id="cf-phone" class="form-input" placeholder="010-0000-0000" required>
             </div>
+            <div class="form-group" style="margin-top: 12px; margin-bottom: 20px;">
+              <label class="checkbox-label" style="display: flex; align-items: flex-start; gap: 8px; font-size: 0.8rem; color: #94a3b8; cursor: pointer; line-height: 1.4;">
+                <input type="checkbox" id="cf-privacy" required style="margin-top: 2px; accent-color: var(--primary); cursor: pointer;">
+                <span>
+                  [필수] 개인정보 수집 및 이용에 동의합니다. 
+                  <a href="javascript:void(0)" onclick="togglePrivacyModal(true)" style="color: var(--primary); text-decoration: underline; margin-left: 4px; font-weight: 600;">[보기]</a>
+                </span>
+              </label>
+            </div>
             <button type="submit" id="cf-btn" class="btn-submit">상담 신청하기</button>
           </form>
         </div>
@@ -2087,6 +2096,41 @@
         }
       }
     });
+
+    function togglePrivacyModal(show) {
+      const modal = document.getElementById('privacyModal');
+      if (modal) {
+        modal.style.display = show ? 'flex' : 'none';
+      }
+    }
   </script>
+
+  <!-- Privacy Modal -->
+  <div id="privacyModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15,23,42,0.6); backdrop-filter: blur(8px); z-index: 9999; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: #ffffff; width: 100%; max-width: 440px; border-radius: var(--radius-md); border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(15,23,42,0.15); display: flex; flex-direction: column; overflow: hidden;">
+      <div style="background: var(--dark-bg); padding: 20px; color: #ffffff; display: flex; justify-content: space-between; align-items: center;">
+        <h3 style="font-size: 1.1rem; font-weight: 700; margin: 0; color: #ffffff;">개인정보 수집 및 이용 동의</h3>
+        <button onclick="togglePrivacyModal(false)" style="color: #cbd5e1; font-size: 1.2rem; line-height: 1; border: none; background: none; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div style="padding: 24px; font-size: 0.85rem; color: var(--text-main); line-height: 1.6; max-height: 300px; overflow-y: auto; text-align: left;">
+        <p style="font-weight: 700; margin-bottom: 8px;">1. 개인정보 수집 및 이용 주체</p>
+        <p style="margin-bottom: 16px;">KGM 일산중앙대리점 이종랑 부장</p>
+        
+        <p style="font-weight: 700; margin-bottom: 8px;">2. 수집 및 이용 목적</p>
+        <p style="margin-bottom: 16px;">KGM 신차 견적 산출, 구매 상담 및 이벤트 안내를 위한 본인 확인 및 유선·문자 연락</p>
+        
+        <p style="font-weight: 700; margin-bottom: 8px;">3. 수집하는 개인정보 항목</p>
+        <p style="margin-bottom: 16px;">성함, 연락처, 관심 차종</p>
+        
+        <p style="font-weight: 700; margin-bottom: 8px;">4. 개인정보의 보유 및 이용 기간</p>
+        <p style="margin-bottom: 16px; color: #ef4444; font-weight: 600;">상담 및 목적 달성 완료 후 즉시 파기 (최대 1년 이내)</p>
+        
+        <p style="color: var(--text-muted); font-size: 0.75rem;">※ 귀하는 개인정보 수집 및 이용 동의를 거부할 권리가 있으나, 거부 시 빠른 견적 상담 서비스 이용이 제한됩니다.</p>
+      </div>
+      <div style="background: #f8fafc; padding: 16px 24px; display: flex; justify-content: flex-end; border-top: 1px solid var(--border);">
+        <button onclick="togglePrivacyModal(false)" style="background: var(--dark-bg); color: #ffffff; padding: 10px 24px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 600; border: none; cursor: pointer;">확인</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
