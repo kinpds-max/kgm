@@ -480,7 +480,12 @@
 
     @media (max-width: 768px) {
       .lineup-detail-title { font-size: 1.5rem; }
-      .lineup-specs-grid { grid-template-columns: 1fr; gap: 10px; }
+      .lineup-specs-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; padding-top: 16px; }
+      .spec-group { padding: 12px 10px 8px; }
+      .spec-group-title { font-size: 0.68rem; margin-bottom: 8px; }
+      .spec-row { flex-direction: column; align-items: flex-start; gap: 1px; padding: 5px 0; }
+      .spec-row span:first-child { font-size: 0.68rem; }
+      .spec-row span:last-child { font-size: 0.78rem; }
       .car-select-scroll { grid-template-columns: repeat(3, 1fr); gap: 8px; }
       .sidebar-btn img { height: 38px; }
       .sidebar-btn-name { font-size: 0.68rem; }
