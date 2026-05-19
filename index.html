@@ -297,14 +297,37 @@
     .lineup-specs-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 14px;
       border-top: 1px solid var(--border);
-      padding-top: 32px;
+      padding-top: 24px;
     }
-    .spec-group { display: flex; flex-direction: column; gap: 8px; }
-    .spec-group-title { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
-    .spec-row { display: flex; justify-content: space-between; font-size: 0.85rem; border-bottom: 1px solid #f1f5f9; padding: 6px 0; }
-    .spec-row span:last-child { font-weight: 600; color: var(--text-main); }
+    .spec-group {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 16px 18px 12px;
+      border-top: 3px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+    }
+    .spec-group-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      padding: 7px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-row span:first-child { color: #64748b; }
+    .spec-row span:last-child { font-weight: 700; color: var(--text-main); }
 
     .lineup-colors {
       padding-top: 12px;
@@ -451,13 +474,13 @@
       }
       .gallery-sub img { padding: 8px; }
 
-      .lineup-specs-grid { grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 24px; }
+      .lineup-specs-grid { grid-template-columns: 1fr 1fr; gap: 12px; padding-top: 20px; }
       .car-select-scroll { grid-template-columns: repeat(5, 1fr); }
     }
 
     @media (max-width: 768px) {
       .lineup-detail-title { font-size: 1.5rem; }
-      .lineup-specs-grid { grid-template-columns: 1fr; gap: 12px; }
+      .lineup-specs-grid { grid-template-columns: 1fr; gap: 10px; }
       .car-select-scroll { grid-template-columns: repeat(3, 1fr); gap: 8px; }
       .sidebar-btn img { height: 38px; }
       .sidebar-btn-name { font-size: 0.68rem; }
@@ -1182,9 +1205,9 @@
           <div class="lineup-gallery">
             <div class="gallery-big" style="position: relative;">
               <img src="images/musso_2026.png" alt="Main View" id="main-view-img">
-              <!-- Color Selection Overlay (메인 사진 위) -->
-              <div class="lineup-colors" id="color-section" style="display: none; position: absolute; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.88); backdrop-filter: blur(8px); padding: 10px 16px 12px; border-top: 1px solid rgba(0,0,0,0.07);">
-                <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.3px;">외장 컬러</div>
+              <!-- Color Selection Overlay (메인 사진 중앙) -->
+              <div class="lineup-colors" id="color-section" style="display: none; position: absolute; bottom: 20px; left: 16px; right: 16px; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); padding: 12px 16px 14px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.12);">
+                <div style="font-size: 0.78rem; font-weight: 700; color: #64748b; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase;">외장 컬러</div>
                 <div class="color-swatch-list" id="color-container" style="margin-top: 0;"></div>
               </div>
             </div>
@@ -1205,19 +1228,19 @@
 
           <div class="lineup-specs-grid">
             <div class="spec-group">
-              <div class="spec-group-title">기본 정보</div>
+              <div class="spec-group-title">&#128203; 기본 정보</div>
               <div class="spec-row"><span>가격</span><span>2,990~4,600만원</span></div>
               <div class="spec-row"><span>출시</span><span>2026년 1월</span></div>
               <div class="spec-row"><span>연료</span><span>가솔린, 디젤</span></div>
             </div>
             <div class="spec-group">
-              <div class="spec-group-title">성능 및 엔진</div>
+              <div class="spec-group-title">&#9889; 성능 및 엔진</div>
               <div class="spec-row"><span>출력</span><span>202~217hp</span></div>
               <div class="spec-row"><span>토크</span><span>38.7~45kg.m</span></div>
               <div class="spec-row"><span>배기량</span><span>1,998~2,157cc</span></div>
             </div>
             <div class="spec-group">
-              <div class="spec-group-title">기타 제원</div>
+              <div class="spec-group-title">&#128207; 기타 제원</div>
               <div class="spec-row"><span>연비</span><span>복합 7.7~10.1km/ℓ</span></div>
               <div class="spec-row"><span>정원</span><span>5인승</span></div>
               <div class="spec-row"><span>보증</span><span>5년/10만km</span></div>
