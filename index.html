@@ -1976,6 +1976,8 @@
       fetchRSS('https://rss.blog.naver.com/kcmo07.xml', 'blog-feed');
       // Fetch YouTube using the extracted Channel ID (UCWM6zltcxHZ4b_7LXrygNfw)
       fetchRSS('https://www.youtube.com/feeds/videos.xml?channel_id=UCWM6zltcxHZ4b_7LXrygNfw', 'youtube-feed');
+      // Initialize lineup section with default car (Musso)
+      updateLineup('musso');
     });
 
     // Video Showcase Function
