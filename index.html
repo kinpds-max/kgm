@@ -1081,11 +1081,7 @@
       <div class="lineup-container">
         <!-- Main Content (Left) -->
         <div class="lineup-main" id="lineup-display">
-          <div class="lineup-header-row">
-            <div class="lineup-title-wrap">
-              <div class="lineup-detail-title">2026 KGM 무쏘</div>
-              <div class="lineup-detail-sub">준대형 트럭 · 2026</div>
-            </div>
+          <div class="lineup-header-row" style="justify-content: flex-end; margin-bottom: 12px;">
             <div class="lineup-detail-btns">
               <button class="lineup-action-btn" id="btn-catalog" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
               <button class="lineup-action-btn" id="btn-price" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
@@ -1103,7 +1099,12 @@
                 <div class="gallery-sub"><img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Sub 3"></div>
                 <div class="gallery-sub"><img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Sub 4"></div>
               </div>
-              <!-- Color Selection Section (4사진 아래) -->
+              <!-- 제목 (사진 하단, 컬러 위) -->
+              <div class="lineup-title-wrap" style="padding-top: 12px; border-top: 1px solid var(--border);">
+                <div class="lineup-detail-title" style="font-size: 1.4rem;">2026 KGM 무쏘</div>
+                <div class="lineup-detail-sub">준대형 트럭 · 2026</div>
+              </div>
+              <!-- Color Selection Section -->
               <div class="lineup-colors" id="color-section" style="display: none;">
                 <div class="section-title" style="font-size: 0.95rem; margin-bottom: 8px;">외장 컬러</div>
                 <div class="color-swatch-list" id="color-container"></div>
@@ -1132,7 +1133,24 @@
             </div>
           </div>
 
-          <!-- Car Selection (전체 너비 그리드) -->
+          <!-- Video Review Section -->
+          <div id="lineup-video-section" style="margin-top: 30px; display: none;">
+            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 12px;">현장 리뷰 영상</div>
+            <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
+              <iframe id="lineup-video-iframe" src="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <!-- Real Photos Section -->
+          <div class="lineup-real-photos">
+            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 8px;">실제 차량 사진</div>
+            <p class="section-sub" style="margin-bottom: 20px;">대리점에서 직접 촬영한 생생한 실물 사진입니다.</p>
+            <div class="real-photo-grid" id="real-photo-container">
+              <!-- Dynamically Populated -->
+            </div>
+          </div>
+
+          <!-- Car Selection (실제 차량 사진 아래) -->
           <div class="lineup-car-select">
             <div class="section-title">차종 선택</div>
             <div class="car-select-scroll">
@@ -1199,23 +1217,6 @@
                   <span class="sidebar-btn-price">1,898만원~</span>
                 </div>
               </button>
-            </div>
-          </div>
-
-          <!-- Video Review Section -->
-          <div id="lineup-video-section" style="margin-top: 30px; display: none;">
-            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 12px;">현장 리뷰 영상</div>
-            <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
-              <iframe id="lineup-video-iframe" src="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-          </div>
-
-          <!-- Real Photos Section -->
-          <div class="lineup-real-photos">
-            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 8px;">실제 차량 사진</div>
-            <p class="section-sub" style="margin-bottom: 20px;">대리점에서 직접 촬영한 생생한 실물 사진입니다.</p>
-            <div class="real-photo-grid" id="real-photo-container">
-              <!-- Dynamically Populated -->
             </div>
           </div>
         </div>
