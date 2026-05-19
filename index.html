@@ -145,10 +145,10 @@
       grid-area: video;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      margin-bottom: 8px;
       box-shadow: 0 20px 40px rgba(15,23,42,0.1);
-      aspect-ratio: 16/9;
       position: relative;
+      align-self: stretch;
+      min-height: 420px;
     }
     .video-area iframe {
       position: absolute;
@@ -159,6 +159,7 @@
       border: none;
       pointer-events: none;
     }
+    .consult-area { align-self: stretch; }
     .banner-area { grid-area: banner; }
     .lineup-area { grid-area: lineup; }
     .history-area { grid-area: history; }
@@ -602,7 +603,7 @@
     .review-icon:hover { color: var(--primary); }
 
     /* Right Sidebar (Consultation) */
-    .consult-sticky-wrap { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 20px; }
+    .consult-sticky-wrap { position: sticky; top: 100px; display: flex; flex-direction: column; height: 100%; }
     .consult-card {
       background: var(--dark-bg);
       border-radius: var(--radius-md);
@@ -868,13 +869,14 @@
       .video-area { order: 1; }
       .consult-area { order: 2; }
       .history-area { order: 3; }
-      .lineup-area { order: 4; }
-      .feed-area { order: 5; }
-      .gallery-area { order: 6; }
-      .catalog-area { order: 7; }
-      .achieve-area { order: 8; }
-      .info-area { order: 9; }
-      .banner-area { order: 10; }
+      .carselect-area { order: 4; }
+      .lineup-area { order: 5; }
+      .feed-area { order: 6; }
+      .gallery-area { order: 7; }
+      .catalog-area { order: 8; }
+      .achieve-area { order: 9; }
+      .info-area { order: 10; }
+      .banner-area { order: 11; }
       .consult-sticky-wrap { position: relative; top: 0; }
     }
 
@@ -1093,6 +1095,78 @@
       </div>
     </div>
 
+    <!-- Car Select Area (후기 아래) -->
+    <div class="carselect-area" style="grid-column: 1 / -1;">
+      <div class="lineup-car-select" style="background: var(--card-bg); border-radius: var(--radius-lg); padding: 28px 32px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.02); margin-top: 0;">
+        <div class="section-title">차종 선택</div>
+        <div class="car-select-scroll">
+          <button class="sidebar-btn active" data-car-id="musso" onclick="updateLineup('musso')">
+            <img src="images/musso_2026.png" alt="Musso">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">2026 무쏘</span>
+              <span class="sidebar-btn-price">2,990만원~</span>
+            </div>
+          </button>
+          <button class="sidebar-btn" data-car-id="actyon_hybrid" onclick="updateLineup('actyon_hybrid')">
+            <img src="images/20250617110206889_NchBIo_MODEL_MD5.png" alt="Actyon Hybrid">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">액티언 하이브리드</span>
+              <span class="sidebar-btn-price">3,745만원~</span>
+            </div>
+          </button>
+          <button class="sidebar-btn" data-car-id="torres_hybrid" onclick="updateLineup('torres_hybrid')">
+            <img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Torres Hybrid">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">토레스 하이브리드</span>
+              <span class="sidebar-btn-price">2,838만원~</span>
+            </div>
+          </button>
+          <button class="sidebar-btn" data-car-id="musso_ev" onclick="updateLineup('musso_ev')">
+            <img src="images/20250304181727107_WwqH5r_MODEL_OP5.png" alt="Musso EV">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">무쏘 EV</span>
+              <span class="sidebar-btn-price">4,450만원~</span>
+            </div>
+          </button>
+          <button class="sidebar-btn" data-car-id="torres" onclick="updateLineup('torres')">
+            <img src="images/20241216061441516_rIP2Es_MODEL_MW5.png" alt="Torres">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">토레스</span>
+              <span class="sidebar-btn-price">2,666만원~</span>
+            </div>
+          </button>
+          <button class="sidebar-btn" data-car-id="torres_evx" onclick="updateLineup('torres_evx')">
+            <img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Torres EVX">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">토레스 EVX</span>
+              <span class="sidebar-btn-price">4,550만원~</span>
+            </div>
+          </button>
+          <button class="sidebar-btn" data-car-id="actyon" onclick="updateLineup('actyon')">
+            <img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Actyon">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">액티언</span>
+              <span class="sidebar-btn-price">3,395만원~</span>
+            </div>
+          </button>
+          <button class="sidebar-btn" data-car-id="rexton" onclick="updateLineup('rexton')">
+            <img src="images/20241216060809713_01mAqh_MODEL_GL5.png" alt="Rexton">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">렉스턴 아레나</span>
+              <span class="sidebar-btn-price">4,010만원~</span>
+            </div>
+          </button>
+          <button class="sidebar-btn" data-car-id="tivoli" onclick="updateLineup('tivoli')">
+            <img src="images/20260401091702753_qtOODw_MODEL_XW5.png" alt="Tivoli">
+            <div class="sidebar-btn-info">
+              <span class="sidebar-btn-name">더 뉴 티볼리</span>
+              <span class="sidebar-btn-price">1,898만원~</span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Lineup Area -->
     <div class="lineup-area">
       <div class="lineup-container">
@@ -1167,75 +1241,6 @@
             </div>
           </div>
 
-          <!-- Car Selection (실제 차량 사진 아래) -->
-          <div class="lineup-car-select">
-            <div class="section-title">차종 선택</div>
-            <div class="car-select-scroll">
-              <button class="sidebar-btn active" data-car-id="musso" onclick="updateLineup('musso')">
-                <img src="images/musso_2026.png" alt="Musso">
-                <div class="sidebar-btn-info">
-                  <span class="sidebar-btn-name">2026 무쏘</span>
-                  <span class="sidebar-btn-price">2,990만원~</span>
-                </div>
-              </button>
-              <button class="sidebar-btn" data-car-id="actyon_hybrid" onclick="updateLineup('actyon_hybrid')">
-                <img src="images/20250617110206889_NchBIo_MODEL_MD5.png" alt="Actyon Hybrid">
-                <div class="sidebar-btn-info">
-                  <span class="sidebar-btn-name">액티언 하이브리드</span>
-                  <span class="sidebar-btn-price">3,745만원~</span>
-                </div>
-              </button>
-              <button class="sidebar-btn" data-car-id="torres_hybrid" onclick="updateLineup('torres_hybrid')">
-                <img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Torres Hybrid">
-                <div class="sidebar-btn-info">
-                  <span class="sidebar-btn-name">토레스 하이브리드</span>
-                  <span class="sidebar-btn-price">2,838만원~</span>
-                </div>
-              </button>
-              <button class="sidebar-btn" data-car-id="musso_ev" onclick="updateLineup('musso_ev')">
-                <img src="images/20250304181727107_WwqH5r_MODEL_OP5.png" alt="Musso EV">
-                <div class="sidebar-btn-info">
-                  <span class="sidebar-btn-name">무쏘 EV</span>
-                  <span class="sidebar-btn-price">4,450만원~</span>
-                </div>
-              </button>
-              <button class="sidebar-btn" data-car-id="torres" onclick="updateLineup('torres')">
-                <img src="images/20241216061441516_rIP2Es_MODEL_MW5.png" alt="Torres">
-                <div class="sidebar-btn-info">
-                  <span class="sidebar-btn-name">토레스</span>
-                  <span class="sidebar-btn-price">2,666만원~</span>
-                </div>
-              </button>
-              <button class="sidebar-btn" data-car-id="torres_evx" onclick="updateLineup('torres_evx')">
-                <img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Torres EVX">
-                <div class="sidebar-btn-info">
-                  <span class="sidebar-btn-name">토레스 EVX</span>
-                  <span class="sidebar-btn-price">4,550만원~</span>
-                </div>
-              </button>
-              <button class="sidebar-btn" data-car-id="actyon" onclick="updateLineup('actyon')">
-                <img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Actyon">
-                <div class="sidebar-btn-info">
-                  <span class="sidebar-btn-name">액티언</span>
-                  <span class="sidebar-btn-price">3,395만원~</span>
-                </div>
-              </button>
-              <button class="sidebar-btn" data-car-id="rexton" onclick="updateLineup('rexton')">
-                <img src="images/20241216060809713_01mAqh_MODEL_GL5.png" alt="Rexton">
-                <div class="sidebar-btn-info">
-                  <span class="sidebar-btn-name">렉스턴 아레나</span>
-                  <span class="sidebar-btn-price">4,010만원~</span>
-                </div>
-              </button>
-              <button class="sidebar-btn" data-car-id="tivoli" onclick="updateLineup('tivoli')">
-                <img src="images/20260401091702753_qtOODw_MODEL_XW5.png" alt="Tivoli">
-                <div class="sidebar-btn-info">
-                  <span class="sidebar-btn-name">더 뉴 티볼리</span>
-                  <span class="sidebar-btn-price">1,898만원~</span>
-                </div>
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -1696,44 +1701,48 @@
     <!-- Consult Area (Right Sidebar on Desktop) -->
     <div class="consult-area">
       <div class="consult-sticky-wrap">
-        
-        <!-- Profile Card -->
-        <div class="profile-card">
-          <div class="profile-img-wrap">
-            <img src="images/명함 21대9.png" alt="이종랑 부장">
+        <!-- 통합 카드: 프로필 + 상담폼 -->
+        <div class="consult-card" style="flex: 1; display: flex; flex-direction: column;">
+          <!-- 프로필 헤더 -->
+          <div style="display: flex; align-items: center; gap: 14px; padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.12);">
+            <div class="profile-img-wrap" style="flex-shrink: 0;">
+              <img src="images/명함 21대9.png" alt="이종랑 부장">
+            </div>
+            <div>
+              <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: 3px;">이종랑 부장</div>
+              <div style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 2px;">010-5335-8102</div>
+              <div style="font-size: 0.8rem; color: #94a3b8;">KGM 일산중앙대리점</div>
+            </div>
           </div>
-          <div class="profile-info">
-            <div class="profile-name">이종랑 부장</div>
-            <div style="font-size:0.9rem; font-weight:700; color:#1e3a8a; margin: 2px 0;">010-5335-8102</div>
-            <div class="profile-title">KGM 일산중앙대리점</div>
-          </div>
-        </div>
-
-        <div class="consult-card">
+          <!-- 상담 폼 -->
           <h2 class="consult-title">빠른 상담 신청</h2>
-          <form id="consultForm" onsubmit="submitConsult(event);">
-            <div class="form-group">
-              <label class="form-label">이름</label>
-              <input type="text" id="cf-name" class="form-input" placeholder="이름을 입력해 주세요" required>
+          <form id="consultForm" onsubmit="submitConsult(event);" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="form-group">
+                <label class="form-label">이름</label>
+                <input type="text" id="cf-name" class="form-input" placeholder="이름을 입력해 주세요" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">원하시는 차종</label>
+                <input type="text" id="cf-car" class="form-input" placeholder="예: 토레스 EVX, 무쏘 EV 등" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">연락처</label>
+                <input type="tel" id="cf-phone" class="form-input" placeholder="010-0000-0000" required>
+              </div>
             </div>
-            <div class="form-group">
-              <label class="form-label">원하시는 차종</label>
-              <input type="text" id="cf-car" class="form-input" placeholder="예: 토레스 EVX, 무쏘 EV 등" required>
+            <div>
+              <div class="form-group" style="margin-top: 12px; margin-bottom: 16px;">
+                <label class="checkbox-label" style="display: flex; align-items: flex-start; gap: 8px; font-size: 0.8rem; color: #94a3b8; cursor: pointer; line-height: 1.4;">
+                  <input type="checkbox" id="cf-privacy" required style="margin-top: 2px; accent-color: var(--primary); cursor: pointer;">
+                  <span>
+                    [필수] 개인정보 수집 및 이용에 동의합니다.
+                    <a href="javascript:void(0)" onclick="togglePrivacyModal(true)" style="color: var(--primary); text-decoration: underline; margin-left: 4px; font-weight: 600;">[보기]</a>
+                  </span>
+                </label>
+              </div>
+              <button type="submit" id="cf-btn" class="btn-submit">상담 신청하기</button>
             </div>
-            <div class="form-group">
-              <label class="form-label">연락처</label>
-              <input type="tel" id="cf-phone" class="form-input" placeholder="010-0000-0000" required>
-            </div>
-            <div class="form-group" style="margin-top: 12px; margin-bottom: 20px;">
-              <label class="checkbox-label" style="display: flex; align-items: flex-start; gap: 8px; font-size: 0.8rem; color: #94a3b8; cursor: pointer; line-height: 1.4;">
-                <input type="checkbox" id="cf-privacy" required style="margin-top: 2px; accent-color: var(--primary); cursor: pointer;">
-                <span>
-                  [필수] 개인정보 수집 및 이용에 동의합니다. 
-                  <a href="javascript:void(0)" onclick="togglePrivacyModal(true)" style="color: var(--primary); text-decoration: underline; margin-left: 4px; font-weight: 600;">[보기]</a>
-                </span>
-              </label>
-            </div>
-            <button type="submit" id="cf-btn" class="btn-submit">상담 신청하기</button>
           </form>
         </div>
       </div>
@@ -2052,7 +2061,7 @@
   </script>
 
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdkbYq0APCZhdOpESBJSQQ1zTqU2wgYAVNq7mYnGPyHhNmgDnQK94yjNWqRiaEycf5lw/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxONHi61KHs1w8n1bXx947R9dXm1-rLzXJV13CrsJwnejWyY71GSXEr7_2tBS_37019jw/exec';
 
     async function submitConsult(e) {
       e.preventDefault();
@@ -2094,7 +2103,7 @@
     const sections = {
       dashboard: ['.video-area', '.consult-area', '.info-area', '.banner-area'],
       estimate: ['.consult-area'],
-      vehicles: ['.lineup-area', '.catalog-area'],
+      vehicles: ['.carselect-area', '.lineup-area', '.catalog-area'],
       service: ['.feed-area', '.history-area', '.gallery-area']
     };
 
