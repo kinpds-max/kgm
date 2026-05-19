@@ -498,10 +498,12 @@
       .spec-row { flex-direction: column; align-items: flex-start; gap: 1px; padding: 5px 0; }
       .spec-row span:first-child { font-size: 0.68rem; }
       .spec-row span:last-child { font-size: 0.78rem; }
-      .car-select-scroll { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .sidebar-btn img { height: 38px; }
-      .sidebar-btn-name { font-size: 0.68rem; }
-      .sidebar-btn-price { font-size: 0.62rem; }
+      .car-select-scroll { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .sidebar-btn { padding: 14px 6px; gap: 6px; }
+      .sidebar-btn img { height: 58px; max-width: 100%; }
+      .sidebar-btn-name { font-size: 0.72rem; }
+      .sidebar-btn-price { font-size: 0.65rem; }
+      #btn-catalog, #btn-price { display: none !important; }
     }
 
     /* Gallery Area (Refactored to Video Showcase) */
@@ -2128,7 +2130,7 @@
   </script>
 
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyzicfh8oXrA3-HHtUGgl3j4PEG99V_jWxD9zv-28BDdl9neMr84blak4a8MQx7mVpvpQ/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzicfh8oXrA3-HhtUGgl3j4PEG99V_j9WxD9zv-28BDdI9neMr84bIak4a8MQx7mVpvpQ/exec';
 
     async function submitConsult(e) {
       e.preventDefault();
