@@ -209,9 +209,9 @@
     
     /* New Lineup Detail Viewer */
     .lineup-container {
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
       background: #fff;
       border-radius: var(--radius-lg);
       padding: 40px;
@@ -249,7 +249,7 @@
     }
     .gallery-big {
       width: 100%;
-      height: 440px;
+      height: 520px;
       background: #f8fafc;
       border-radius: var(--radius-md);
       overflow: hidden;
@@ -356,33 +356,43 @@
     .sidebar-btn.active { background: var(--dark-bg); color: #fff; border-color: var(--dark-bg); box-shadow: 0 10px 20px rgba(15,23,42,0.1); }
     .sidebar-btn.active .sidebar-btn-price { color: var(--primary); }
 
-    .lineup-sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    /* 차종 선택 가로 스크롤 바 */
+    .lineup-car-select {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
     }
-    .sidebar-list-wrap {
+    .lineup-car-select .section-title { font-size: 1.1rem; margin-bottom: 16px; }
+    .car-select-scroll {
       display: flex;
-      flex-direction: column;
       gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      -webkit-overflow-scrolling: touch;
     }
+    .car-select-scroll::-webkit-scrollbar { height: 4px; }
+    .car-select-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
     .sidebar-btn {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 16px;
-      padding: 16px;
+      gap: 8px;
+      padding: 14px 16px;
       background: #f8fafc;
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
-      text-align: left;
+      text-align: center;
       transition: all 0.2s;
-      width: 100%;
+      flex-shrink: 0;
+      width: 120px;
     }
-    .sidebar-btn img { width: 60px; height: auto; flex-shrink: 0; }
-    .sidebar-btn-info { display: flex; flex-direction: column; }
-    .sidebar-btn-name { font-size: 0.95rem; font-weight: 700; }
+    .sidebar-btn img { width: 80px; height: 50px; object-fit: contain; flex-shrink: 0; }
+    .sidebar-btn-info { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .sidebar-btn-name { font-size: 0.8rem; font-weight: 700; line-height: 1.3; }
+    .sidebar-btn-price { font-size: 0.72rem; color: var(--text-muted); }
     @media (hover: hover) {
-      .sidebar-btn:hover { background: #fff; border-color: var(--primary); transform: translateX(4px); }
+      .sidebar-btn:hover { background: #fff; border-color: var(--primary); transform: translateY(-2px); }
     }
 
     /* Mobile Responsive Polish */
@@ -422,35 +432,15 @@
       }
       .gallery-sub img { padding: 8px; }
 
-      .lineup-sidebar { 
-        order: -1; 
-        min-width: 0;
-        overflow: hidden;
-      }
-      .sidebar-list-wrap {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        gap: 12px;
-        padding-bottom: 8px;
-        width: 100%;
-        -webkit-overflow-scrolling: touch;
-      }
-      .sidebar-list-wrap::-webkit-scrollbar { display: none; }
-      .sidebar-btn { 
-        min-width: 240px; 
-        flex-shrink: 0; 
-        padding: 12px; 
-        width: auto;
-      }
-
       .lineup-specs-grid { grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 24px; }
+      .sidebar-btn { width: 110px; }
     }
 
     @media (max-width: 768px) {
       .lineup-detail-title { font-size: 1.5rem; }
       .lineup-specs-grid { grid-template-columns: 1fr; gap: 12px; }
-      .sidebar-btn { min-width: 200px; }
+      .sidebar-btn { width: 100px; }
+      .sidebar-btn img { width: 70px; height: 44px; }
     }
 
     /* Gallery Area (Refactored to Video Showcase) */
@@ -1147,6 +1137,76 @@
             </div>
           </div>
 
+          <!-- Car Selection (가로 스크롤) -->
+          <div class="lineup-car-select">
+            <div class="section-title">차종 선택</div>
+            <div class="car-select-scroll">
+              <button class="sidebar-btn active" data-car-id="musso" onclick="updateLineup('musso')">
+                <img src="images/musso_2026.png" alt="Musso">
+                <div class="sidebar-btn-info">
+                  <span class="sidebar-btn-name">2026 무쏘</span>
+                  <span class="sidebar-btn-price">2,990만원~</span>
+                </div>
+              </button>
+              <button class="sidebar-btn" data-car-id="actyon_hybrid" onclick="updateLineup('actyon_hybrid')">
+                <img src="images/20250617110206889_NchBIo_MODEL_MD5.png" alt="Actyon Hybrid">
+                <div class="sidebar-btn-info">
+                  <span class="sidebar-btn-name">액티언 하이브리드</span>
+                  <span class="sidebar-btn-price">3,745만원~</span>
+                </div>
+              </button>
+              <button class="sidebar-btn" data-car-id="torres_hybrid" onclick="updateLineup('torres_hybrid')">
+                <img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Torres Hybrid">
+                <div class="sidebar-btn-info">
+                  <span class="sidebar-btn-name">토레스 하이브리드</span>
+                  <span class="sidebar-btn-price">2,838만원~</span>
+                </div>
+              </button>
+              <button class="sidebar-btn" data-car-id="musso_ev" onclick="updateLineup('musso_ev')">
+                <img src="images/20250304181727107_WwqH5r_MODEL_OP5.png" alt="Musso EV">
+                <div class="sidebar-btn-info">
+                  <span class="sidebar-btn-name">무쏘 EV</span>
+                  <span class="sidebar-btn-price">4,450만원~</span>
+                </div>
+              </button>
+              <button class="sidebar-btn" data-car-id="torres" onclick="updateLineup('torres')">
+                <img src="images/20241216061441516_rIP2Es_MODEL_MW5.png" alt="Torres">
+                <div class="sidebar-btn-info">
+                  <span class="sidebar-btn-name">토레스</span>
+                  <span class="sidebar-btn-price">2,666만원~</span>
+                </div>
+              </button>
+              <button class="sidebar-btn" data-car-id="torres_evx" onclick="updateLineup('torres_evx')">
+                <img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Torres EVX">
+                <div class="sidebar-btn-info">
+                  <span class="sidebar-btn-name">토레스 EVX</span>
+                  <span class="sidebar-btn-price">4,550만원~</span>
+                </div>
+              </button>
+              <button class="sidebar-btn" data-car-id="actyon" onclick="updateLineup('actyon')">
+                <img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Actyon">
+                <div class="sidebar-btn-info">
+                  <span class="sidebar-btn-name">액티언</span>
+                  <span class="sidebar-btn-price">3,395만원~</span>
+                </div>
+              </button>
+              <button class="sidebar-btn" data-car-id="rexton" onclick="updateLineup('rexton')">
+                <img src="images/20241216060809713_01mAqh_MODEL_GL5.png" alt="Rexton">
+                <div class="sidebar-btn-info">
+                  <span class="sidebar-btn-name">렉스턴 아레나</span>
+                  <span class="sidebar-btn-price">4,010만원~</span>
+                </div>
+              </button>
+              <button class="sidebar-btn" data-car-id="tivoli" onclick="updateLineup('tivoli')">
+                <img src="images/20260401091702753_qtOODw_MODEL_XW5.png" alt="Tivoli">
+                <div class="sidebar-btn-info">
+                  <span class="sidebar-btn-name">더 뉴 티볼리</span>
+                  <span class="sidebar-btn-price">1,898만원~</span>
+                </div>
+              </button>
+            </div>
+          </div>
+
           <!-- Color Selection Section -->
           <div class="lineup-colors" id="color-section" style="display: none;">
             <div class="section-title" style="font-size: 1.1rem; margin-bottom: 4px;">외장 컬러</div>
@@ -1170,85 +1230,6 @@
             <div class="real-photo-grid" id="real-photo-container">
               <!-- Dynamically Populated -->
             </div>
-          </div>
-        </div>
-
-        <!-- Sidebar Navigation (Right) -->
-        <div class="lineup-sidebar">
-          <div class="section-title" style="margin-bottom: 12px; font-size: 1rem;">차종 선택</div>
-          <div class="sidebar-list-wrap">
-            <button class="sidebar-btn active" data-car-id="musso" onclick="updateLineup('musso')">
-              <img src="images/musso_2026.png" alt="Musso">
-              <div class="sidebar-btn-info">
-                <span class="sidebar-btn-name">2026 무쏘</span>
-                <span class="sidebar-btn-price">2,990만원~</span>
-              </div>
-            </button>
-
-            <button class="sidebar-btn" data-car-id="actyon_hybrid" onclick="updateLineup('actyon_hybrid')">
-              <img src="images/20250617110206889_NchBIo_MODEL_MD5.png" alt="Actyon Hybrid">
-              <div class="sidebar-btn-info">
-                <span class="sidebar-btn-name">액티언 하이브리드</span>
-                <span class="sidebar-btn-price">3,745만원~</span>
-              </div>
-            </button>
-
-            <button class="sidebar-btn" data-car-id="torres_hybrid" onclick="updateLineup('torres_hybrid')">
-              <img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Torres Hybrid">
-              <div class="sidebar-btn-info">
-                <span class="sidebar-btn-name">토레스 하이브리드</span>
-                <span class="sidebar-btn-price">2,838만원~</span>
-              </div>
-            </button>
-
-            <button class="sidebar-btn" data-car-id="musso_ev" onclick="updateLineup('musso_ev')">
-              <img src="images/20250304181727107_WwqH5r_MODEL_OP5.png" alt="Musso EV">
-              <div class="sidebar-btn-info">
-                <span class="sidebar-btn-name">무쏘 EV</span>
-                <span class="sidebar-btn-price">4,450만원~</span>
-              </div>
-            </button>
-
-            <button class="sidebar-btn" data-car-id="torres" onclick="updateLineup('torres')">
-              <img src="images/20241216061441516_rIP2Es_MODEL_MW5.png" alt="Torres">
-              <div class="sidebar-btn-info">
-                <span class="sidebar-btn-name">토레스</span>
-                <span class="sidebar-btn-price">2,666만원~</span>
-              </div>
-            </button>
-
-            <button class="sidebar-btn" data-car-id="torres_evx" onclick="updateLineup('torres_evx')">
-              <img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Torres EVX">
-              <div class="sidebar-btn-info">
-                <span class="sidebar-btn-name">토레스 EVX</span>
-                <span class="sidebar-btn-price">4,550만원~</span>
-              </div>
-            </button>
-
-            <button class="sidebar-btn" data-car-id="actyon" onclick="updateLineup('actyon')">
-              <img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Actyon">
-              <div class="sidebar-btn-info">
-                <span class="sidebar-btn-name">액티언</span>
-                <span class="sidebar-btn-price">3,395만원~</span>
-              </div>
-            </button>
-
-            <button class="sidebar-btn" data-car-id="rexton" onclick="updateLineup('rexton')">
-              <img src="images/20241216060809713_01mAqh_MODEL_GL5.png" alt="Rexton">
-              <div class="sidebar-btn-info">
-                <span class="sidebar-btn-name">렉스턴 아레나</span>
-                <span class="sidebar-btn-price">4,010만원~</span>
-              </div>
-            </button>
-
-            <button class="sidebar-btn" data-car-id="tivoli" onclick="updateLineup('tivoli')">
-              <img src="images/20260401091702753_qtOODw_MODEL_XW5.png" alt="Tivoli">
-              <div class="sidebar-btn-info">
-                <span class="sidebar-btn-name">더 뉴 티볼리</span>
-                <span class="sidebar-btn-price">1,898만원~</span>
-              </div>
-            </button>
-          </div>
           </div>
         </div>
       </div>
