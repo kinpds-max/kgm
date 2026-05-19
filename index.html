@@ -364,33 +364,29 @@
     }
     .lineup-car-select .section-title { font-size: 1.1rem; margin-bottom: 16px; }
     .car-select-scroll {
-      display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      -webkit-overflow-scrolling: touch;
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 10px;
     }
-    .car-select-scroll::-webkit-scrollbar { height: 4px; }
-    .car-select-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
     .sidebar-btn {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      padding: 14px 16px;
+      padding: 12px 8px;
       background: #f8fafc;
-      border: 1px solid var(--border);
+      border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
       text-align: center;
       transition: all 0.2s;
-      flex-shrink: 0;
-      width: 120px;
+      width: 100%;
+      min-width: 0;
     }
-    .sidebar-btn img { width: 80px; height: 50px; object-fit: contain; flex-shrink: 0; }
-    .sidebar-btn-info { display: flex; flex-direction: column; align-items: center; gap: 2px; }
-    .sidebar-btn-name { font-size: 0.8rem; font-weight: 700; line-height: 1.3; }
-    .sidebar-btn-price { font-size: 0.72rem; color: var(--text-muted); }
+    .sidebar-btn img { width: 100%; max-width: 80px; height: 46px; object-fit: contain; }
+    .sidebar-btn-info { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 100%; }
+    .sidebar-btn-name { font-size: 0.75rem; font-weight: 700; line-height: 1.3; word-break: keep-all; }
+    .sidebar-btn-price { font-size: 0.68rem; color: var(--text-muted); }
     @media (hover: hover) {
       .sidebar-btn:hover { background: #fff; border-color: var(--primary); transform: translateY(-2px); }
     }
@@ -433,14 +429,16 @@
       .gallery-sub img { padding: 8px; }
 
       .lineup-specs-grid { grid-template-columns: 1fr 1fr; gap: 16px; padding-top: 24px; }
-      .sidebar-btn { width: 110px; }
+      .car-select-scroll { grid-template-columns: repeat(5, 1fr); }
     }
 
     @media (max-width: 768px) {
       .lineup-detail-title { font-size: 1.5rem; }
       .lineup-specs-grid { grid-template-columns: 1fr; gap: 12px; }
-      .sidebar-btn { width: 100px; }
-      .sidebar-btn img { width: 70px; height: 44px; }
+      .car-select-scroll { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .sidebar-btn img { height: 38px; }
+      .sidebar-btn-name { font-size: 0.68rem; }
+      .sidebar-btn-price { font-size: 0.62rem; }
     }
 
     /* Gallery Area (Refactored to Video Showcase) */
@@ -1116,6 +1114,14 @@
             </div>
           </div>
 
+          <!-- Color Selection Section (갤러리 바로 아래) -->
+          <div class="lineup-colors" id="color-section" style="display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
+            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 4px;">외장 컬러</div>
+            <div class="color-swatch-list" id="color-container">
+              <!-- Dynamically Populated -->
+            </div>
+          </div>
+
           <div class="lineup-specs-grid">
             <div class="spec-group">
               <div class="spec-group-title">기본 정보</div>
@@ -1137,7 +1143,7 @@
             </div>
           </div>
 
-          <!-- Car Selection (가로 스크롤) -->
+          <!-- Car Selection (전체 너비 그리드) -->
           <div class="lineup-car-select">
             <div class="section-title">차종 선택</div>
             <div class="car-select-scroll">
@@ -1204,14 +1210,6 @@
                   <span class="sidebar-btn-price">1,898만원~</span>
                 </div>
               </button>
-            </div>
-          </div>
-
-          <!-- Color Selection Section -->
-          <div class="lineup-colors" id="color-section" style="display: none;">
-            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 4px;">외장 컬러</div>
-            <div class="color-swatch-list" id="color-container">
-              <!-- Dynamically Populated -->
             </div>
           </div>
 
