@@ -141,8 +141,24 @@
     }
     .achieve-area { grid-area: achieve; }
     .catalog-area { grid-area: catalog; }
-    .video-area { grid-area: video; border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 8px; box-shadow: 0 20px 40px rgba(15,23,42,0.1); aspect-ratio: 16/9; }
-    .video-area iframe { width: 100%; height: 100%; border: none; }
+    .video-area {
+      grid-area: video;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 8px;
+      box-shadow: 0 20px 40px rgba(15,23,42,0.1);
+      aspect-ratio: 16/9;
+      position: relative;
+    }
+    .video-area iframe {
+      position: absolute;
+      top: -10%;
+      left: -1px;
+      width: calc(100% + 2px);
+      height: 120%;
+      border: none;
+      pointer-events: none;
+    }
     .banner-area { grid-area: banner; }
     .lineup-area { grid-area: lineup; }
     .history-area { grid-area: history; }
@@ -871,11 +887,12 @@
       
       .layout { margin: 0 auto; padding: 0 16px; gap: 24px; }
       
-      .video-area { 
-        border-radius: 0; 
-        margin: 0 -16px 0 -16px; 
+      .video-area {
+        border-radius: 0;
+        margin: 0 -16px 0 -16px;
         width: calc(100% + 32px);
         box-shadow: none;
+        overflow: hidden;
       }
       
       .lineup-grid { 
