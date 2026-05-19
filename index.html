@@ -1106,8 +1106,13 @@
           </div>
 
           <div class="lineup-gallery">
-            <div class="gallery-big">
+            <div class="gallery-big" style="position: relative;">
               <img src="images/musso_2026.png" alt="Main View" id="main-view-img">
+              <!-- Color Selection Overlay (메인 사진 위) -->
+              <div class="lineup-colors" id="color-section" style="display: none; position: absolute; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.88); backdrop-filter: blur(8px); padding: 10px 16px 12px; border-top: 1px solid rgba(0,0,0,0.07);">
+                <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; letter-spacing: 0.3px;">외장 컬러</div>
+                <div class="color-swatch-list" id="color-container" style="margin-top: 0;"></div>
+              </div>
             </div>
             <div class="gallery-right">
               <div class="gallery-subs">
@@ -1116,15 +1121,10 @@
                 <div class="gallery-sub"><img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Sub 3"></div>
                 <div class="gallery-sub"><img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Sub 4"></div>
               </div>
-              <!-- 제목 (사진 하단, 컬러 위) -->
+              <!-- 제목 (사진 하단) -->
               <div class="lineup-title-wrap" style="padding-top: 12px; border-top: 1px solid var(--border);">
                 <div class="lineup-detail-title" style="font-size: 1.4rem;">2026 KGM 무쏘</div>
                 <div class="lineup-detail-sub">준대형 트럭 · 2026</div>
-              </div>
-              <!-- Color Selection Section -->
-              <div class="lineup-colors" id="color-section" style="display: none;">
-                <div class="section-title" style="font-size: 0.95rem; margin-bottom: 8px;">외장 컬러</div>
-                <div class="color-swatch-list" id="color-container"></div>
               </div>
             </div>
           </div>
