@@ -519,23 +519,28 @@
       background: #000;
       box-shadow: 0 20px 40px rgba(0,0,0,0.1);
       margin-bottom: 24px;
+      position: relative;
     }
     .main-video-wrap iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
       width: 100%;
       height: 100%;
       border: none;
+      transform: translate(-50%, -50%) scale(1.35);
     }
     .video-nav {
-      display: flex;
-      justify-content: flex-start;
-      gap: 12px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
     }
     .vnav-btn {
-      padding: 10px 20px;
+      padding: 10px 0;
       border-radius: 30px;
       background: #f1f5f9;
       color: var(--text-muted);
+      text-align: center;
       font-size: 0.9rem;
       font-weight: 600;
       transition: all 0.2s;
@@ -885,9 +890,11 @@
     .bottom-nav { display: none; }
 
     /* 플로팅 버튼 모바일 위치 */
+    @media (max-width: 1024px) {
+      #kakao-float { bottom: calc(80px + 16px + env(safe-area-inset-bottom, 0px)); right: 16px; }
+      #phone-float { bottom: calc(80px + 16px + 56px + 12px + env(safe-area-inset-bottom, 0px)); right: 16px; }
+    }
     @media (max-width: 768px) {
-      #kakao-float { bottom: calc(70px + 12px + env(safe-area-inset-bottom, 0px)); right: 16px; }
-      #phone-float { bottom: calc(70px + 12px + 56px + 12px + env(safe-area-inset-bottom, 0px)); right: 16px; }
       .info-bar { padding: 8px 16px; }
       .info-item { font-size: 0.78rem; }
     }
@@ -932,6 +939,8 @@
         width: calc(100% + 32px);
         box-shadow: none;
         overflow: hidden;
+        aspect-ratio: 16/9;
+        min-height: unset;
       }
       
       .lineup-grid { 
@@ -970,6 +979,8 @@
       /* Mobile Consult card - Light theme */
       .consult-card { background: var(--card-bg); color: var(--text-main); border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.03); padding: 24px; }
       .consult-title { color: var(--text-main); font-size: 1.2rem; }
+      .profile-name-text { color: var(--text-main) !important; }
+      .profile-header-row { border-bottom-color: var(--border) !important; }
       .consult-desc { display: none; }
       .form-label { color: var(--text-main); font-weight: 600; }
       .form-input { background: #f8fafc; border: 1px solid var(--border); color: var(--text-main); }
@@ -1375,7 +1386,14 @@
             "images/20250709100359_2i7tdMI1.jpg",
             "images/20250709100359_lN1Sy1Pn.jpg"
           ],
-          real_photos: [],
+          real_photos: [
+            "images/액티언하이브리드/액1.jpg",
+            "images/액티언하이브리드/액2.jpg",
+            "images/액티언하이브리드/액3.jpg",
+            "images/액티언하이브리드/액4.jpg",
+            "images/액티언하이브리드/액5.jpg",
+            "images/액티언하이브리드/액6.jpg"
+          ],
           colors: [
             { name: "그랜드 화이트", hex: "#ffffff", img: "images/액그랜드 화이트.png" },
             { name: "스페이스 블랙", hex: "#000000", img: "images/액스페이스 블랙.png" },
@@ -1746,13 +1764,13 @@
         <!-- 통합 카드: 프로필 + 상담폼 -->
         <div class="consult-card" style="flex: 1; display: flex; flex-direction: column;">
           <!-- 프로필 헤더 -->
-          <div style="display: flex; align-items: center; gap: 14px; padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.12);">
+          <div class="profile-header-row" style="display: flex; align-items: center; gap: 14px; padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.12);">
             <div class="profile-img-wrap" style="flex-shrink: 0;">
               <img src="images/명함 21대9.png" alt="이종랑 부장">
             </div>
             <div>
-              <div style="font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: 3px;">이종랑 부장</div>
-              <div style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 2px;">010-5335-8102</div>
+              <div class="profile-name-text" style="font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: 3px;">이종랑 부장</div>
+              <div style="font-size: 0.95rem; font-weight: 700; color: #1e3a8e; margin-bottom: 2px;">010-5335-8102</div>
               <div style="font-size: 0.8rem; color: #94a3b8;">KGM 일산중앙대리점</div>
             </div>
           </div>
@@ -2020,7 +2038,7 @@
     </a>
     <a href="javascript:void(0)" class="bnav-item" data-tab="estimate" onclick="switchTab('estimate', true)">
       <i class="fa-solid fa-file-invoice"></i>
-      <span>온라인 견적</span>
+      <span>빠른 견적</span>
     </a>
   </nav>
 
@@ -2107,7 +2125,7 @@
   </script>
 
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyYUoDILCUCyaIUg28nIHIFMnI3GPkiHwOJFgZvn3NyI2bIhsb_PTRX-d6XnMu8fFRi6A/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyzicfh8oXrA3-HHtUGgl3j4PEG99V_jWxD9zv-28BDdl9neMr84blak4a8MQx7mVpvpQ/exec';
 
     async function submitConsult(e) {
       e.preventDefault();
