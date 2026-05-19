@@ -1222,14 +1222,16 @@
                 <div class="gallery-sub" onclick="document.getElementById('main-view-img').src='images/20260105095538_oF7XDypp.jpg'"><img src="images/20260105095538_oF7XDypp.jpg" alt="Sub 3"></div>
                 <div class="gallery-sub" onclick="document.getElementById('main-view-img').src='images/무쏘스포츠/KakaoTalk_20260422_101045305_10.jpg'"><img src="images/무쏘스포츠/KakaoTalk_20260422_101045305_10.jpg" alt="Sub 4"></div>
               </div>
-              <!-- 제목 + 카탈로그/가격표 (사진 하단, 한 줄) -->
-              <div class="lineup-title-wrap" style="padding: 10px 12px 8px; border-top: 1px solid var(--border); background: #f8fafc; border-radius: 0 0 var(--radius-md) 0; display: flex; flex-wrap: nowrap; align-items: center; gap: 10px; flex: 1; overflow: hidden;">
-                <div class="lineup-detail-title" style="font-size: 1rem; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 1;">2026 KGM 무쏘</div>
-                <div class="lineup-detail-sub" style="font-size: 0.75rem; white-space: nowrap; flex-shrink: 0; color: var(--text-muted);">준대형 트럭 · 2026</div>
-                <div style="display: flex; gap: 6px; flex-shrink: 0; margin-left: auto;">
-                  <button class="lineup-action-btn" id="btn-catalog" style="padding: 5px 9px; font-size: 0.75rem;" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
-                  <button class="lineup-action-btn" id="btn-price" style="padding: 5px 9px; font-size: 0.75rem;" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+              <!-- 제목 + 카탈로그/가격표 (사진 하단, 두 줄) -->
+              <div class="lineup-title-wrap" style="padding: 10px 12px 8px; border-top: 1px solid var(--border); background: #ffffff; border-radius: 0 0 var(--radius-md) 0; display: flex; flex-direction: column; flex: 1; overflow: hidden;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <div class="lineup-detail-title" style="font-size: 1rem; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 1;">2026 KGM 무쏘</div>
+                  <div style="display: flex; gap: 6px; flex-shrink: 0; margin-left: auto;">
+                    <button class="lineup-action-btn" id="btn-catalog" style="padding: 5px 9px; font-size: 0.75rem;" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216294_n1ue2o.pdf')"><i class="fa-solid fa-book"></i> 카탈로그</button>
+                    <button class="lineup-action-btn" id="btn-price" style="padding: 5px 9px; font-size: 0.75rem;" onclick="window.open('https://www.kg-mobility.com/attached/contents/display/file/200000200010009/20260430235216598_PBZA4D.pdf')"><i class="fa-solid fa-file-invoice-dollar"></i> 가격표</button>
+                  </div>
                 </div>
+                <div class="lineup-detail-sub" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 3px;">준대형 트럭 · 2026</div>
               </div>
             </div>
           </div>
@@ -1256,10 +1258,14 @@
           </div>
 
           <!-- Video Review Section -->
-          <div id="lineup-video-section" style="margin-top: 30px; display: none;">
-            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 12px;">현장 리뷰 영상</div>
-            <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
-              <iframe id="lineup-video-iframe" src="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div id="lineup-video-section" style="margin-top: 30px;">
+            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 12px;">&#127916; 현장 리뷰 영상</div>
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #f1f5f9;">
+              <iframe id="lineup-video-iframe" src="" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; display: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div id="lineup-video-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #94a3b8;">
+                <i class="fa-solid fa-video" style="font-size: 2rem;"></i>
+                <span style="font-size: 0.9rem; font-weight: 600;">현장 리뷰 영상 업로드 예정</span>
+              </div>
             </div>
           </div>
 
@@ -1606,14 +1612,16 @@
         specRows[8].innerText = car.warranty;
 
         // Update Video
-        const videoSection = document.getElementById('lineup-video-section');
         const videoIframe = document.getElementById('lineup-video-iframe');
+        const videoPlaceholder = document.getElementById('lineup-video-placeholder');
         if (car.video) {
-          videoSection.style.display = 'block';
           videoIframe.src = car.video;
+          videoIframe.style.display = 'block';
+          videoPlaceholder.style.display = 'none';
         } else {
-          videoSection.style.display = 'none';
           videoIframe.src = '';
+          videoIframe.style.display = 'none';
+          videoPlaceholder.style.display = 'flex';
         }
 
         // Update Sidebar Active State
@@ -2098,7 +2106,7 @@
   </script>
 
   <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyuhTUCgIlxgdAmdig6AcOMhYZOO8IqLedlP34DX7kT7XZZYM7xT1Hd9mxFVdlRjR6YJQ/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5bMppsx_8H_HBeznKa2SPWpuFpLRFA1vQS8aMKZdGkTFCplShHh2YjTfOHO6yhMN5rQ/exec';
 
     async function submitConsult(e) {
       e.preventDefault();
