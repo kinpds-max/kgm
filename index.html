@@ -297,6 +297,11 @@
     }
     .gallery-sub:nth-child(2) { border-radius: 0 var(--radius-md) 0 0; }
     .gallery-sub:nth-child(4) { border-radius: 0 0 var(--radius-md) 0; }
+    /* 6-item grid (3 cols × 2 rows) overrides */
+    .gallery-subs-6 { grid-template-columns: repeat(3, 1fr); }
+    .gallery-subs-6 .gallery-sub:nth-child(2) { border-radius: 0; }
+    .gallery-subs-6 .gallery-sub:nth-child(3) { border-radius: 0 var(--radius-md) 0 0; }
+    .gallery-subs-6 .gallery-sub:nth-child(4) { border-radius: 0; }
     .gallery-sub img { width: 100%; height: 100%; object-fit: contain; padding: 15px; opacity: 0.8; transition: opacity 0.2s; }
     .gallery-sub:hover img { opacity: 1; }
 
@@ -1212,11 +1217,13 @@
               </div>
             </div>
             <div class="gallery-right">
-              <div class="gallery-subs">
-                <div class="gallery-sub"><img src="images/musso_2026.png" alt="Sub 1"></div>
-                <div class="gallery-sub"><img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Sub 2"></div>
-                <div class="gallery-sub"><img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Sub 3"></div>
-                <div class="gallery-sub"><img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Sub 4"></div>
+              <div class="gallery-subs gallery-subs-6">
+                <div class="gallery-sub" onclick="document.getElementById('main-view-img').src='images/20260105095457_TxfO6hmj.jpg'"><img src="images/20260105095457_TxfO6hmj.jpg" alt="Sub 1"></div>
+                <div class="gallery-sub" onclick="document.getElementById('main-view-img').src='images/20260105095459_hPdXwE86.jpg'"><img src="images/20260105095459_hPdXwE86.jpg" alt="Sub 2"></div>
+                <div class="gallery-sub" onclick="document.getElementById('main-view-img').src='images/20260105095538_oF7XDypp.jpg'"><img src="images/20260105095538_oF7XDypp.jpg" alt="Sub 3"></div>
+                <div class="gallery-sub" onclick="document.getElementById('main-view-img').src='images/무쏘스포츠/KakaoTalk_20260422_101045305_08.jpg'"><img src="images/무쏘스포츠/KakaoTalk_20260422_101045305_08.jpg" alt="Sub 4"></div>
+                <div class="gallery-sub" onclick="document.getElementById('main-view-img').src='images/무쏘스포츠/KakaoTalk_20260422_101045305_10.jpg'"><img src="images/무쏘스포츠/KakaoTalk_20260422_101045305_10.jpg" alt="Sub 5"></div>
+                <div class="gallery-sub" onclick="document.getElementById('main-view-img').src='images/무쏘스포츠/KakaoTalk_20260422_101045305_09.jpg'"><img src="images/무쏘스포츠/KakaoTalk_20260422_101045305_09.jpg" alt="Sub 6"></div>
               </div>
               <!-- 제목 + 카탈로그/가격표 (사진 하단) -->
               <div class="lineup-title-wrap" style="padding: 10px 12px 8px; border-top: 1px solid var(--border); background: #f8fafc; border-radius: 0 0 var(--radius-md) 0; display: flex; flex-wrap: nowrap; align-items: center; justify-content: space-between; gap: 8px; flex: 1;">
@@ -1303,8 +1310,10 @@
           subs: [
             "images/20260105095457_TxfO6hmj.jpg",
             "images/20260105095459_hPdXwE86.jpg",
-            "images/20260105095537_lnFZvzCt.jpg",
-            "images/20260105095538_oF7XDypp.jpg"
+            "images/20260105095538_oF7XDypp.jpg",
+            "images/무쏘스포츠/KakaoTalk_20260422_101045305_08.jpg",
+            "images/무쏘스포츠/KakaoTalk_20260422_101045305_10.jpg",
+            "images/무쏘스포츠/KakaoTalk_20260422_101045305_09.jpg"
           ],
           colors: [
             { name: "울트라 마린", hex: "#1e40af", img: "images/musso_marine.png.png" },
@@ -1587,6 +1596,7 @@
               </div>
             `;
           });
+          subsContainer.classList.toggle('gallery-subs-6', car.subs.length >= 5);
         }
         
         // Update Specs
