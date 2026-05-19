@@ -255,6 +255,12 @@
       overflow: hidden;
     }
     .gallery-big img { width: 100%; height: 100%; object-fit: contain; padding: 40px; }
+    .gallery-right {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
     .gallery-subs {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -284,8 +290,7 @@
     .spec-row span:last-child { font-weight: 600; color: var(--text-main); }
 
     .lineup-colors {
-      margin-top: 32px;
-      padding-top: 24px;
+      padding-top: 12px;
       border-top: 1px solid var(--border);
     }
     .color-swatch-list {
@@ -411,8 +416,9 @@
       .lineup-gallery { grid-template-columns: 1fr; gap: 8px; min-width: 0; overflow: hidden; }
       .gallery-big { height: 280px; }
       .gallery-big img { padding: 20px; }
-      
-      .gallery-subs { 
+      .gallery-right { gap: 8px; }
+
+      .gallery-subs {
         display: flex;
         overflow-x: auto;
         gap: 8px;
@@ -421,9 +427,9 @@
         -webkit-overflow-scrolling: touch;
       }
       .gallery-subs::-webkit-scrollbar { display: none; }
-      .gallery-sub { 
+      .gallery-sub {
         width: 80px;
-        height: 80px; 
+        height: 80px;
         flex-shrink: 0;
       }
       .gallery-sub img { padding: 8px; }
@@ -1106,19 +1112,18 @@
             <div class="gallery-big">
               <img src="images/musso_2026.png" alt="Main View" id="main-view-img">
             </div>
-            <div class="gallery-subs">
-              <div class="gallery-sub"><img src="images/musso_2026.png" alt="Sub 1"></div>
-              <div class="gallery-sub"><img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Sub 2"></div>
-              <div class="gallery-sub"><img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Sub 3"></div>
-              <div class="gallery-sub"><img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Sub 4"></div>
-            </div>
-          </div>
-
-          <!-- Color Selection Section (갤러리 바로 아래) -->
-          <div class="lineup-colors" id="color-section" style="display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
-            <div class="section-title" style="font-size: 1.1rem; margin-bottom: 4px;">외장 컬러</div>
-            <div class="color-swatch-list" id="color-container">
-              <!-- Dynamically Populated -->
+            <div class="gallery-right">
+              <div class="gallery-subs">
+                <div class="gallery-sub"><img src="images/musso_2026.png" alt="Sub 1"></div>
+                <div class="gallery-sub"><img src="images/20260205084448718_0LKMrM_MODEL_MC5.png" alt="Sub 2"></div>
+                <div class="gallery-sub"><img src="images/20250401090321131_cuhGgT_MODEL_FL5.png" alt="Sub 3"></div>
+                <div class="gallery-sub"><img src="images/20260220105222163_SW0fIL_MODEL_MY5.png" alt="Sub 4"></div>
+              </div>
+              <!-- Color Selection Section (4사진 아래) -->
+              <div class="lineup-colors" id="color-section" style="display: none;">
+                <div class="section-title" style="font-size: 0.95rem; margin-bottom: 8px;">외장 컬러</div>
+                <div class="color-swatch-list" id="color-container"></div>
+              </div>
             </div>
           </div>
 
