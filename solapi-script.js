@@ -2,8 +2,8 @@
 // KGM 이종랑홈페이지 실시간 알림 연동 및 상세 에러 로그 기록 스크립트 (수정본)
 // =============================================================
 
-const SOLAPI_API_KEY = 'NCSEI0BPHUGSGJQE';
-const SOLAPI_API_SECRET = '636FK1NIGBC9GQKTEQGU67XG2IZP9ADK';
+const SOLAPI_API_KEY = 'NCSRFQEIXLVDA2B9';
+const SOLAPI_API_SECRET = 'V9GLJEWHKVFNYQNLCQYVV511TSGRJXSP';
 
 // [중요] 발신 전화번호 (솔라피에 서류 등록 완료된 번호)
 const SENDER_PHONE = '01075471197'; 
