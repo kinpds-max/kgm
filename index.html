@@ -1807,8 +1807,10 @@
         <div class="consult-card" style="flex: 1; display: flex; flex-direction: column;">
           <!-- 프로필 헤더 -->
           <div class="profile-header-row" style="display: flex; align-items: center; gap: 14px; padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.12);">
-            <div class="profile-img-wrap" style="flex-shrink: 0;">
-              <img src="images/명함 21대9.png" alt="이종랑 부장">
+            <div class="profile-img-wrap" style="flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #e2e8f0;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#94a3b8" style="width: 50%; height: 50%;">
+                <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+              </svg>
             </div>
             <div>
               <div class="profile-name-text" style="font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: 3px;">이종랑 부장</div>
@@ -1853,10 +1855,39 @@
     <!-- Info Area (Business Card & Map) -->
     <div class="info-area">
       <div class="info-grid">
-        <!-- Business Card -->
-        <div class="map-card" style="display: flex; flex-direction: column;">
-          <div style="border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); background: #ffffff;">
-            <img src="images/명함 21대9.png" alt="이종랑 부장 명함" style="width: 100%; height: auto; display: block; object-fit: contain;">
+        <!-- Business Card (Digital Card) -->
+        <div class="map-card" style="display: flex; flex-direction: column; justify-content: center; min-height: 250px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); color: #fff; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.1); padding: 24px; position: relative; overflow: hidden; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3);">
+          <!-- 로고 및 대리점명 -->
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+            <div>
+              <div style="font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; color: #fff;">KGM</div>
+              <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 2px;">일산중앙대리점</div>
+            </div>
+            <div style="font-size: 0.8rem; background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px; color: #38bdf8;">공식 대리점</div>
+          </div>
+          <!-- 이름 및 직책 -->
+          <div style="margin-bottom: 20px;">
+            <span style="font-size: 1.4rem; font-weight: 800; color: #fff;">이 종 랑</span>
+            <span style="font-size: 0.85rem; color: #94a3b8; margin-left: 8px;">부장</span>
+          </div>
+          <!-- 상세 정보 -->
+          <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.8rem; color: #cbd5e1;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-phone" style="width: 14px; color: #38bdf8;"></i>
+              <span>010-5335-8102</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-envelope" style="width: 14px; color: #38bdf8;"></i>
+              <span>kcmo07@naver.com</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-globe" style="width: 14px; color: #38bdf8;"></i>
+              <span>www.kgmlee.kr</span>
+            </div>
+            <div style="display: flex; align-items: start; gap: 8px; margin-top: 4px;">
+              <i class="fa-solid fa-map-pin" style="width: 14px; color: #38bdf8; margin-top: 2px;"></i>
+              <span style="line-height: 1.3;">경기도 고양시 일산서구 경의로 790<br>(푸르지오 아파트 상가 1층)</span>
+            </div>
           </div>
         </div>
 
